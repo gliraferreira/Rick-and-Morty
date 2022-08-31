@@ -1,6 +1,6 @@
 package br.com.lira.rickandmorty.characters.data.remote.datasource
 
-import br.com.lira.rickandmorty.characters.data.remote.CharacterResponseToModelMapper
+import br.com.lira.rickandmorty.characters.data.remote.mapper.CharacterResponseToModelMapper
 import br.com.lira.rickandmorty.characters.data.remote.api.CharactersApi
 import br.com.lira.rickandmorty.characters.domain.model.Character
 import br.com.lira.rickandmorty.characters.domain.model.CharacterError

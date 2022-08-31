@@ -12,7 +12,5 @@ data class Character(
     val origin: CharacterLocation,
     val location: CharacterLocation,
     val image: String,
-    val episode: List<String>,
-    val url: String,
-    val created: Date
+    val episodeIds: List<String>
 )
