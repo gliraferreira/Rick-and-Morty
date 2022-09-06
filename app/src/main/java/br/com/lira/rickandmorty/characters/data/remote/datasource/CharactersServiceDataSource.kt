@@ -12,7 +12,11 @@ class CharactersServiceDataSource @Inject constructor(
     private val charactersResponseMapper: CharacterResponseToModelMapper
 ) : CharactersRemoteDataSource {
 
-    override suspend fun getAllCharacters(): Result<Character, CharacterError> {
-        TODO("Not yet implemented")
+    override suspend fun getAllCharacters() = try {
+        val response = charactersApi.getAllCharacters()
+        val charactersList = response.results.map(charactersResponseMapper::mapFrom)
+        Result.Success(charactersList)
+    } catch (exception: Exception) {
+        Result.Error(CharacterError)
     }
 }

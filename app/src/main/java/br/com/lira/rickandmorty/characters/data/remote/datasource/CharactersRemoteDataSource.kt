@@ -6,5 +6,5 @@ import br.com.lira.rickandmorty.core.Result
 
 interface CharactersRemoteDataSource {
 
-    suspend fun getAllCharacters(): Result<Character, CharacterError>
+    suspend fun getAllCharacters(): Result<List<Character>, CharacterError>
 }
