@@ -14,13 +14,5 @@ class CharacterListItemViewHolder(
 
     fun bind(character: Character) {
         binding.character = character
-        Picasso.get()
-            .load(character.image)
-            .error(R.drawable.ic_round_account_circle)
-            .into(binding.picture, object : Callback {
-                override fun onSuccess() { }
-
-                override fun onError(e: Exception?) { }
-            })
     }
 }
