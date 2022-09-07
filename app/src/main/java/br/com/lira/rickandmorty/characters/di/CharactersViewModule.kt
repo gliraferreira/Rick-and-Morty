@@ -1,7 +1,5 @@
 package br.com.lira.rickandmorty.characters.di
 
-import br.com.lira.rickandmorty.characters.domain.usecase.GetAllCharacters
-import br.com.lira.rickandmorty.characters.domain.usecase.GetAllCharactersUseCase
 import br.com.lira.rickandmorty.characters.presentation.viewmodel.CharactersDefaultViewState
 import br.com.lira.rickandmorty.characters.presentation.viewmodel.CharactersViewState
 import dagger.Binds

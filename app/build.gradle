@@ -56,6 +56,9 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+    implementation "de.hdodenhof:circleimageview:$circleimageview_version"
+
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_androidx_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
