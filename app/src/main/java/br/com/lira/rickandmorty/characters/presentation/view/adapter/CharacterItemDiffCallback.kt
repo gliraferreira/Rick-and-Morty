@@ -1,11 +1,17 @@
 package br.com.lira.rickandmorty.characters.presentation.view.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import br.com.lira.rickandmorty.characters.domain.model.Character
+import br.com.lira.rickandmorty.characters.presentation.model.CharacterUIModel
 
-object CharacterItemDiffCallback : DiffUtil.ItemCallback<Character>() {
+object CharacterItemDiffCallback : DiffUtil.ItemCallback<CharacterUIModel>() {
 
-    override fun areItemsTheSame(oldItem: Character, newItem: Character) = oldItem.id == newItem.id
+    override fun areItemsTheSame(
+        oldItem: CharacterUIModel,
+        newItem: CharacterUIModel
+    ) = oldItem.id == newItem.id
 
-    override fun areContentsTheSame(oldItem: Character, newItem: Character) = oldItem == newItem
+    override fun areContentsTheSame(
+        oldItem: CharacterUIModel,
+        newItem: CharacterUIModel
+    ) = oldItem == newItem
 }

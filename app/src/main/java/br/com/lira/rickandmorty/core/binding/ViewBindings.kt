@@ -1,9 +1,12 @@
 package br.com.lira.rickandmorty.core.binding
 
+import android.content.res.ColorStateList
 import android.view.View
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import br.com.lira.rickandmorty.R
+import com.google.android.material.chip.Chip
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
@@ -24,4 +27,13 @@ fun ImageView.loadImage(url: String?) {
 
             override fun onError(e: Exception?) { }
         })
+}
+
+@BindingAdapter("bgColor")
+fun Chip.setBgColor(value: Int?) {
+    value?.let {
+        chipBackgroundColor = ColorStateList.valueOf(
+            ContextCompat.getColor(context, it)
+        )
+    }
 }

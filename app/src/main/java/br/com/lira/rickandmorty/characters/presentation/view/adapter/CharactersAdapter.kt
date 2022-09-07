@@ -3,11 +3,11 @@ package br.com.lira.rickandmorty.characters.presentation.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import br.com.lira.rickandmorty.characters.domain.model.Character
+import br.com.lira.rickandmorty.characters.presentation.model.CharacterUIModel
 import br.com.lira.rickandmorty.databinding.ListItemCharacterBinding
 
 class CharactersAdapter :
-    ListAdapter<Character, CharacterListItemViewHolder>(CharacterItemDiffCallback) {
+    ListAdapter<CharacterUIModel, CharacterListItemViewHolder>(CharacterItemDiffCallback) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

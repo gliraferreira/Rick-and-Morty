@@ -3,6 +3,7 @@ package br.com.lira.rickandmorty.characters.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.lira.rickandmorty.characters.domain.usecase.GetAllCharactersUseCase
+import br.com.lira.rickandmorty.characters.presentation.mapper.CharacterModelToUIMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -10,7 +11,8 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class CharactersViewModel @Inject constructor(
     private val getAllCharacters: GetAllCharactersUseCase,
-    private val mutableState: CharactersDefaultViewState
+    private val mutableState: CharactersDefaultViewState,
+    private val characterUiMapper: CharacterModelToUIMapper
 ) : ViewModel() {
 
     val viewState: CharactersViewState get() = mutableState
@@ -21,8 +23,9 @@ class CharactersViewModel @Inject constructor(
         viewModelScope.launch {
             getAllCharacters()
                 .onSuccess { characters ->
+                    val uiModelCharacters = characters.map(characterUiMapper::mapFrom)
                     mutableState.postState(CharactersViewState.State.SUCCESS)
-                    mutableState.postCharacters(characters)
+                    mutableState.postCharacters(uiModelCharacters)
                 }
         }
     }

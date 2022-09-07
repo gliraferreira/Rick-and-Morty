@@ -17,10 +17,10 @@ class CharacterResponseToModelMapper @Inject constructor(
         return Character(
             id = response.id,
             name = response.name,
-            status = valueOf(response.status, CharacterStatus.UNKNOWN),
+            status = valueOf(response.status.uppercase(), CharacterStatus.UNKNOWN),
             species = response.species,
             type = response.type,
-            gender = valueOf(response.gender, CharacterGender.UNKNOWN),
+            gender = valueOf(response.gender.uppercase(), CharacterGender.UNKNOWN),
             origin = locationMapper.mapFrom(response.origin),
             location = locationMapper.mapFrom(response.location),
             image = response.image,
