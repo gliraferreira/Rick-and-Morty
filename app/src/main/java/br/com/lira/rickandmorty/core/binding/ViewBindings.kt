@@ -7,7 +7,6 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import br.com.lira.rickandmorty.R
 import com.google.android.material.chip.Chip
-import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
 @BindingAdapter("present")
