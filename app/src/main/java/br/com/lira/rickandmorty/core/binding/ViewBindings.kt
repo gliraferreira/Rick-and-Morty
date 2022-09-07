@@ -22,11 +22,7 @@ fun ImageView.loadImage(url: String?) {
     Picasso.get()
         .load(url)
         .error(R.drawable.ic_round_account_circle)
-        .into(this, object : Callback {
-            override fun onSuccess() { }
-
-            override fun onError(e: Exception?) { }
-        })
+        .into(this)
 }
 
 @BindingAdapter("bgColor")
