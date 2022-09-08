@@ -7,12 +7,13 @@ buildscript {
         ktx_version = "1.7.0"
         app_compat_version = "1.5.0"
         constraint_layout_version = "2.1.4"
-        navigation_version = "2.5.1"
+        navigation_version = "2.5.2"
+        paging_version = "3.1.1"
 
         material_version = "1.6.1"
 
         retrofit_version = '2.7.1'
-        okhttp_version = '4.9.2'
+        okhttp_version = '4.10.0'
         moshi_version = '1.13.0'
         moshi_converter_version = '2.9.0'
 

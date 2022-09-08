@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import br.com.lira.rickandmorty.characters.presentation.view.adapter.CharactersAdapter
+import br.com.lira.rickandmorty.characters.presentation.view.adapter.CharactersLoadStateAdapter
 import br.com.lira.rickandmorty.characters.presentation.viewmodel.CharactersViewModel
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,12 +43,14 @@ class CharactersFragment : Fragment() {
 
     private fun setupViews() {
         charactersAdapter = CharactersAdapter()
-        binding.recyclerView.adapter = charactersAdapter
+        binding.recyclerView.adapter = charactersAdapter.withLoadStateFooter(
+            footer = CharactersLoadStateAdapter {  }
+        )
     }
 
     private fun observeViewState() {
         viewModel.viewState.characters.observe(viewLifecycleOwner) {
-            charactersAdapter.submitList(it)
+            charactersAdapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
     }
 }

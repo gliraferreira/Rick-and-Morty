@@ -13,7 +13,7 @@ class CharactersServiceDataSource @Inject constructor(
 ) : CharactersRemoteDataSource {
 
     override suspend fun getAllCharacters() = try {
-        val response = charactersApi.getAllCharacters()
+        val response = charactersApi.getAllCharacters(1)
         val charactersList = response.results.map(charactersResponseMapper::mapFrom)
         Result.Success(charactersList)
     } catch (exception: Exception) {
