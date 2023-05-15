@@ -1,7 +1,5 @@
 package br.com.lira.rickandmorty.characters.domain.model
 
-import java.util.Date
-
 data class Character(
     val id: Long,
     val name: String,

@@ -4,14 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="character"
             type="br.com.lira.rickandmorty.characters.presentation.model.CharacterUIModel" />
+
+        <variable
+            name="listener"
+            type="br.com.lira.rickandmorty.characters.presentation.view.CharactersListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{ () -> listener.onCharacterClicked(character.id) }"
         android:paddingBottom="3dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -21,10 +27,10 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
+            app:img="@{ character.image }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:img="@{ character.image }"
             tools:src="@drawable/ic_round_account_circle" />
 
         <TextView
@@ -35,9 +41,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:text="@{ character.name }"
+            app:layout_constraintBottom_toTopOf="@id/status"
             app:layout_constraintStart_toEndOf="@+id/picture"
             app:layout_constraintTop_toTopOf="@+id/picture"
-            app:layout_constraintBottom_toTopOf="@id/status"
             tools:text="Rick" />
 
         <com.google.android.material.chip.Chip
@@ -45,12 +51,12 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_marginStart="16dp"
-            android:text="@{ character.statusText }"
             android:clickable="false"
+            android:text="@{ character.statusText }"
+            app:bgColor="@{ character.statusColor }"
+            app:layout_constraintBottom_toBottomOf="@id/picture"
             app:layout_constraintStart_toEndOf="@id/picture"
             app:layout_constraintTop_toBottomOf="@id/username"
-            app:layout_constraintBottom_toBottomOf="@id/picture"
-            app:bgColor="@{ character.statusColor }"
-            tools:text="Alive"/>
+            tools:text="Alive" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
