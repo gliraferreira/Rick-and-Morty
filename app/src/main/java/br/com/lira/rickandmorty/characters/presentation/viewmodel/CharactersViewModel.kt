@@ -7,6 +7,7 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import br.com.lira.rickandmorty.characters.domain.usecase.GetAllCharactersUseCase
 import br.com.lira.rickandmorty.characters.presentation.mapper.CharacterModelToUIMapper
+import br.com.lira.rickandmorty.characters.presentation.view.CharactersListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
@@ -18,7 +19,8 @@ class CharactersViewModel @Inject constructor(
     private val getAllCharacters: GetAllCharactersUseCase,
     private val mutableState: CharactersDefaultViewState,
     private val characterUiMapper: CharacterModelToUIMapper
-) : ViewModel() {
+) : ViewModel(), CharactersListener {
+    val viewState: CharactersViewState get() = mutableState
 
     init {
         mutableState.postState(CharactersViewState.State.LOADING)
@@ -32,5 +34,7 @@ class CharactersViewModel @Inject constructor(
         }
     }
 
-    val viewState: CharactersViewState get() = mutableState
+    override fun onCharacterClicked(characterId: Long) {
+        mutableState.sendAction(CharactersViewAction.OpenCharacterDetails(characterId))
+    }
 }
