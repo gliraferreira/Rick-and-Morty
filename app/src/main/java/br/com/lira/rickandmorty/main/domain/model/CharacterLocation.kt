@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.characters.domain.model
+package br.com.lira.rickandmorty.main.domain.model
 
 data class CharacterLocation(
     val name: String,

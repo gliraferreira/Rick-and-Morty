@@ -4,8 +4,8 @@ package br.com.lira.rickandmorty.characters.data.remote.datasource
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import br.com.lira.rickandmorty.characters.data.remote.api.CharactersApi
-import br.com.lira.rickandmorty.characters.data.remote.mapper.CharacterResponseToModelMapper
-import br.com.lira.rickandmorty.characters.domain.model.Character
+import br.com.lira.rickandmorty.main.data.remote.mapper.CharacterResponseToModelMapper
+import br.com.lira.rickandmorty.main.domain.model.Character
 import br.com.lira.rickandmorty.core.mapper.UrlMapper
 import javax.inject.Inject
 

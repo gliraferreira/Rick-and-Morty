@@ -1,15 +1,15 @@
-package br.com.lira.rickandmorty.characters.presentation.mapper
+package br.com.lira.rickandmorty.characterdetails.presentation.mapper
 
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.characterdetails.presentation.model.CharacterDetailsUIModel
 import br.com.lira.rickandmorty.main.domain.model.Character
 import br.com.lira.rickandmorty.main.domain.model.CharacterGender
 import br.com.lira.rickandmorty.main.domain.model.CharacterStatus
-import br.com.lira.rickandmorty.characters.presentation.model.CharacterUIModel
 import javax.inject.Inject
 
-class CharacterModelToUIMapper @Inject constructor() {
+class CharacterDetailsModelToUIMapper @Inject constructor() {
 
-    fun mapFrom(character: Character) = CharacterUIModel(
+    fun mapFrom(character: Character) = CharacterDetailsUIModel(
         id = character.id,
         name = character.name,
         statusText = mapStatusText(character.status),

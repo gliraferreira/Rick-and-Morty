@@ -1,9 +1,9 @@
-package br.com.lira.rickandmorty.characters.data.remote.mapper
+package br.com.lira.rickandmorty.main.data.remote.mapper
 
-import br.com.lira.rickandmorty.characters.data.remote.api.response.CharacterResponse
-import br.com.lira.rickandmorty.characters.domain.model.Character
-import br.com.lira.rickandmorty.characters.domain.model.CharacterGender
-import br.com.lira.rickandmorty.characters.domain.model.CharacterStatus
+import br.com.lira.rickandmorty.main.data.remote.response.CharacterResponse
+import br.com.lira.rickandmorty.main.domain.model.Character
+import br.com.lira.rickandmorty.main.domain.model.CharacterGender
+import br.com.lira.rickandmorty.main.domain.model.CharacterStatus
 import br.com.lira.rickandmorty.core.mapper.UrlMapper
 import br.com.lira.rickandmorty.core.toolkit.valueOf
 import javax.inject.Inject

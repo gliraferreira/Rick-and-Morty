@@ -1,6 +1,6 @@
 package br.com.lira.rickandmorty.characters.data.remote.api
 
-import br.com.lira.rickandmorty.characters.data.remote.api.response.CharactersListResponse
+import br.com.lira.rickandmorty.main.data.remote.response.CharactersListResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
