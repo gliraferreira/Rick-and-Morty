@@ -53,6 +53,7 @@
             android:layout_marginStart="16dp"
             android:clickable="false"
             android:text="@{ character.statusText }"
+            android:textColor="@color/white"
             app:bgColor="@{ character.statusColor }"
             app:layout_constraintBottom_toBottomOf="@id/picture"
             app:layout_constraintStart_toEndOf="@id/picture"
