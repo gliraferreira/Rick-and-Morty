@@ -32,8 +32,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:gravity="center"
-                app:navigationIcon="?attr/homeAsUpIndicator"
-                app:title="@string/character_details_title" />
+                android:background="#414445"
+                app:navigationIcon="@drawable/ic_arrow"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -41,16 +41,24 @@
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="40dp"
-            android:paddingHorizontal="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+            <View
+                android:id="@+id/background"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#414445"
+                app:layout_constraintTop_toTopOf="@id/container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/characterImage"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:layout_marginTop="25dp"
                 app:img="@{ viewState.character.image }"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -100,6 +108,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorPrimaryDark"
+                android:layout_marginHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/status" />
