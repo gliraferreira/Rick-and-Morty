@@ -35,6 +35,8 @@ class CharacterDetailsFragment : Fragment() {
             lifecycleOwner = this@CharacterDetailsFragment
             viewState = viewModel.viewState
         }
+
+        binding.toolbar.setNavigationOnClickListener { activity?.onBackPressed() }
         return binding.root
     }
 

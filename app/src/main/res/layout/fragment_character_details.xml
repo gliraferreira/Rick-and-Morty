@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".characterdetails.presentation.view.CharacterDetailsFragment">
 
@@ -10,15 +11,87 @@
             type="br.com.lira.rickandmorty.characterdetails.presentation.viewmodel.CharacterDetailsViewState" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@{ viewState.character.name }"
-            tools:text="Morty Smith" />
-    </FrameLayout>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:elevation="0dp"
+            app:layout_constraintBottom_toTopOf="@id/container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="center"
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                app:title="@string/character_details_title" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="40dp"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/characterImage"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:img="@{ viewState.character.image }"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/container" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@{ viewState.character.name }"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                app:layout_constraintEnd_toEndOf="@id/characterImage"
+                app:layout_constraintStart_toStartOf="@id/characterImage"
+                app:layout_constraintTop_toBottomOf="@id/characterImage"
+                tools:text="Morty Smith" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:clickable="false"
+                app:bgColor="@{ viewState.character.statusColor }"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                app:textRes="@{ viewState.character.statusText }"
+                tools:text="Alive" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/status" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -3,6 +3,7 @@ package br.com.lira.rickandmorty.core.binding
 import android.content.res.ColorStateList
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import br.com.lira.rickandmorty.R
@@ -30,5 +31,12 @@ fun Chip.setBgColor(value: Int?) {
         chipBackgroundColor = ColorStateList.valueOf(
             ContextCompat.getColor(context, it)
         )
+    }
+}
+
+@BindingAdapter("textRes")
+fun TextView.setTextRes(value: Int?) {
+    value?.let {
+        text = context.getText(it)
     }
 }
