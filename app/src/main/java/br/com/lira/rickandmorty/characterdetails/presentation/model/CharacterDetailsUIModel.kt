@@ -8,7 +8,6 @@ data class CharacterDetailsUIModel(
     @IntegerRes val statusText: Int?,
     @IntegerRes val statusColor: Int?,
     val species: String,
-    val type: String,
     @IntegerRes val gender: Int?,
     val image: String,
     val lastLocation: String,

@@ -31,137 +31,146 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:gravity="center"
                 android:background="#414445"
-                app:navigationIcon="@drawable/ic_arrow"/>
+                android:gravity="center"
+                app:navigationIcon="@drawable/ic_arrow" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
-            <View
-                android:id="@+id/background"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="#414445"
-                app:layout_constraintTop_toTopOf="@id/container"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                android:layout_height="wrap_content">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/characterImage"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="25dp"
-                app:img="@{ viewState.character.image }"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/container" />
+                <View
+                    android:id="@+id/background"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#414445"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@{ viewState.character.name }"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                app:layout_constraintEnd_toEndOf="@id/characterImage"
-                app:layout_constraintStart_toStartOf="@id/characterImage"
-                app:layout_constraintTop_toBottomOf="@id/characterImage"
-                tools:text="Morty Smith" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/characterImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="25dp"
+                    app:img="@{ viewState.character.image }"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@{ viewState.character.lastLocation }"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                app:layout_constraintEnd_toEndOf="@id/tvName"
-                app:layout_constraintStart_toStartOf="@id/tvName"
-                app:layout_constraintTop_toBottomOf="@id/tvName"
-                tools:text="Earth" />
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{ viewState.character.name }"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    app:layout_constraintEnd_toEndOf="@id/characterImage"
+                    app:layout_constraintStart_toStartOf="@id/characterImage"
+                    app:layout_constraintTop_toBottomOf="@id/characterImage"
+                    tools:text="Morty Smith" />
 
-            <TextView
-                android:id="@+id/tvGender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
-                app:textRes="@{ viewState.character.gender }"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                app:layout_constraintEnd_toStartOf="@id/status"
-                app:layout_constraintStart_toStartOf="@id/characterImage"
-                app:layout_constraintTop_toBottomOf="@id/tvLocation"
-                tools:text="Male" />
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{ viewState.character.lastLocation }"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    app:layout_constraintEnd_toEndOf="@id/tvName"
+                    app:layout_constraintStart_toStartOf="@id/tvName"
+                    app:layout_constraintTop_toBottomOf="@id/tvName"
+                    tools:text="Earth" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/white"
-                android:clickable="false"
-                app:bgColor="@{ viewState.character.statusColor }"
-                app:layout_constraintEnd_toEndOf="@id/tvLocation"
-                app:layout_constraintStart_toStartOf="@id/tvLocation"
-                app:layout_constraintTop_toBottomOf="@id/tvLocation"
-                app:textRes="@{ viewState.character.statusText }"
-                tools:text="Alive" />
+                <TextView
+                    android:id="@+id/tvGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                    app:layout_constraintEnd_toStartOf="@id/status"
+                    app:layout_constraintStart_toStartOf="@id/characterImage"
+                    app:layout_constraintTop_toBottomOf="@id/tvLocation"
+                    app:textRes="@{ viewState.character.gender }"
+                    tools:text="Male" />
 
-            <TextView
-                android:id="@+id/tvSpecies"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="5dp"
-                android:text="@{ viewState.character.species }"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                app:layout_constraintStart_toEndOf="@id/status"
-                app:layout_constraintEnd_toEndOf="@id/characterImage"
-                app:layout_constraintTop_toBottomOf="@id/tvLocation"
-                tools:text="Human" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="false"
+                    android:textColor="@color/white"
+                    app:bgColor="@{ viewState.character.statusColor }"
+                    app:layout_constraintEnd_toEndOf="@id/tvLocation"
+                    app:layout_constraintStart_toStartOf="@id/tvLocation"
+                    app:layout_constraintTop_toBottomOf="@id/tvLocation"
+                    app:textRes="@{ viewState.character.statusText }"
+                    tools:text="Alive" />
+
+                <TextView
+                    android:id="@+id/tvSpecies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@{ viewState.character.species }"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                    app:layout_constraintEnd_toEndOf="@id/characterImage"
+                    app:layout_constraintStart_toEndOf="@id/status"
+                    app:layout_constraintTop_toBottomOf="@id/tvLocation"
+                    tools:text="Human" />
 
 
-            <View
-                android:id="@+id/divider"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorPrimaryDark"
-                android:layout_marginHorizontal="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/status" />
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/status" />
 
-            <TextView
-                android:id="@+id/tvEpisodesHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/character_details_episodes_title"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toStartOf="@id/divider"
-                app:layout_constraintTop_toBottomOf="@id/divider" />
+                <TextView
+                    android:id="@+id/tvEpisodesHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/character_details_episodes_title"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    app:layout_constraintStart_toStartOf="@id/divider"
+                    app:layout_constraintTop_toBottomOf="@id/divider" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvEpisodes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:present="@{ viewState.shouldDisplayContent }"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/tvEpisodesHeader"
-                app:layout_constraintStart_toStartOf="@id/tvEpisodesHeader"
-                tools:listitem="@layout/list_item_character_episode" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvEpisodes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvEpisodesHeader"
+                    app:layout_constraintTop_toBottomOf="@id/tvEpisodesHeader"
+                    app:present="@{ viewState.shouldDisplayContent }"
+                    tools:listitem="@layout/list_item_character_episode" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

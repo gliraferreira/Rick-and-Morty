@@ -15,7 +15,6 @@ class CharacterDetailsModelToUIMapper @Inject constructor() {
         statusText = mapStatusText(character.status),
         statusColor = mapStatusColor(character.status),
         species = character.species,
-        type = character.type,
         gender = mapGender(character.gender),
         image = character.image,
         lastLocation = character.location.name
