@@ -68,7 +68,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="@{ viewState.character.name }"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 app:layout_constraintEnd_toEndOf="@id/characterImage"
@@ -77,15 +77,28 @@
                 tools:text="Morty Smith" />
 
             <TextView
-                android:id="@+id/tvGender"
+                android:id="@+id/tvLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:textRes="@{ viewState.character.gender }"
+                android:layout_marginTop="10dp"
+                android:text="@{ viewState.character.lastLocation }"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintEnd_toEndOf="@id/tvName"
                 app:layout_constraintStart_toStartOf="@id/tvName"
                 app:layout_constraintTop_toBottomOf="@id/tvName"
+                tools:text="Earth" />
+
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                app:textRes="@{ viewState.character.gender }"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintEnd_toStartOf="@id/status"
+                app:layout_constraintStart_toStartOf="@id/characterImage"
+                app:layout_constraintTop_toBottomOf="@id/tvLocation"
                 tools:text="Male" />
 
             <com.google.android.material.chip.Chip
@@ -96,11 +109,25 @@
                 android:textColor="@color/white"
                 android:clickable="false"
                 app:bgColor="@{ viewState.character.statusColor }"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvGender"
+                app:layout_constraintEnd_toEndOf="@id/tvLocation"
+                app:layout_constraintStart_toStartOf="@id/tvLocation"
+                app:layout_constraintTop_toBottomOf="@id/tvLocation"
                 app:textRes="@{ viewState.character.statusText }"
                 tools:text="Alive" />
+
+            <TextView
+                android:id="@+id/tvSpecies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="5dp"
+                android:text="@{ viewState.character.species }"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                app:layout_constraintStart_toEndOf="@id/status"
+                app:layout_constraintEnd_toEndOf="@id/characterImage"
+                app:layout_constraintTop_toBottomOf="@id/tvLocation"
+                tools:text="Human" />
+
 
             <View
                 android:id="@+id/divider"

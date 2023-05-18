@@ -11,4 +11,5 @@ data class CharacterDetailsUIModel(
     val type: String,
     @IntegerRes val gender: Int?,
     val image: String,
+    val lastLocation: String,
 )

@@ -17,7 +17,8 @@ class CharacterDetailsModelToUIMapper @Inject constructor() {
         species = character.species,
         type = character.type,
         gender = mapGender(character.gender),
-        image = character.image
+        image = character.image,
+        lastLocation = character.location.name
     )
 
     private fun mapStatusText(status: CharacterStatus) = when (status) {
