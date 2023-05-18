@@ -1,12 +1,12 @@
 package br.com.lira.rickandmorty.characterdetails.presentation.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.characterdetails.presentation.view.adapter.CharacterEpisodeAdapter
 import br.com.lira.rickandmorty.characterdetails.presentation.viewmodel.CharacterDetailsViewModel
 import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +19,8 @@ class CharacterDetailsFragment : Fragment() {
     private var characterId: Long? = null
     private lateinit var binding: FragmentCharacterDetailsBinding
     private val viewModel: CharacterDetailsViewModel by viewModels()
+
+    private lateinit var episodesAdapter: CharacterEpisodeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,19 @@ class CharacterDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.init(characterId)
+        setupViews()
+        observeViewState()
+    }
+
+    private fun setupViews() {
+        episodesAdapter = CharacterEpisodeAdapter()
+        binding.rvEpisodes.adapter = episodesAdapter
+    }
+
+    private fun observeViewState() {
+        viewModel.viewState.episodes.observe(viewLifecycleOwner) {
+            episodesAdapter.submitList(it)
+        }
     }
 
     companion object {
