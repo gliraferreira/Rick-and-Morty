@@ -38,7 +38,7 @@ class CharacterDetailsFragment : Fragment() {
             viewState = viewModel.viewState
         }
 
-        binding.toolbar.setNavigationOnClickListener { activity?.onBackPressed() }
+        binding.toolbarView.toolbar.setNavigationOnClickListener { activity?.onBackPressed() }
         return binding.root
     }
 
@@ -52,7 +52,7 @@ class CharacterDetailsFragment : Fragment() {
 
     private fun setupViews() {
         episodesAdapter = CharacterEpisodeAdapter()
-        binding.rvEpisodes.adapter = episodesAdapter
+        binding.content.rvEpisodes.adapter = episodesAdapter
     }
 
     private fun observeViewState() {

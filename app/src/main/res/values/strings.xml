@@ -11,6 +11,8 @@
     <string name="character_gender_female">Female</string>
     <string name="character_gender_unknown">Unknown</string>
 
+    <string name="characters_title">Rick and Morty</string>
+
     <string name="character_details_title">Character Details</string>
     <string name="character_details_episodes_title">Episodes</string>
 </resources>
