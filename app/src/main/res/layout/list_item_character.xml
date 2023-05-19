@@ -7,11 +7,11 @@
 
         <variable
             name="character"
-            type="br.com.lira.rickandmorty.characters.presentation.model.CharacterUIModel" />
+            type="br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel" />
 
         <variable
             name="listener"
-            type="br.com.lira.rickandmorty.characters.presentation.view.CharactersListener" />
+            type="br.com.lira.rickandmorty.features.characterslist.presentation.view.CharactersListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

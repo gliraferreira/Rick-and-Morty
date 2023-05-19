@@ -7,7 +7,7 @@
 
         <variable
             name="character"
-            type="br.com.lira.rickandmorty.characterdetails.presentation.model.CharacterDetailsUIModel" />
+            type="br.com.lira.rickandmorty.features.characterdetails.presentation.model.CharacterDetailsUIModel" />
 
         <variable
             name="isVisible"

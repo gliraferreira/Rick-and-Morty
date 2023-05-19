@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".characterdetails.presentation.view.CharacterDetailsFragment">
+    tools:context=".features.characterdetails.presentation.view.CharacterDetailsFragment">
 
     <data>
 
         <variable
             name="viewState"
-            type="br.com.lira.rickandmorty.characterdetails.presentation.viewmodel.CharacterDetailsViewState" />
+            type="br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel.CharacterDetailsViewState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

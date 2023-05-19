@@ -7,7 +7,7 @@
 
         <variable
             name="viewState"
-            type="br.com.lira.rickandmorty.characters.presentation.viewmodel.CharactersViewState" />
+            type="br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

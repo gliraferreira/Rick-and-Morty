@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/charactersFragment"
-        android:name="br.com.lira.rickandmorty.characters.presentation.view.CharactersFragment"
+        android:name="br.com.lira.rickandmorty.features.characterslist.presentation.view.CharactersFragment"
         android:label="fragment_characters"
         tools:layout="@layout/fragment_characters" />
 </navigation>
