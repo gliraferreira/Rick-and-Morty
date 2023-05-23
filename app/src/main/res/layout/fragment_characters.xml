@@ -8,6 +8,10 @@
         <variable
             name="viewState"
             type="br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewState" />
+
+        <variable
+            name="toolbarHandler"
+            type="br.com.lira.rickandmorty.main.presentation.CommonToolbarHandler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,23 +21,28 @@
         <include
             android:id="@+id/toolbarView"
             layout="@layout/common_toolbar"
-            app:layout_constraintBottom_toTopOf="@id/recyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:present="@{ viewState.isToolbarVisible }"
+            app:handler="@{ toolbarHandler }"
             app:isSearchEnabled="@{ true }"
             app:title="@{ @string/characters_title }"/>
 
         <include
             android:id="@+id/searchView"
             layout="@layout/characters_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/recyclerView"
+            app:present="@{ viewState.isSearchEnabled }"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/verticalBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="toolbarView,searchView" />
 
         <include
             android:id="@+id/loading"
@@ -55,8 +64,9 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbarView"
+            app:layout_constraintTop_toBottomOf="@id/verticalBarrier"
             tools:listitem="@layout/list_item_character" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -34,6 +34,14 @@ class CharactersViewModel @Inject constructor(
         mutableState.postState(CharactersViewState.State.SUCCESS)
     }
 
+    fun onSearchClicked() {
+        mutableState.postSearchStatus(true)
+    }
+
+    fun onSearchFocusChanged(hasFocus: Boolean) {
+        mutableState.postSearchStatus(hasFocus)
+    }
+
     override fun onCharacterClicked(characterId: Long) {
         mutableState.sendAction(CharactersViewAction.OpenCharacterDetails(characterId))
     }

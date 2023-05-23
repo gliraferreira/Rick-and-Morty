@@ -2,12 +2,24 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:defaultQueryHint="@string/characters_search"
-        android:layout_margin="5dp"
-        app:iconifiedByDefault="false"/>
+        android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:autofillHints="name"
+            android:background="@color/toolbar_background"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="20dp"
+            android:hint="@string/characters_search"
+            android:paddingHorizontal="20dp"
+            android:textColor="?attr/colorControlNormal"
+            android:textColorHint="@color/gray"
+            android:inputType="textFilter" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

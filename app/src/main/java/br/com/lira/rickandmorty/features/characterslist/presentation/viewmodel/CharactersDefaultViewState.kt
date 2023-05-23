@@ -13,10 +13,12 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
     private val _characters = MutableLiveData<PagingData<CharacterUIModel>>()
     private val _state = MutableLiveData<CharactersViewState.State>()
     private val _action = OneShotLiveData<CharactersViewAction>()
+    private val _isSearchEnabled = MutableLiveData<Boolean>().apply { value = false }
 
     override val characters: LiveData<PagingData<CharacterUIModel>> get() = _characters
     override val state: LiveData<CharactersViewState.State> get() = _state
     override val action: LiveData<CharactersViewAction> get() = _action
+    override val isSearchEnabled: LiveData<Boolean> get() = _isSearchEnabled
 
     override fun isLoading() = Transformations.map(_state) {
         it == CharactersViewState.State.LOADING
@@ -24,6 +26,10 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
     override fun shouldDisplayContent() = Transformations.map(_state) {
         it == CharactersViewState.State.SUCCESS
+    }
+
+    override fun isToolbarVisible() = Transformations.map(_isSearchEnabled) {
+        !it
     }
 
     fun postCharacters(
@@ -34,5 +40,9 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
     fun sendAction(action: CharactersViewAction) {
         _action.value = action
+    }
+
+    fun postSearchStatus(isEnabled: Boolean) {
+        _isSearchEnabled.value = isEnabled
     }
 }
