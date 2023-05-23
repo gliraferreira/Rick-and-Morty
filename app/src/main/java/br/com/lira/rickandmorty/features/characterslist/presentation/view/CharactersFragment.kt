@@ -45,9 +45,12 @@ class CharactersFragment : Fragment() {
 
     private fun setupViews() {
         charactersAdapter = CharactersAdapter(viewModel)
-        binding.recyclerView.adapter = charactersAdapter.withLoadStateFooter(
-            footer = CharactersLoadStateAdapter { }
-        )
+        binding.recyclerView.adapter = charactersAdapter.apply {
+            withLoadStateFooter(
+                footer = CharactersLoadStateAdapter()
+            )
+            addOnPagesUpdatedListener { viewModel.onCharactersListSubmitted() }
+        }
     }
 
     private fun observeViewState() {

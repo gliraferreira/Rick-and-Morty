@@ -16,6 +16,10 @@
         <variable
             name="isSearchEnabled"
             type="Boolean" />
+
+        <variable
+            name="handler"
+            type="br.com.lira.rickandmorty.main.presentation.CommonToolbarHandler" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -29,16 +33,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/navigationIcon"
+                present="@{ isBackEnabled }"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/toolbar_background"
                 android:contentDescription="@string/toolbar_back_description"
+                android:onClick="@{ () -> handler.onBackClicked() }"
+                android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="10dp"
-                present="@{ isBackEnabled }"
                 app:srcCompat="@drawable/ic_arrow_back" />
 
             <TextView
@@ -56,15 +62,17 @@
 
             <ImageButton
                 android:id="@+id/searchIcon"
+                present="@{ isSearchEnabled }"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
                 android:background="@color/toolbar_background"
                 android:contentDescription="@string/toolbar_search_description"
+                android:onClick="@{ () -> handler.onSearchClicked() }"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                present="@{ isSearchEnabled }"
                 app:srcCompat="@drawable/ic_search" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

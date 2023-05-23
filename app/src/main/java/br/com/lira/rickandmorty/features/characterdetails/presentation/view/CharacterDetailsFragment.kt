@@ -9,12 +9,14 @@ import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.adapter.CharacterEpisodeAdapter
 import br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel.CharacterDetailsViewModel
 import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
+import br.com.lira.rickandmorty.main.presentation.CommonToolbarHandler
+import br.com.lira.rickandmorty.main.presentation.DefaultToolbarHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_CHARACTER_ID = "char_id"
 
 @AndroidEntryPoint
-class CharacterDetailsFragment : Fragment() {
+class CharacterDetailsFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHandler {
 
     private var characterId: Long? = null
     private lateinit var binding: FragmentCharacterDetailsBinding
@@ -35,6 +37,7 @@ class CharacterDetailsFragment : Fragment() {
     ): View? {
         binding = FragmentCharacterDetailsBinding.inflate(inflater).apply {
             lifecycleOwner = this@CharacterDetailsFragment
+            toolbarHandler = this@CharacterDetailsFragment
             viewState = viewModel.viewState
         }
 
@@ -58,6 +61,10 @@ class CharacterDetailsFragment : Fragment() {
         viewModel.viewState.episodes.observe(viewLifecycleOwner) {
             episodesAdapter.submitList(it)
         }
+    }
+
+    override fun onBackClicked() {
+        activity?.onBackPressed()
     }
 
     companion object {

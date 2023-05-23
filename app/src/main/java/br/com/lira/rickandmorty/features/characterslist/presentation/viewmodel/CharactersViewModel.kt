@@ -20,15 +20,18 @@ class CharactersViewModel @Inject constructor(
     val viewState: CharactersViewState get() = mutableState
 
     init {
-        mutableState.postState(CharactersViewState.State.LOADING)
-
         viewModelScope.launch {
+            mutableState.postState(CharactersViewState.State.LOADING)
+
             getAllCharacters().cachedIn(viewModelScope).collect { result ->
                 val uiPagingData = result.map { characterUiMapper.mapFrom(it) }
                 mutableState.postCharacters(uiPagingData)
-                mutableState.postState(CharactersViewState.State.SUCCESS)
             }
         }
+    }
+
+    fun onCharactersListSubmitted() {
+        mutableState.postState(CharactersViewState.State.SUCCESS)
     }
 
     override fun onCharacterClicked(characterId: Long) {

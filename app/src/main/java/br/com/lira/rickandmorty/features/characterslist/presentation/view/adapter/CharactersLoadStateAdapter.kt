@@ -7,7 +7,7 @@ import androidx.paging.LoadStateAdapter
 import br.com.lira.rickandmorty.databinding.CharactersLoadStateFooterViewItemBinding
 
 class CharactersLoadStateAdapter(
-    private val retry: () -> Unit
+    private val retry: () -> Unit = {}
 ) : LoadStateAdapter<CharactersLoadStateViewHolder>() {
 
     override fun onBindViewHolder(holder: CharactersLoadStateViewHolder, loadState: LoadState) {
