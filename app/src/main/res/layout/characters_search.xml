@@ -4,8 +4,17 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/navigationIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/toolbar_background"
+            android:contentDescription="@string/toolbar_back_description"
+            android:paddingHorizontal="10dp"
+            app:srcCompat="@drawable/ic_arrow_back" />
 
         <EditText
             android:id="@+id/search"
@@ -13,10 +22,8 @@
             android:layout_height="56dp"
             android:autofillHints="name"
             android:background="@color/toolbar_background"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="20dp"
             android:hint="@string/characters_search"
-            android:paddingHorizontal="20dp"
+            android:paddingHorizontal="10dp"
             android:textColor="?attr/colorControlNormal"
             android:textColorHint="@color/gray"
             android:inputType="textFilter" />

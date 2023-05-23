@@ -1,28 +1,21 @@
 package br.com.lira.rickandmorty.features.characterslist.presentation.view
 
-import android.content.Context
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
+import br.com.lira.rickandmorty.core.toolkit.runWhenInteracted
+import br.com.lira.rickandmorty.core.toolkit.setFocusWithKeyboard
+import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.CharacterDetailsFragment
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersAdapter
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersLoadStateAdapter
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewAction
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewModel
-import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
-import br.com.lira.rickandmorty.core.toolkit.runWhenInteracted
-import br.com.lira.rickandmorty.core.toolkit.setFocusWithKeyboard
-import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.main.presentation.CommonToolbarHandler
 import br.com.lira.rickandmorty.main.presentation.DefaultToolbarHandler
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,16 +49,27 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
     }
 
     private fun setupViews() {
+        setupRecyclerView()
+        setupSearchView()
+    }
+
+    private fun setupRecyclerView() {
         charactersAdapter = CharactersAdapter(viewModel)
-        binding.recyclerView.adapter = charactersAdapter.apply {
+        binding.rvCharacters.adapter = charactersAdapter.apply {
             withLoadStateFooter(
                 footer = CharactersLoadStateAdapter()
             )
             addOnPagesUpdatedListener { viewModel.onCharactersListSubmitted() }
         }
+    }
+
+    private fun setupSearchView() {
         binding.searchView.search.setOnFocusChangeListener { _, hasFocus ->
             binding.searchView.search.setFocusWithKeyboard(hasFocus)
             viewModel.onSearchFocusChanged(hasFocus)
+        }
+        binding.searchView.navigationIcon.setOnClickListener {
+            viewModel.onSearchFocusChanged(false)
         }
     }
 
@@ -89,8 +93,8 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
 
     private fun focusOnSearch() {
         binding.searchView.search.setFocusWithKeyboard(true)
-        binding.recyclerView.scrollToPosition(0)
-        binding.recyclerView.runWhenInteracted {
+        binding.rvCharacters.scrollToPosition(0)
+        binding.rvCharacters.runWhenInteracted {
             viewModel.onSearchFocusChanged(false)
         }
     }
