@@ -18,13 +18,11 @@
         <include
             android:id="@+id/toolbarView"
             layout="@layout/common_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@{ @drawable/ic_arrow }"
+            app:isBackEnabled="@{ true }"
             app:title="@{ viewState.character.name }" />
 
         <include

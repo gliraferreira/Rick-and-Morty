@@ -12,9 +12,7 @@ import com.squareup.picasso.Picasso
 
 @BindingAdapter("present")
 fun View.setPresent(value: Boolean?) {
-    value?.let {
-        visibility = if (it) View.VISIBLE else View.GONE
-    }
+    visibility = if (value == true) View.VISIBLE else View.GONE
 }
 
 @BindingAdapter("img")
