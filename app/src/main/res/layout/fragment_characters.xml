@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -21,21 +21,21 @@
         <include
             android:id="@+id/toolbarView"
             layout="@layout/common_toolbar"
+            app:handler="@{ toolbarHandler }"
+            app:isSearchEnabled="@{ true }"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:present="@{ viewState.isToolbarVisible }"
-            app:handler="@{ toolbarHandler }"
-            app:isSearchEnabled="@{ true }"
-            app:title="@{ @string/characters_title }"/>
+            app:title="@{ @string/characters_title }" />
 
         <include
             android:id="@+id/searchView"
             layout="@layout/characters_search"
-            app:present="@{ viewState.isSearchEnabled }"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:present="@{ viewState.isSearchEnabled }" />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/verticalBarrier"
@@ -49,22 +49,22 @@
             layout="@layout/loading_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:isVisible="@{ viewState.isLoading }"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:isVisible="@{ viewState.isLoading }"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCharacters"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:present="@{ viewState.shouldDisplayContent }"
+            android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/verticalBarrier"
+            app:present="@{ viewState.shouldDisplayContent }"
             tools:listitem="@layout/list_item_character" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

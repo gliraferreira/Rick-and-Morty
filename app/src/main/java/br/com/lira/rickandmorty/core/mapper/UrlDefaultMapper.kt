@@ -9,5 +9,5 @@ class UrlDefaultMapper @Inject constructor() : UrlMapper {
 
     override fun mapId(url: String) = Uri.parse(url).lastPathSegment.orEmpty()
 
-    override fun mapPage(url: String?) = Uri.parse(url)?.getQueryParameter(PAGE_PARAM)?.toInt()
+    override fun mapPage(url: String?) = url?.let(Uri::parse)?.getQueryParameter(PAGE_PARAM)?.toInt()
 }

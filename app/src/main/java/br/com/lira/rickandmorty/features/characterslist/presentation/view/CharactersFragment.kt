@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
@@ -31,7 +32,7 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCharactersBinding.inflate(inflater).apply {
             lifecycleOwner = this@CharactersFragment
             toolbarHandler = this@CharactersFragment
@@ -71,11 +72,16 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
         binding.searchView.navigationIcon.setOnClickListener {
             viewModel.onSearchFocusChanged(false)
         }
+        binding.searchView.search.addTextChangedListener { text ->
+            viewModel.onSearchTextChanged(text)
+        }
     }
 
     private fun observeViewState() {
-        viewModel.viewState.characters.observe(viewLifecycleOwner) {
-            charactersAdapter.submitData(viewLifecycleOwner.lifecycle, it)
+        viewModel.viewState.characters.observe(viewLifecycleOwner) { data ->
+            data?.let {
+                charactersAdapter.submitData(viewLifecycleOwner.lifecycle, it)
+            }
         }
         viewModel.viewState.action.observe(viewLifecycleOwner) { action ->
             when (action) {

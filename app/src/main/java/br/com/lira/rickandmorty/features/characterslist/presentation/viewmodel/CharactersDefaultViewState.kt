@@ -10,15 +10,15 @@ import javax.inject.Inject
 
 class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
-    private val _characters = MutableLiveData<PagingData<CharacterUIModel>>()
+    private val _characters = MutableLiveData<PagingData<CharacterUIModel>?>()
     private val _state = MutableLiveData<CharactersViewState.State>()
     private val _action = OneShotLiveData<CharactersViewAction>()
     private val _isSearchEnabled = MutableLiveData<Boolean>().apply { value = false }
+    private val _name = MutableLiveData<String?>().apply { value = null }
 
-    override val characters: LiveData<PagingData<CharacterUIModel>> get() = _characters
+    override val characters: LiveData<PagingData<CharacterUIModel>?> get() = _characters
     override val state: LiveData<CharactersViewState.State> get() = _state
     override val action: LiveData<CharactersViewAction> get() = _action
-    override val isSearchEnabled: LiveData<Boolean> get() = _isSearchEnabled
 
     override fun isLoading() = Transformations.map(_state) {
         it == CharactersViewState.State.LOADING
@@ -28,13 +28,19 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
         it == CharactersViewState.State.SUCCESS
     }
 
-    override fun isToolbarVisible() = Transformations.map(_isSearchEnabled) {
+    override fun isToolbarVisible() = Transformations.map(isSearchEnabled()) {
         !it
     }
 
+    override fun isSearchEnabled() = Transformations.map(_isSearchEnabled) {
+        it || _name.value.isNullOrBlank().not()
+    }
+
     fun postCharacters(
-        charactersList: PagingData<CharacterUIModel>
-    ) = _characters.postValue(charactersList)
+        charactersList: PagingData<CharacterUIModel>?
+    ) {
+        _characters.value = charactersList
+    }
 
     fun postState(newState: CharactersViewState.State) = _state.postValue(newState)
 
@@ -44,5 +50,9 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
     fun postSearchStatus(isEnabled: Boolean) {
         _isSearchEnabled.value = isEnabled
+    }
+
+    fun postName(name: String?) {
+        _name.value = name
     }
 }

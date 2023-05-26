@@ -6,12 +6,11 @@ import br.com.lira.rickandmorty.main.domain.model.Character
 import javax.inject.Inject
 
 class CharactersServiceDataSource @Inject constructor(
-    private val charactersApi: CharactersApi,
-    private val charactersResponseMapper: CharacterResponseToModelMapper
+    private val charactersApi: CharactersApi
 ) : CharactersRemoteDataSource {
 
-    override suspend fun getAllCharacters(): List<Character> {
-        val response = charactersApi.getAllCharacters(1)
-        return response.results.map(charactersResponseMapper::mapFrom)
-    }
+    override suspend fun getAllCharacters(
+        page: Int,
+        name: String?
+    ) = charactersApi.getAllCharacters(page, name)
 }
