@@ -9,6 +9,6 @@
         <item name="colorSecondary">#80ed99</item>
         <item name="colorSecondaryVariant">#c7f9cc</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlNormal">#CDCDCD</item>
     </style>
 </resources>

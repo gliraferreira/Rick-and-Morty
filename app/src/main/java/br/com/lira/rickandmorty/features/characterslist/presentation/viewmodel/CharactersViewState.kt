@@ -19,6 +19,8 @@ interface CharactersViewState : ViewState {
 
     fun isSearchEnabled(): LiveData<Boolean>
 
+    fun isSearchClearTextVisible(): LiveData<Boolean>
+
     enum class State {
         LOADING, SUCCESS, ERROR
     }

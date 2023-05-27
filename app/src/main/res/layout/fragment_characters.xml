@@ -35,7 +35,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:present="@{ viewState.isSearchEnabled }" />
+            app:present="@{ viewState.isSearchEnabled }"
+            app:isClearButtonVisible="@{ viewState.isSearchClearTextVisible }"/>
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/verticalBarrier"

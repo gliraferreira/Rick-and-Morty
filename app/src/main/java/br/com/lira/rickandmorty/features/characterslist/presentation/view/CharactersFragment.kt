@@ -69,12 +69,15 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
             search.setFocusWithKeyboard(hasFocus)
             viewModel.onSearchFocusChanged(hasFocus)
         }
+        search.addTextChangedListener { text ->
+            viewModel.onSearchTextChanged(text)
+        }
         navigationIcon.setOnClickListener {
             search.setText("")
             viewModel.onSearchBackClicked()
         }
-        search.addTextChangedListener { text ->
-            viewModel.onSearchTextChanged(text)
+        clearText.setOnClickListener {
+            search.setText("")
         }
     }
 

@@ -37,6 +37,10 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
         it || _name.value.isNullOrBlank().not()
     }
 
+    override fun isSearchClearTextVisible() = Transformations.map(_name) {
+        it.isNullOrBlank().not()
+    }
+
     fun postCharacters(
         charactersList: PagingData<CharacterUIModel>?
     ) {
