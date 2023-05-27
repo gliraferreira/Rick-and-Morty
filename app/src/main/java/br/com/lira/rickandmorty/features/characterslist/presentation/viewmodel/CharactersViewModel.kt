@@ -4,6 +4,8 @@ import android.text.Editable
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
@@ -50,6 +52,28 @@ class CharactersViewModel @Inject constructor(
 
     fun onCharactersListSubmitted() {
         mutableState.postState(CharactersViewState.State.SUCCESS)
+    }
+
+    fun onLoadStateChanged(loadState: CombinedLoadStates, itemCount: Int) {
+        when (val refresh = loadState.source.refresh) {
+            is LoadState.NotLoading -> {
+                if(loadState.append.endOfPaginationReached && itemCount == 0) {
+                    mutableState.postState(CharactersViewState.State.EMPTY)
+                } else {
+                    mutableState.postState(CharactersViewState.State.SUCCESS)
+                }
+            }
+            is LoadState.Loading -> {
+                mutableState.postState(CharactersViewState.State.LOADING)
+            }
+            is LoadState.Error -> {
+                mutableState.postState(CharactersViewState.State.ERROR)
+                // TODO map error and add empty state
+            }
+            else -> {
+                mutableState.postState(CharactersViewState.State.ERROR)
+            }
+        }
     }
 
     fun onSearchClicked() {

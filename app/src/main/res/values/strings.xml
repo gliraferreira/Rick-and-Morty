@@ -14,11 +14,14 @@
     <string name="characters_title">Rick and Morty</string>
     <string name="characters_search">Search...</string>
     <string name="characters_search_clear_description">Clear text</string>
+    <string name="characters_search_empty_text">We couldn\'t find any characters</string>
 
     <string name="character_details_title">Character Details</string>
     <string name="character_details_episodes_title">Episodes</string>
 
     <string name="toolbar_back_description">Navigate back</string>
     <string name="toolbar_search_description">Search</string>
+
+    <string name="common_error_title">There was an error</string>
 
 </resources>

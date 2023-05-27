@@ -7,6 +7,7 @@ import androidx.paging.PagingState
 import br.com.lira.rickandmorty.core.mapper.UrlMapper
 import br.com.lira.rickandmorty.main.data.remote.mapper.CharacterResponseToModelMapper
 import br.com.lira.rickandmorty.main.domain.model.Character
+import retrofit2.HttpException
 
 class CharacterPagingDataSource constructor(
     private val name: String? = null,

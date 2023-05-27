@@ -25,6 +25,14 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
         it == CharactersViewState.State.LOADING
     }
 
+    override fun isEmpty() = Transformations.map(_state) {
+        it == CharactersViewState.State.EMPTY
+    }
+
+    override fun isError() = Transformations.map(_state) {
+        it == CharactersViewState.State.ERROR
+    }
+
     override fun shouldDisplayContent() = Transformations.map(_state) {
         it == CharactersViewState.State.SUCCESS
     }

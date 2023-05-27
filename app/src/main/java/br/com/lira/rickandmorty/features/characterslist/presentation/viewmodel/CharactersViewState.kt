@@ -14,6 +14,10 @@ interface CharactersViewState : ViewState {
 
     fun isLoading(): LiveData<Boolean>
 
+    fun isEmpty(): LiveData<Boolean>
+
+    fun isError(): LiveData<Boolean>
+
     fun shouldDisplayContent(): LiveData<Boolean>
     fun isToolbarVisible(): LiveData<Boolean>
 
@@ -22,6 +26,6 @@ interface CharactersViewState : ViewState {
     fun isSearchClearTextVisible(): LiveData<Boolean>
 
     enum class State {
-        LOADING, SUCCESS, ERROR
+        LOADING, SUCCESS, ERROR, EMPTY
     }
 }

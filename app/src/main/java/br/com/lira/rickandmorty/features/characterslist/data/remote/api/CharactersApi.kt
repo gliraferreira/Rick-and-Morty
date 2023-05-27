@@ -12,10 +12,4 @@ interface CharactersApi {
         @Query("page") page: Int,
         @Query("name") name: String? = null
     ): CharactersListResponse
-
-    @GET("character")
-    suspend fun filterCharacters(
-        @Query("page") page: Int,
-        @Query("name") name: String,
-    ): CharactersListResponse
 }

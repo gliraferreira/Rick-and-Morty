@@ -60,7 +60,9 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
             withLoadStateFooter(
                 footer = CharactersLoadStateAdapter()
             )
-            addOnPagesUpdatedListener { viewModel.onCharactersListSubmitted() }
+            addLoadStateListener { loadState ->
+                viewModel.onLoadStateChanged(loadState, itemCount)
+            }
         }
     }
 
