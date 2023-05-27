@@ -10,6 +10,8 @@ interface CharactersViewState : ViewState {
     val characters: LiveData<PagingData<CharacterUIModel>?>
     val state: LiveData<State>
     val action: LiveData<CharactersViewAction>
+    val name: LiveData<String?>
+
     fun isLoading(): LiveData<Boolean>
 
     fun shouldDisplayContent(): LiveData<Boolean>

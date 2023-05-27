@@ -30,7 +30,6 @@ class CharacterPagingDataSource constructor(
         )
 
     } catch (exception: Exception) {
-        Log.e("AppError", exception.message.orEmpty(), exception)
         LoadResult.Error(exception)
     }
 }

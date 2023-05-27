@@ -19,6 +19,7 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
     override val characters: LiveData<PagingData<CharacterUIModel>?> get() = _characters
     override val state: LiveData<CharactersViewState.State> get() = _state
     override val action: LiveData<CharactersViewAction> get() = _action
+    override val name: LiveData<String?> get() = _name
 
     override fun isLoading() = Transformations.map(_state) {
         it == CharactersViewState.State.LOADING

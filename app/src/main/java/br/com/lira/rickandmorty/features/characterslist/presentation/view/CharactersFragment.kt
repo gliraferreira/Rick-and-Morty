@@ -64,15 +64,16 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
         }
     }
 
-    private fun setupSearchView() {
-        binding.searchView.search.setOnFocusChangeListener { _, hasFocus ->
-            binding.searchView.search.setFocusWithKeyboard(hasFocus)
+    private fun setupSearchView() = with (binding.searchView) {
+        search.setOnFocusChangeListener { _, hasFocus ->
+            search.setFocusWithKeyboard(hasFocus)
             viewModel.onSearchFocusChanged(hasFocus)
         }
-        binding.searchView.navigationIcon.setOnClickListener {
-            viewModel.onSearchFocusChanged(false)
+        navigationIcon.setOnClickListener {
+            search.setText("")
+            viewModel.onSearchBackClicked()
         }
-        binding.searchView.search.addTextChangedListener { text ->
+        search.addTextChangedListener { text ->
             viewModel.onSearchTextChanged(text)
         }
     }
