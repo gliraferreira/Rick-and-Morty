@@ -1,13 +1,11 @@
 package br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.paging.PagingData
-import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel
 import br.com.lira.rickandmorty.core.toolkit.SingleLiveData
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterError
+import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel
 import javax.inject.Inject
 
 class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
