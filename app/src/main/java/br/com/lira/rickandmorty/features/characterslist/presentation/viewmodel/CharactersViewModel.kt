@@ -18,10 +18,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import javax.inject.Inject
 
 private const val NAME_MIN_LENGTH = 3
 private const val DELAY_INTERVAL = 500L
+private const val NOT_FOUND = 404
 
 @HiltViewModel
 class CharactersViewModel @Inject constructor(
@@ -50,28 +52,18 @@ class CharactersViewModel @Inject constructor(
         }
     }
 
-    fun onCharactersListSubmitted() {
-        mutableState.postState(CharactersViewState.State.SUCCESS)
-    }
-
     fun onLoadStateChanged(loadState: CombinedLoadStates, itemCount: Int) {
         when (val refresh = loadState.source.refresh) {
             is LoadState.NotLoading -> {
-                if(loadState.append.endOfPaginationReached && itemCount == 0) {
-                    mutableState.postState(CharactersViewState.State.EMPTY)
-                } else {
-                    mutableState.postState(CharactersViewState.State.SUCCESS)
-                }
+                handleSuccessState(loadState, itemCount)
             }
+
             is LoadState.Loading -> {
                 mutableState.postState(CharactersViewState.State.LOADING)
             }
+
             is LoadState.Error -> {
-                mutableState.postState(CharactersViewState.State.ERROR)
-                // TODO map error and add empty state
-            }
-            else -> {
-                mutableState.postState(CharactersViewState.State.ERROR)
+                handleErrorState(refresh)
             }
         }
     }
@@ -101,12 +93,37 @@ class CharactersViewModel @Inject constructor(
         }
     }
 
+    override fun onCharacterClicked(characterId: Long) {
+        mutableState.sendAction(CharactersViewAction.OpenCharacterDetails(characterId))
+    }
+
+    private fun handleErrorState(refresh: LoadState.Error) {
+        val state = when (val error = refresh.error) {
+            is HttpException -> {
+                if (error.code() == NOT_FOUND) {
+                    CharactersViewState.State.EMPTY
+                } else {
+                    CharactersViewState.State.ERROR
+                }
+            }
+
+            else -> {
+                CharactersViewState.State.ERROR
+            }
+        }
+        mutableState.postState(state)
+    }
+
+    private fun handleSuccessState(loadState: CombinedLoadStates, itemCount: Int) {
+        if (loadState.append.endOfPaginationReached && itemCount == 0) {
+            mutableState.postState(CharactersViewState.State.EMPTY)
+        } else {
+            mutableState.postState(CharactersViewState.State.SUCCESS)
+        }
+    }
+
     private fun setLoadingState() {
         mutableState.postCharacters(PagingData.empty())
         mutableState.postState(CharactersViewState.State.LOADING)
-    }
-
-    override fun onCharacterClicked(characterId: Long) {
-        mutableState.sendAction(CharactersViewAction.OpenCharacterDetails(characterId))
     }
 }

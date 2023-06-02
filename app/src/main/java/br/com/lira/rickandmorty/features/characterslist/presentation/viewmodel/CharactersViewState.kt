@@ -19,6 +19,7 @@ interface CharactersViewState : ViewState {
     fun isError(): LiveData<Boolean>
 
     fun shouldDisplayContent(): LiveData<Boolean>
+
     fun isToolbarVisible(): LiveData<Boolean>
 
     fun isSearchEnabled(): LiveData<Boolean>
