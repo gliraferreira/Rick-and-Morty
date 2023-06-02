@@ -6,17 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.adapter.CharacterEpisodeAdapter
 import br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel.CharacterDetailsViewModel
-import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
-import br.com.lira.rickandmorty.main.presentation.CommonToolbarHandler
-import br.com.lira.rickandmorty.main.presentation.DefaultToolbarHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_CHARACTER_ID = "char_id"
 
 @AndroidEntryPoint
-class CharacterDetailsFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHandler {
+class CharacterDetailsFragment : Fragment() {
 
     private var characterId: Long? = null
     private lateinit var binding: FragmentCharacterDetailsBinding
@@ -37,7 +35,6 @@ class CharacterDetailsFragment : Fragment(), CommonToolbarHandler by DefaultTool
     ): View? {
         binding = FragmentCharacterDetailsBinding.inflate(inflater).apply {
             lifecycleOwner = this@CharacterDetailsFragment
-            toolbarHandler = this@CharacterDetailsFragment
             viewState = viewModel.viewState
         }
 
@@ -55,16 +52,15 @@ class CharacterDetailsFragment : Fragment(), CommonToolbarHandler by DefaultTool
     private fun setupViews() {
         episodesAdapter = CharacterEpisodeAdapter()
         binding.content.rvEpisodes.adapter = episodesAdapter
+        binding.toolbarView.navigationIcon.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     private fun observeViewState() {
         viewModel.viewState.episodes.observe(viewLifecycleOwner) {
             episodesAdapter.submitList(it)
         }
-    }
-
-    override fun onBackClicked() {
-        activity?.onBackPressed()
     }
 
     companion object {

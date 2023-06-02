@@ -9,10 +9,6 @@
         <variable
             name="viewState"
             type="br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel.CharacterDetailsViewState" />
-
-        <variable
-            name="toolbarHandler"
-            type="br.com.lira.rickandmorty.main.presentation.CommonToolbarHandler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,12 +18,11 @@
         <include
             android:id="@+id/toolbarView"
             layout="@layout/common_toolbar"
+            app:isBackEnabled="@{ true }"
             app:layout_constraintBottom_toTopOf="@id/content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:isBackEnabled="@{ true }"
-            app:handler="@{ toolbarHandler }"
             app:title="@{ viewState.character.name }" />
 
         <include

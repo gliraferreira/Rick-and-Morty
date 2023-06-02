@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 
-class OneShotLiveData<T : Any> : MutableLiveData<T>() {
+class SingleLiveData<T : Any> : MutableLiveData<T>() {
 
     private val pendingNotification = AtomicBoolean(false)
     private val observersCount = AtomicInteger(0)

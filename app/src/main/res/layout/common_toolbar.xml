@@ -16,10 +16,6 @@
         <variable
             name="isSearchEnabled"
             type="Boolean" />
-
-        <variable
-            name="handler"
-            type="br.com.lira.rickandmorty.main.presentation.CommonToolbarHandler" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -40,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/toolbar_background"
                 android:contentDescription="@string/toolbar_back_description"
-                android:onClick="@{ () -> handler.onBackClicked() }"
                 android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel
-import br.com.lira.rickandmorty.core.toolkit.OneShotLiveData
+import br.com.lira.rickandmorty.core.toolkit.SingleLiveData
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterError
 import javax.inject.Inject
@@ -16,7 +16,7 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
     private val _characters = MutableLiveData<PagingData<CharacterUIModel>?>()
     private val _state = MutableLiveData<CharactersViewState.State>()
-    private val _action = OneShotLiveData<CharactersViewAction>()
+    private val _action = SingleLiveData<CharactersViewAction>()
     private val _isSearchEnabled = MutableLiveData<Boolean>().apply { value = false }
     private val _filter = MutableLiveData<CharacterFilter>().apply { value = CharacterFilter() }
     private val _error = MutableLiveData<CharacterError>().apply { value = null }
