@@ -12,11 +12,12 @@ import javax.inject.Inject
 
 class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
+    private val name = MutableLiveData<String?>().apply { value = null }
+
     private val _characters = MutableLiveData<PagingData<CharacterUIModel>?>()
     private val _state = MutableLiveData<CharactersViewState.State>()
     private val _action = OneShotLiveData<CharactersViewAction>()
     private val _isSearchEnabled = MutableLiveData<Boolean>().apply { value = false }
-    private val _name = MutableLiveData<String?>().apply { value = null }
     private val _filter = MutableLiveData<CharacterFilter>().apply { value = CharacterFilter() }
     private val _error = MutableLiveData<CharacterError>().apply { value = null }
 
@@ -26,37 +27,25 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
     override val filter: LiveData<CharacterFilter> get() = _filter
     override val error: LiveData<CharacterError> get() = _error
 
-    override fun isLoading() = Transformations.map(_state) {
-        it == CharactersViewState.State.LOADING
-    }
+    override val isLoading: LiveData<Boolean>
+        get() = Transformations.map(_state) { it == CharactersViewState.State.LOADING }
 
-    override fun isEmpty() = Transformations.map(_state) {
-        it == CharactersViewState.State.EMPTY
-    }
+    override val isError
+        get() = Transformations.map(_state) { it == CharactersViewState.State.ERROR }
 
-    override fun isError() = Transformations.map(_state) {
-        it == CharactersViewState.State.ERROR
-    }
+    override val shouldDisplayContent
+        get() = Transformations.map(_state) { it == CharactersViewState.State.SUCCESS }
 
-    override fun shouldDisplayContent() = Transformations.map(_state) {
-        it == CharactersViewState.State.SUCCESS
-    }
+    override val isToolbarVisible
+        get() = Transformations.map(isSearchEnabled) { !it }
 
-    override fun isToolbarVisible() = Transformations.map(isSearchEnabled()) {
-        !it
-    }
+    override val isSearchEnabled
+        get() = Transformations.map(_isSearchEnabled) { it || name.value.isNullOrBlank().not() }
 
-    override fun isSearchEnabled() = Transformations.map(_isSearchEnabled) {
-        it || _name.value.isNullOrBlank().not()
-    }
+    override val isSearchClearTextVisible
+        get() = Transformations.map(name) { it.isNullOrBlank().not() }
 
-    override fun isSearchClearTextVisible() = Transformations.map(_name) {
-        it.isNullOrBlank().not()
-    }
-
-    fun postCharacters(
-        charactersList: PagingData<CharacterUIModel>?
-    ) {
+    fun postCharacters(charactersList: PagingData<CharacterUIModel>?) {
         _characters.value = charactersList
     }
 
@@ -70,9 +59,9 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
         _isSearchEnabled.value = isEnabled
     }
 
-    fun postName(name: String?) {
-        _name.value = name
-        postNameFilter(name)
+    fun postName(characterName: String?) {
+        name.value = characterName
+        postNameFilter(characterName)
     }
 
     fun postError(error: CharacterError) {

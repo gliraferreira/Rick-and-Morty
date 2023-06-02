@@ -1,7 +1,6 @@
 package br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel
 
 import android.text.Editable
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.CombinedLoadStates
@@ -9,7 +8,6 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
-import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.domain.usecase.GetAllCharactersUseCase
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterModelToUIMapper
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharactersErrorMapper
@@ -17,14 +15,11 @@ import br.com.lira.rickandmorty.features.characterslist.presentation.view.Charac
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
 import javax.inject.Inject
 
 private const val NAME_MIN_LENGTH = 3
 private const val DELAY_INTERVAL = 500L
-private const val NOT_FOUND = 404
 
 @HiltViewModel
 class CharactersViewModel @Inject constructor(
@@ -53,10 +48,10 @@ class CharactersViewModel @Inject constructor(
         }
     }
 
-    fun onLoadStateChanged(loadState: CombinedLoadStates, itemCount: Int) {
+    fun onLoadStateChanged(loadState: CombinedLoadStates) {
         when (val refresh = loadState.source.refresh) {
             is LoadState.NotLoading -> {
-                handleSuccessState(loadState, itemCount)
+                mutableState.postState(CharactersViewState.State.SUCCESS)
             }
 
             is LoadState.Loading -> {
@@ -81,11 +76,11 @@ class CharactersViewModel @Inject constructor(
 
     fun onSearchBackClicked() {
         mutableState.postSearchStatus(false)
-        mutableState.sendAction(CharactersViewAction.ClearSearchText)
+        mutableState.sendAction(CharactersViewAction.UpdateSearchText(""))
     }
 
     fun onSearchClearTextClicked() {
-        mutableState.sendAction(CharactersViewAction.ClearSearchText)
+        mutableState.sendAction(CharactersViewAction.UpdateSearchText(""))
     }
 
     fun onSearchTextChanged(text: Editable?) {
@@ -120,14 +115,6 @@ class CharactersViewModel @Inject constructor(
             if (name.length > NAME_MIN_LENGTH) delay(DELAY_INTERVAL)
 
             loadCharacters()
-        }
-    }
-
-    private fun handleSuccessState(loadState: CombinedLoadStates, itemCount: Int) {
-        if (loadState.append.endOfPaginationReached && itemCount == 0) {
-            mutableState.postState(CharactersViewState.State.EMPTY)
-        } else {
-            mutableState.postState(CharactersViewState.State.SUCCESS)
         }
     }
 

@@ -11,19 +11,16 @@ import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.core.toolkit.runWhenInteracted
 import br.com.lira.rickandmorty.core.toolkit.setFocusWithKeyboard
-import br.com.lira.rickandmorty.databinding.CharactersSearchBinding
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.CharacterDetailsFragment
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersAdapter
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersLoadStateAdapter
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewAction
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewModel
-import br.com.lira.rickandmorty.main.presentation.CommonToolbarHandler
-import br.com.lira.rickandmorty.main.presentation.DefaultToolbarHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHandler {
+class CharactersFragment : Fragment() {
 
     private lateinit var binding: FragmentCharactersBinding
     private val viewModel: CharactersViewModel by viewModels()
@@ -36,7 +33,6 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
     ): View {
         binding = FragmentCharactersBinding.inflate(inflater).apply {
             lifecycleOwner = this@CharactersFragment
-            toolbarHandler = this@CharactersFragment
             viewState = viewModel.viewState
         }
 
@@ -51,9 +47,16 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
     }
 
     private fun setupViews() {
-        setupRecyclerView()
+        setupToolbar()
         setupSearchView()
+        setupRecyclerView()
         setupErrorView()
+    }
+
+    private fun setupToolbar() {
+        binding.toolbarView.searchIcon.setOnClickListener {
+            viewModel.onSearchClicked()
+        }
     }
 
     private fun setupErrorView() {
@@ -69,7 +72,7 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
                 footer = CharactersLoadStateAdapter()
             )
             addLoadStateListener { loadState ->
-                viewModel.onLoadStateChanged(loadState, itemCount)
+                viewModel.onLoadStateChanged(loadState)
             }
         }
     }
@@ -105,22 +108,19 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
                     action.hasFocus
                 )
 
-                CharactersViewAction.ClearSearchText -> clearSearchText()
+                is CharactersViewAction.UpdateSearchText -> updateSearchText(action.text)
+
                 CharactersViewAction.FocusOnSearch -> focusOnSearch()
             }
         }
-    }
-
-    override fun onSearchClicked() {
-        viewModel.onSearchClicked()
     }
 
     private fun updateSearchKeyboardFocus(hasFocus: Boolean) {
         binding.searchView.search.setFocusWithKeyboard(hasFocus)
     }
 
-    private fun clearSearchText() {
-        binding.searchView.search.setText("")
+    private fun updateSearchText(text: String) {
+        binding.searchView.search.setText(text)
     }
 
     private fun focusOnSearch() {

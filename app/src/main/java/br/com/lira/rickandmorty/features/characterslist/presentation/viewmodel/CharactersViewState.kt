@@ -14,22 +14,14 @@ interface CharactersViewState : ViewState {
     val action: LiveData<CharactersViewAction>
     val filter: LiveData<CharacterFilter>
     val error: LiveData<CharacterError>
-
-    fun isLoading(): LiveData<Boolean>
-
-    fun isEmpty(): LiveData<Boolean>
-
-    fun isError(): LiveData<Boolean>
-
-    fun shouldDisplayContent(): LiveData<Boolean>
-
-    fun isToolbarVisible(): LiveData<Boolean>
-
-    fun isSearchEnabled(): LiveData<Boolean>
-
-    fun isSearchClearTextVisible(): LiveData<Boolean>
+    val isLoading: LiveData<Boolean>
+    val isError: LiveData<Boolean>
+    val shouldDisplayContent: LiveData<Boolean>
+    val isToolbarVisible: LiveData<Boolean>
+    val isSearchEnabled: LiveData<Boolean>
+    val isSearchClearTextVisible: LiveData<Boolean>
 
     enum class State {
-        LOADING, SUCCESS, ERROR, EMPTY
+        LOADING, SUCCESS, ERROR
     }
 }
