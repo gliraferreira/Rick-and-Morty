@@ -11,7 +11,6 @@ import androidx.paging.map
 import br.com.lira.rickandmorty.features.characterslist.domain.usecase.GetAllCharactersUseCase
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterModelToUIMapper
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharactersErrorMapper
-import br.com.lira.rickandmorty.features.characterslist.presentation.view.CharactersListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -27,7 +26,7 @@ class CharactersViewModel @Inject constructor(
     private val mutableState: CharactersDefaultViewState,
     private val characterUiMapper: CharacterModelToUIMapper,
     private val errorMapper: CharactersErrorMapper
-) : ViewModel(), CharactersListener {
+) : ViewModel() {
     val viewState: CharactersViewState get() = mutableState
 
     private var searchJob: Job? = null
@@ -97,7 +96,7 @@ class CharactersViewModel @Inject constructor(
         }
     }
 
-    override fun onCharacterClicked(characterId: Long) {
+    fun onCharacterClicked(characterId: Long) {
         mutableState.sendAction(CharactersViewAction.OpenCharacterDetails(characterId))
     }
 

@@ -19,6 +19,8 @@ import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.C
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+private const val LIST_FIRST_POSITION = 0
+
 @AndroidEntryPoint
 class CharactersFragment : Fragment() {
 
@@ -66,7 +68,9 @@ class CharactersFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        charactersAdapter = CharactersAdapter(viewModel)
+        charactersAdapter = CharactersAdapter() {
+            viewModel.onCharacterClicked(it)
+        }
         binding.rvCharacters.adapter = charactersAdapter.apply {
             withLoadStateFooter(
                 footer = CharactersLoadStateAdapter()
@@ -125,7 +129,7 @@ class CharactersFragment : Fragment() {
 
     private fun focusOnSearch() {
         binding.searchView.search.setFocusWithKeyboard(true)
-        binding.rvCharacters.scrollToPosition(0)
+        binding.rvCharacters.scrollToPosition(LIST_FIRST_POSITION)
         binding.rvCharacters.runWhenInteracted {
             viewModel.onSearchFocusChanged(false)
         }

@@ -9,15 +9,12 @@
             name="character"
             type="br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel" />
 
-        <variable
-            name="listener"
-            type="br.com.lira.rickandmorty.features.characterslist.presentation.view.CharactersListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{ () -> listener.onCharacterClicked(character.id) }"
         android:paddingBottom="3dp">
 
         <de.hdodenhof.circleimageview.CircleImageView

@@ -3,12 +3,11 @@ package br.com.lira.rickandmorty.features.characterslist.presentation.view.adapt
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel
-import br.com.lira.rickandmorty.features.characterslist.presentation.view.CharactersListener
 import br.com.lira.rickandmorty.databinding.ListItemCharacterBinding
+import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel
 
 class CharactersAdapter(
-    private val listener: CharactersListener
+    private val onCharacterClicked: (Long) -> Unit
 ) : PagingDataAdapter<CharacterUIModel, CharacterListItemViewHolder>(CharacterItemDiffCallback) {
 
     override fun onCreateViewHolder(
@@ -20,7 +19,7 @@ class CharactersAdapter(
             parent,
             false
         ),
-        listener = listener
+        onCharacterClicked = onCharacterClicked
     )
 
     override fun onBindViewHolder(holder: CharacterListItemViewHolder, position: Int) {
