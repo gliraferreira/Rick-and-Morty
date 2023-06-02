@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
-import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import br.com.lira.rickandmorty.features.characterslist.domain.usecase.GetAllCharactersUseCase
@@ -35,26 +34,17 @@ class CharactersViewModel @Inject constructor(
         viewModelScope.launch {
             loadCharacters()
         }
-    }
-
-    private suspend fun loadCharacters() {
-        setLoadingState()
-        val filter = viewState.filter.value
-
-        getAllCharacters(filter).cachedIn(viewModelScope).collect { result ->
-            val uiPagingData = result.map { characterUiMapper.mapFrom(it) }
-            mutableState.postCharacters(uiPagingData)
-        }
+        toggleToolbarAndSearchVisibility(isSearchVisible = false)
     }
 
     fun onLoadStateChanged(loadState: CombinedLoadStates) {
         when (val refresh = loadState.source.refresh) {
             is LoadState.NotLoading -> {
-                mutableState.postState(CharactersViewState.State.SUCCESS)
+                mutableState.setSuccessState()
             }
 
             is LoadState.Loading -> {
-                mutableState.postState(CharactersViewState.State.LOADING)
+                mutableState.setLoadingState()
             }
 
             is LoadState.Error -> {
@@ -64,28 +54,33 @@ class CharactersViewModel @Inject constructor(
     }
 
     fun onSearchClicked() {
-        mutableState.postSearchStatus(true)
+        toggleToolbarAndSearchVisibility(isSearchVisible = true)
         mutableState.sendAction(CharactersViewAction.FocusOnSearch)
     }
 
     fun onSearchFocusChanged(hasFocus: Boolean) {
-        mutableState.postSearchStatus(hasFocus)
+        val name = mutableState.filter.value?.name.orEmpty()
+        val isSearchVisible = hasFocus || name.isNotEmpty()
+
+        toggleToolbarAndSearchVisibility(isSearchVisible)
         mutableState.sendAction(CharactersViewAction.UpdateSearchKeyboardFocus(hasFocus))
     }
 
     fun onSearchBackClicked() {
-        mutableState.postSearchStatus(false)
+        toggleToolbarAndSearchVisibility(isSearchVisible = false)
         mutableState.sendAction(CharactersViewAction.UpdateSearchText(""))
     }
 
     fun onSearchClearTextClicked() {
+        mutableState.sendAction(CharactersViewAction.FocusOnSearch)
         mutableState.sendAction(CharactersViewAction.UpdateSearchText(""))
     }
 
     fun onSearchTextChanged(text: Editable?) {
         val name = text?.toString().orEmpty()
-        if (name != viewState.filter.value?.name) {
+        mutableState.updateClearTextVisibility(name.isNotEmpty())
 
+        if (name != viewState.filter.value?.name) {
             searchByName(name)
         }
     }
@@ -100,10 +95,25 @@ class CharactersViewModel @Inject constructor(
         mutableState.sendAction(CharactersViewAction.OpenCharacterDetails(characterId))
     }
 
+    private suspend fun loadCharacters() {
+        mutableState.clearCharactersList()
+        mutableState.setLoadingState()
+        val filter = mutableState.filter.value
+
+        getAllCharacters(filter).cachedIn(viewModelScope).collect { result ->
+            val uiPagingData = result.map { characterUiMapper.mapFrom(it) }
+            mutableState.postCharacters(uiPagingData)
+        }
+    }
+
+    private fun toggleToolbarAndSearchVisibility(isSearchVisible: Boolean) {
+        mutableState.postSearchStatus(isSearchVisible)
+        mutableState.updateToolbarVisibility(!isSearchVisible)
+    }
+
     private fun handleErrorState(refresh: LoadState.Error) {
         val error = errorMapper.mapFrom(refresh.error)
-        mutableState.postError(error)
-        mutableState.postState(CharactersViewState.State.ERROR)
+        mutableState.setErrorState(error)
     }
 
     private fun searchByName(name: String) {
@@ -115,10 +125,5 @@ class CharactersViewModel @Inject constructor(
 
             loadCharacters()
         }
-    }
-
-    private fun setLoadingState() {
-        mutableState.postCharacters(PagingData.empty())
-        mutableState.postState(CharactersViewState.State.LOADING)
     }
 }

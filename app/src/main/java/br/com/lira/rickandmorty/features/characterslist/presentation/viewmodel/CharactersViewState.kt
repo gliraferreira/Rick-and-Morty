@@ -10,7 +10,6 @@ import br.com.lira.rickandmorty.features.characterslist.presentation.model.Chara
 interface CharactersViewState : ViewState {
 
     val characters: LiveData<PagingData<CharacterUIModel>?>
-    val state: LiveData<State>
     val action: LiveData<CharactersViewAction>
     val filter: LiveData<CharacterFilter>
     val error: LiveData<CharacterError>
@@ -20,8 +19,4 @@ interface CharactersViewState : ViewState {
     val isToolbarVisible: LiveData<Boolean>
     val isSearchEnabled: LiveData<Boolean>
     val isSearchClearTextVisible: LiveData<Boolean>
-
-    enum class State {
-        LOADING, SUCCESS, ERROR
-    }
 }

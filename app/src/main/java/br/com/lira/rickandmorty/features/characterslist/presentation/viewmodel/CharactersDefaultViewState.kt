@@ -12,44 +12,58 @@ import javax.inject.Inject
 
 class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
-    private val name = MutableLiveData<String?>().apply { value = null }
 
     private val _characters = MutableLiveData<PagingData<CharacterUIModel>?>()
-    private val _state = MutableLiveData<CharactersViewState.State>()
     private val _action = SingleLiveData<CharactersViewAction>()
     private val _isSearchEnabled = MutableLiveData<Boolean>().apply { value = false }
     private val _filter = MutableLiveData<CharacterFilter>().apply { value = CharacterFilter() }
+    private val _isSearchClearTextVisible = MutableLiveData<Boolean>().apply { value = false }
+    private val _isToolbarVisible = MutableLiveData<Boolean>().apply { value = false }
+
+    private val _isSuccess = MutableLiveData<Boolean>()
+    private val _isLoading = MutableLiveData<Boolean>()
+    private val _isError = MutableLiveData<Boolean>()
     private val _error = MutableLiveData<CharacterError>().apply { value = null }
 
-    override val characters: LiveData<PagingData<CharacterUIModel>?> get() = _characters
-    override val state: LiveData<CharactersViewState.State> get() = _state
-    override val action: LiveData<CharactersViewAction> get() = _action
-    override val filter: LiveData<CharacterFilter> get() = _filter
-    override val error: LiveData<CharacterError> get() = _error
+    override val characters get() = _characters
+    override val action get() = _action
+    override val filter get() = _filter
 
-    override val isLoading: LiveData<Boolean>
-        get() = Transformations.map(_state) { it == CharactersViewState.State.LOADING }
+    override val isLoading get() = _isLoading
+    override val isError get() = _isError
+    override val shouldDisplayContent get() = _isSuccess
+    override val error get() = _error
 
-    override val isError
-        get() = Transformations.map(_state) { it == CharactersViewState.State.ERROR }
+    override val isSearchClearTextVisible get() = _isSearchClearTextVisible
+    override val isToolbarVisible get() = _isToolbarVisible
+    override val isSearchEnabled get() = _isSearchEnabled
 
-    override val shouldDisplayContent
-        get() = Transformations.map(_state) { it == CharactersViewState.State.SUCCESS }
+    fun setSuccessState() {
+        _isSuccess.value = true
+        _isLoading.value = false
+        _isError.value = false
+    }
 
-    override val isToolbarVisible
-        get() = Transformations.map(isSearchEnabled) { !it }
+    fun setLoadingState() {
+        _isSuccess.value = false
+        _isLoading.value = true
+        _isError.value = false
+    }
 
-    override val isSearchEnabled
-        get() = Transformations.map(_isSearchEnabled) { it || name.value.isNullOrBlank().not() }
-
-    override val isSearchClearTextVisible
-        get() = Transformations.map(name) { it.isNullOrBlank().not() }
+    fun setErrorState(error: CharacterError) {
+        _isSuccess.value = false
+        _isLoading.value = false
+        _isError.value = true
+        _error.value = error
+    }
 
     fun postCharacters(charactersList: PagingData<CharacterUIModel>?) {
         _characters.value = charactersList
     }
 
-    fun postState(newState: CharactersViewState.State) = _state.postValue(newState)
+    fun clearCharactersList() {
+        _characters.value = PagingData.empty()
+    }
 
     fun sendAction(action: CharactersViewAction) {
         _action.value = action
@@ -60,18 +74,17 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
     }
 
     fun postName(characterName: String?) {
-        name.value = characterName
-        postNameFilter(characterName)
-    }
-
-    fun postError(error: CharacterError) {
-        _error.value = error
-    }
-
-    private fun postNameFilter(name: String?) {
         val currentFilter = _filter.value
         _filter.value = currentFilter?.copy(
-            name = name
+            name = characterName
         )
+    }
+
+    fun updateClearTextVisibility(isVisible: Boolean) {
+        _isSearchClearTextVisible.value = isVisible
+    }
+
+    fun updateToolbarVisibility(isVisible: Boolean) {
+        _isToolbarVisible.value = isVisible
     }
 }
