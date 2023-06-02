@@ -20,10 +20,10 @@ class CharactersDefaultRepository @Inject constructor(
 ) : CharactersRepository {
 
     override suspend fun getAllCharacters(
-        filter: CharacterFilter
+        filter: CharacterFilter?
     ) = Pager(PagingConfig(pageSize = 20)) {
         CharacterPagingDataSource(
-            name = filter.name,
+            name = filter?.name,
             remoteDataSource = remoteDataSource,
             urlMapper = urlMapper,
             charactersResponseMapper = charactersResponseMapper

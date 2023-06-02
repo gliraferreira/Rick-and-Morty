@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel
 import br.com.lira.rickandmorty.core.viewmodel.ViewState
+import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterError
 
 interface CharactersViewState : ViewState {
 
@@ -11,6 +13,8 @@ interface CharactersViewState : ViewState {
     val state: LiveData<State>
     val action: LiveData<CharactersViewAction>
     val name: LiveData<String?>
+    val filter: LiveData<CharacterFilter>
+    val error: LiveData<CharacterError>
 
     fun isLoading(): LiveData<Boolean>
 

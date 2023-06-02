@@ -11,6 +11,7 @@ import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.core.toolkit.runWhenInteracted
 import br.com.lira.rickandmorty.core.toolkit.setFocusWithKeyboard
+import br.com.lira.rickandmorty.databinding.CharactersSearchBinding
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.CharacterDetailsFragment
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersAdapter
@@ -52,6 +53,13 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
     private fun setupViews() {
         setupRecyclerView()
         setupSearchView()
+        setupErrorView()
+    }
+
+    private fun setupErrorView() {
+        binding.errorState.btnTryAgain.setOnClickListener {
+            viewModel.onTryAgainClicked()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -66,20 +74,18 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
         }
     }
 
-    private fun setupSearchView() = with (binding.searchView) {
+    private fun setupSearchView() = with(binding.searchView) {
         search.setOnFocusChangeListener { _, hasFocus ->
-            search.setFocusWithKeyboard(hasFocus)
             viewModel.onSearchFocusChanged(hasFocus)
         }
         search.addTextChangedListener { text ->
             viewModel.onSearchTextChanged(text)
         }
         navigationIcon.setOnClickListener {
-            search.setText("")
             viewModel.onSearchBackClicked()
         }
         clearText.setOnClickListener {
-            search.setText("")
+            viewModel.onSearchClearTextClicked()
         }
     }
 
@@ -94,13 +100,27 @@ class CharactersFragment : Fragment(), CommonToolbarHandler by DefaultToolbarHan
                 is CharactersViewAction.OpenCharacterDetails -> openCharactersScreen(
                     action.characterId
                 )
+
+                is CharactersViewAction.UpdateSearchKeyboardFocus -> updateSearchKeyboardFocus(
+                    action.hasFocus
+                )
+
+                CharactersViewAction.ClearSearchText -> clearSearchText()
+                CharactersViewAction.FocusOnSearch -> focusOnSearch()
             }
         }
     }
 
     override fun onSearchClicked() {
         viewModel.onSearchClicked()
-        focusOnSearch()
+    }
+
+    private fun updateSearchKeyboardFocus(hasFocus: Boolean) {
+        binding.searchView.search.setFocusWithKeyboard(hasFocus)
+    }
+
+    private fun clearSearchText() {
+        binding.searchView.search.setText("")
     }
 
     private fun focusOnSearch() {

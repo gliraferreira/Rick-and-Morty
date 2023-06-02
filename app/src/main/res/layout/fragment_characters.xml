@@ -57,22 +57,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <include
-            android:id="@+id/emptyState"
-            layout="@layout/characters_empty_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:present="@{ viewState.isEmpty }"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <include
             android:id="@+id/errorState"
             layout="@layout/common_error_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:present="@{ viewState.isError }"
+            app:message="@{ viewState.error.message }"
+            app:image="@{ viewState.error.image }"
+            app:isTryAgainEnabled="@{ viewState.error.isTryAgainVisible }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

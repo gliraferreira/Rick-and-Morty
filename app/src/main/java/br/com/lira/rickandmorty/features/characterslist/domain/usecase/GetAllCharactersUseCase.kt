@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GetAllCharactersUseCase {
 
-    suspend operator fun invoke(filter: CharacterFilter): Flow<PagingData<Character>>
+    suspend operator fun invoke(filter: CharacterFilter?): Flow<PagingData<Character>>
 }

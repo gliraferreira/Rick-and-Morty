@@ -23,5 +23,6 @@
     <string name="toolbar_search_description">Search</string>
 
     <string name="common_error_title">There was an error</string>
+    <string name="try_again">Try again</string>
 
 </resources>

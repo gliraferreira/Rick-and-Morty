@@ -12,6 +12,7 @@ import androidx.paging.map
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.domain.usecase.GetAllCharactersUseCase
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterModelToUIMapper
+import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharactersErrorMapper
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.CharactersListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -29,9 +30,11 @@ private const val NOT_FOUND = 404
 class CharactersViewModel @Inject constructor(
     private val getAllCharacters: GetAllCharactersUseCase,
     private val mutableState: CharactersDefaultViewState,
-    private val characterUiMapper: CharacterModelToUIMapper
+    private val characterUiMapper: CharacterModelToUIMapper,
+    private val errorMapper: CharactersErrorMapper
 ) : ViewModel(), CharactersListener {
     val viewState: CharactersViewState get() = mutableState
+
     private var searchJob: Job? = null
 
     init {
@@ -40,11 +43,9 @@ class CharactersViewModel @Inject constructor(
         }
     }
 
-    private suspend fun loadCharacters(name: String? = null) {
+    private suspend fun loadCharacters() {
         setLoadingState()
-        val filter = CharacterFilter(
-            name = name
-        )
+        val filter = viewState.filter.value
 
         getAllCharacters(filter).cachedIn(viewModelScope).collect { result ->
             val uiPagingData = result.map { characterUiMapper.mapFrom(it) }
@@ -70,26 +71,34 @@ class CharactersViewModel @Inject constructor(
 
     fun onSearchClicked() {
         mutableState.postSearchStatus(true)
+        mutableState.sendAction(CharactersViewAction.FocusOnSearch)
     }
 
     fun onSearchFocusChanged(hasFocus: Boolean) {
         mutableState.postSearchStatus(hasFocus)
+        mutableState.sendAction(CharactersViewAction.UpdateSearchKeyboardFocus(hasFocus))
     }
 
     fun onSearchBackClicked() {
         mutableState.postSearchStatus(false)
+        mutableState.sendAction(CharactersViewAction.ClearSearchText)
+    }
+
+    fun onSearchClearTextClicked() {
+        mutableState.sendAction(CharactersViewAction.ClearSearchText)
     }
 
     fun onSearchTextChanged(text: Editable?) {
         val name = text?.toString().orEmpty()
+        if (name != viewState.filter.value?.name) {
 
-        searchJob?.cancel()
-        searchJob = viewModelScope.launch {
-            mutableState.postName(name)
+            searchByName(name)
+        }
+    }
 
-            if (name.length > NAME_MIN_LENGTH) delay(DELAY_INTERVAL)
-
-            loadCharacters(name)
+    fun onTryAgainClicked() {
+        viewModelScope.launch {
+            loadCharacters()
         }
     }
 
@@ -98,20 +107,20 @@ class CharactersViewModel @Inject constructor(
     }
 
     private fun handleErrorState(refresh: LoadState.Error) {
-        val state = when (val error = refresh.error) {
-            is HttpException -> {
-                if (error.code() == NOT_FOUND) {
-                    CharactersViewState.State.EMPTY
-                } else {
-                    CharactersViewState.State.ERROR
-                }
-            }
+        val error = errorMapper.mapFrom(refresh.error)
+        mutableState.postError(error)
+        mutableState.postState(CharactersViewState.State.ERROR)
+    }
 
-            else -> {
-                CharactersViewState.State.ERROR
-            }
+    private fun searchByName(name: String) {
+        searchJob?.cancel()
+        searchJob = viewModelScope.launch {
+            mutableState.postName(name)
+
+            if (name.length > NAME_MIN_LENGTH) delay(DELAY_INTERVAL)
+
+            loadCharacters()
         }
-        mutableState.postState(state)
     }
 
     private fun handleSuccessState(loadState: CombinedLoadStates, itemCount: Int) {

@@ -35,6 +35,17 @@ fun Chip.setBgColor(value: Int?) {
 @BindingAdapter("textRes")
 fun TextView.setTextRes(value: Int?) {
     value?.let {
-        text = context.getText(it)
+        runCatching {
+            text = context.getText(it)
+        }
+    }
+}
+
+@BindingAdapter("srcRes")
+fun ImageView.setSrcRes(value: Int?) {
+    value?.let {
+        runCatching {
+            setImageResource(it)
+        }
     }
 }

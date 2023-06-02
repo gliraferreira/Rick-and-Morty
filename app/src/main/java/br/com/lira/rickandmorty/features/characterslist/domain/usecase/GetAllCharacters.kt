@@ -8,5 +8,5 @@ class GetAllCharacters @Inject constructor(
     private val repository: CharactersRepository
 ) : GetAllCharactersUseCase {
 
-    override suspend fun invoke(filter: CharacterFilter) = repository.getAllCharacters(filter)
+    override suspend fun invoke(filter: CharacterFilter?) = repository.getAllCharacters(filter)
 }
