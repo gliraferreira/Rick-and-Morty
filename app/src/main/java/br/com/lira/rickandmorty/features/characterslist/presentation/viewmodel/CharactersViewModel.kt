@@ -87,6 +87,8 @@ class CharactersViewModel @Inject constructor(
 
     fun onTryAgainClicked() {
         viewModelScope.launch {
+            mutableState.setLoadingState()
+            delay(DELAY_INTERVAL)
             loadCharacters()
         }
     }
