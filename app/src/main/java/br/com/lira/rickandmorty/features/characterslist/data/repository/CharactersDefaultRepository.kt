@@ -23,7 +23,7 @@ class CharactersDefaultRepository @Inject constructor(
         filter: CharacterFilter?
     ) = Pager(PagingConfig(pageSize = 20)) {
         CharacterPagingDataSource(
-            name = filter?.name,
+            filter = filter,
             remoteDataSource = remoteDataSource,
             urlMapper = urlMapper,
             charactersResponseMapper = charactersResponseMapper

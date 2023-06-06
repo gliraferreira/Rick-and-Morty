@@ -94,6 +94,9 @@ class CharactersFragment : Fragment() {
         clearText.setOnClickListener {
             viewModel.onSearchClearTextClicked()
         }
+        binding.searchView.statusChipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
+            viewModel.onStatusSelected(checkedIds)
+        }
     }
 
     private fun observeViewState() {

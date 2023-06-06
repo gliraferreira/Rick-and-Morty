@@ -1,15 +1,16 @@
 package br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.core.toolkit.SingleLiveData
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterError
 import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.main.domain.model.CharacterStatus
 import javax.inject.Inject
 
 class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
-
 
     private val _characters = MutableLiveData<PagingData<CharacterUIModel>?>()
     private val _action = SingleLiveData<CharactersViewAction>()
@@ -30,8 +31,8 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
     override val isLoading get() = _isLoading
     override val isError get() = _isError
     override val shouldDisplayContent get() = _isSuccess
-    override val error get() = _error
 
+    override val error get() = _error
     override val isSearchClearTextVisible get() = _isSearchClearTextVisible
     override val isToolbarVisible get() = _isToolbarVisible
     override val isSearchEnabled get() = _isSearchEnabled
@@ -72,10 +73,15 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
     }
 
     fun postName(characterName: String?) {
-        val currentFilter = _filter.value
-        _filter.value = currentFilter?.copy(
-            name = characterName
-        )
+        setFilter {
+            it?.copy(name = characterName)
+        }
+    }
+
+    fun postStatus(status: CharacterStatus?) {
+        setFilter {
+            it?.copy(status = status)
+        }
     }
 
     fun updateClearTextVisibility(isVisible: Boolean) {
@@ -84,5 +90,9 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
     fun updateToolbarVisibility(isVisible: Boolean) {
         _isToolbarVisible.value = isVisible
+    }
+
+    private fun setFilter(block: (CharacterFilter?) -> CharacterFilter?) {
+        _filter.value = block(_filter.value)
     }
 }

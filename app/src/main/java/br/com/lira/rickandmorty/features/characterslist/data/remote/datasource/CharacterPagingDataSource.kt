@@ -1,16 +1,15 @@
 package br.com.lira.rickandmorty.features.characterslist.data.remote.datasource
 
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import br.com.lira.rickandmorty.core.mapper.UrlMapper
+import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.main.data.remote.mapper.CharacterResponseToModelMapper
 import br.com.lira.rickandmorty.main.domain.model.Character
-import retrofit2.HttpException
 
 class CharacterPagingDataSource constructor(
-    private val name: String? = null,
+    private val filter: CharacterFilter? = null,
     private val remoteDataSource: CharactersRemoteDataSource,
     private val urlMapper: UrlMapper,
     private val charactersResponseMapper: CharacterResponseToModelMapper,
@@ -20,7 +19,7 @@ class CharacterPagingDataSource constructor(
 
     override suspend fun load(params: LoadParams<Int>) = try {
         val pageNumber = params.key ?: 1
-        val data = remoteDataSource.getAllCharacters(pageNumber, name)
+        val data = remoteDataSource.getAllCharacters(pageNumber, filter)
         val nextPageNumber = urlMapper.mapPage(data.info.next)
         val characters = data.results.map(charactersResponseMapper::mapFrom)
 

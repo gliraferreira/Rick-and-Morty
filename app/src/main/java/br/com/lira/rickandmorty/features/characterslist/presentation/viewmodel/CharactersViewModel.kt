@@ -7,9 +7,12 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.cachedIn
 import androidx.paging.map
+import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.features.characterslist.domain.usecase.GetAllCharactersUseCase
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterModelToUIMapper
+import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterStatusMapper
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharactersErrorMapper
+import br.com.lira.rickandmorty.main.domain.model.CharacterStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -24,7 +27,8 @@ class CharactersViewModel @Inject constructor(
     private val getAllCharacters: GetAllCharactersUseCase,
     private val mutableState: CharactersDefaultViewState,
     private val characterUiMapper: CharacterModelToUIMapper,
-    private val errorMapper: CharactersErrorMapper
+    private val errorMapper: CharactersErrorMapper,
+    private val statusMapper: CharacterStatusMapper
 ) : ViewModel() {
     val viewState: CharactersViewState get() = mutableState
 
@@ -59,10 +63,7 @@ class CharactersViewModel @Inject constructor(
     }
 
     fun onSearchFocusChanged(hasFocus: Boolean) {
-        val name = mutableState.filter.value?.name.orEmpty()
-        val isSearchVisible = hasFocus || name.isNotEmpty()
-
-        toggleToolbarAndSearchVisibility(isSearchVisible)
+        toggleToolbarAndSearchVisibility(isSearchVisible(hasFocus))
         mutableState.sendAction(CharactersViewAction.UpdateSearchKeyboardFocus(hasFocus))
     }
 
@@ -82,6 +83,15 @@ class CharactersViewModel @Inject constructor(
 
         if (name != viewState.filter.value?.name) {
             searchByName(name)
+        }
+    }
+
+    fun onStatusSelected(statusRes: List<Int>) {
+        viewModelScope.launch {
+            val status = statusRes.firstOrNull()?.let(statusMapper::mapFrom)
+
+            mutableState.postStatus(status)
+            loadCharacters()
         }
     }
 
@@ -106,6 +116,14 @@ class CharactersViewModel @Inject constructor(
             val uiPagingData = result.map { characterUiMapper.mapFrom(it) }
             mutableState.postCharacters(uiPagingData)
         }
+    }
+
+    private fun isSearchVisible(hasFocus: Boolean): Boolean {
+        val name = mutableState.filter.value?.name.orEmpty()
+        val selectedStatus = mutableState.filter.value?.status
+        val hasAnyFilter = name.isNotEmpty() || selectedStatus != null
+
+        return hasFocus || hasAnyFilter
     }
 
     private fun toggleToolbarAndSearchVisibility(isSearchVisible: Boolean) {
