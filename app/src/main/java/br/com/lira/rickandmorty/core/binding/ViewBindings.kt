@@ -1,13 +1,9 @@
 package br.com.lira.rickandmorty.core.binding
 
-import android.content.res.ColorStateList
-import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.ColorInt
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import br.com.lira.rickandmorty.R
 import com.google.android.material.chip.Chip
@@ -29,28 +25,8 @@ fun ImageView.loadImage(url: String?) {
 @BindingAdapter("bgColor")
 fun Chip.setBgColor(value: Int?) {
     value?.let {
-        Log.i("RickApp", "bgColor: ${value.toString()}")
         setChipBackgroundColorResource(it)
     }
-}
-
-@BindingAdapter("originalBgColor", "highlightedBgColor", "isHighlighted")
-fun Chip.setHighlightBgColor(
-    originalBgColor: ColorDrawable?,
-    highlightedBgColor: ColorDrawable?,
-    isHighlighted: Boolean?
-) {
-   runCatching {
-       val bgColor = if (isHighlighted == true) {
-           highlightedBgColor
-       } else {
-           originalBgColor
-       }
-       bgColor?.let {
-           Log.i("RickApp", "highlightBgColor: ${bgColor.toString()}")
-           chipBackgroundColor = ColorStateList.valueOf(bgColor.color)
-       }
-   }
 }
 
 @BindingAdapter("textRes")
