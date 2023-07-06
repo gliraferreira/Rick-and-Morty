@@ -18,28 +18,18 @@
         <include
             android:id="@+id/toolbarView"
             layout="@layout/common_toolbar"
-            app:isSearchEnabled="@{ true }"
+            app:isSearchEnabled="@{ viewState.isSearchEnabled }"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:present="@{ viewState.isToolbarVisible }"
             app:title="@{ @string/characters_title }" />
-
-        <include
-            android:id="@+id/searchView"
-            layout="@layout/characters_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:present="@{ viewState.isSearchEnabled }"
-            app:isClearButtonVisible="@{ viewState.isSearchClearTextVisible }"/>
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/verticalBarrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="toolbarView,searchView" />
+            app:constraint_referenced_ids="toolbarView" />
 
         <include
             android:id="@+id/loading"

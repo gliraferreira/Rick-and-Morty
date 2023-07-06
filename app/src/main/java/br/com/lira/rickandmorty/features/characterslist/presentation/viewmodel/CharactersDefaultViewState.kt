@@ -14,7 +14,7 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
     private val _characters = MutableLiveData<PagingData<CharacterUIModel>?>()
     private val _action = SingleLiveData<CharactersViewAction>()
-    private val _isSearchEnabled = MutableLiveData<Boolean>().apply { value = false }
+    private val _isSearchEnabled = MutableLiveData<Boolean>().apply { value = true }
     private val _filter = MutableLiveData<CharacterFilter>().apply { value = CharacterFilter() }
     private val _isSearchClearTextVisible = MutableLiveData<Boolean>().apply { value = false }
     private val _isToolbarVisible = MutableLiveData<Boolean>().apply { value = false }
@@ -33,8 +33,6 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
     override val shouldDisplayContent get() = _isSuccess
 
     override val error get() = _error
-    override val isSearchClearTextVisible get() = _isSearchClearTextVisible
-    override val isToolbarVisible get() = _isToolbarVisible
     override val isSearchEnabled get() = _isSearchEnabled
 
     fun setSuccessState() {
@@ -72,27 +70,7 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
         _isSearchEnabled.value = isEnabled
     }
 
-    fun postName(characterName: String?) {
-        setFilter {
-            it?.copy(name = characterName)
-        }
-    }
-
-    fun postStatus(status: CharacterStatus?) {
-        setFilter {
-            it?.copy(status = status)
-        }
-    }
-
-    fun updateClearTextVisibility(isVisible: Boolean) {
-        _isSearchClearTextVisible.value = isVisible
-    }
-
-    fun updateToolbarVisibility(isVisible: Boolean) {
-        _isToolbarVisible.value = isVisible
-    }
-
-    private fun setFilter(block: (CharacterFilter?) -> CharacterFilter?) {
-        _filter.value = block(_filter.value)
+    fun postFilter(newFilter: CharacterFilter?) {
+        _filter.value = newFilter
     }
 }

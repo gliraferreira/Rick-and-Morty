@@ -15,10 +15,14 @@
     <string name="characters_search">Search...</string>
     <string name="characters_search_clear_description">Clear text</string>
     <string name="characters_search_empty_text">We couldn\'t find any characters</string>
-    <string name="characters_search_status_title">Status</string>
 
     <string name="character_details_title">Character Details</string>
     <string name="character_details_episodes_title">Episodes</string>
+
+    <string name="character_filter_title">Search character</string>
+    <string name="character_filter_name">Name</string>
+    <string name="characters_filter_status">Status</string>
+    <string name="character_filter_submit_button">Apply Filters</string>
 
     <string name="toolbar_back_description">Navigate back</string>
     <string name="toolbar_search_description">Search</string>

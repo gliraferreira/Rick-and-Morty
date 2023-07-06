@@ -4,21 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
-import br.com.lira.rickandmorty.core.toolkit.runWhenInteracted
-import br.com.lira.rickandmorty.core.toolkit.setFocusWithKeyboard
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.CharacterDetailsFragment
+import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersAdapter
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersLoadStateAdapter
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewAction
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+const val FILTER_REQUEST_KEY = "filter_request_key"
+const val ARG_FILTER = "arg_filter"
 private const val LIST_FIRST_POSITION = 0
 
 @AndroidEntryPoint
@@ -50,9 +51,12 @@ class CharactersFragment : Fragment() {
 
     private fun setupViews() {
         setupToolbar()
-        setupSearchView()
         setupRecyclerView()
         setupErrorView()
+        setFragmentResultListener(FILTER_REQUEST_KEY) { key, bundle ->
+            val selectedFilter = bundle.getParcelable<CharacterFilter>(ARG_FILTER)
+            viewModel.onCharacterFilterUpdated(selectedFilter)
+        }
     }
 
     private fun setupToolbar() {
@@ -81,24 +85,6 @@ class CharactersFragment : Fragment() {
         }
     }
 
-    private fun setupSearchView() = with(binding.searchView) {
-        search.setOnFocusChangeListener { _, hasFocus ->
-            viewModel.onSearchFocusChanged(hasFocus)
-        }
-        search.addTextChangedListener { text ->
-            viewModel.onSearchTextChanged(text)
-        }
-        navigationIcon.setOnClickListener {
-            viewModel.onSearchBackClicked()
-        }
-        clearText.setOnClickListener {
-            viewModel.onSearchClearTextClicked()
-        }
-        binding.searchView.statusChipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
-            viewModel.onStatusSelected(checkedIds)
-        }
-    }
-
     private fun observeViewState() {
         viewModel.viewState.characters.observe(viewLifecycleOwner) { data ->
             data?.let {
@@ -111,31 +97,18 @@ class CharactersFragment : Fragment() {
                     action.characterId
                 )
 
-                is CharactersViewAction.UpdateSearchKeyboardFocus -> updateSearchKeyboardFocus(
-                    action.hasFocus
+                is CharactersViewAction.OpenCharacterFilter -> openCharacterFilterScreen(
+                    action.currentFilter
                 )
-
-                is CharactersViewAction.UpdateSearchText -> updateSearchText(action.text)
-
-                CharactersViewAction.FocusOnSearch -> focusOnSearch()
             }
         }
     }
 
-    private fun updateSearchKeyboardFocus(hasFocus: Boolean) {
-        binding.searchView.search.setFocusWithKeyboard(hasFocus)
-    }
-
-    private fun updateSearchText(text: String) {
-        binding.searchView.search.setText(text)
-    }
-
-    private fun focusOnSearch() {
-        binding.searchView.search.setFocusWithKeyboard(true)
-        binding.rvCharacters.scrollToPosition(LIST_FIRST_POSITION)
-        binding.rvCharacters.runWhenInteracted {
-            viewModel.onSearchFocusChanged(false)
-        }
+    private fun openCharacterFilterScreen(currentFilter: CharacterFilter?) {
+        navigateToFragment(
+            R.id.app_nav_host_fragment,
+            CharacterFilterFragment.newInstance(currentFilter)
+        )
     }
 
     private fun openCharactersScreen(characterId: Long) {
