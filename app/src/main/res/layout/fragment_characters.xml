@@ -24,12 +24,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:title="@{ @string/characters_title }" />
 
+        <include
+            android:id="@+id/searchView"
+            layout="@layout/characters_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/verticalBarrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="toolbarView" />
+            app:constraint_referenced_ids="toolbarView,searchView" />
 
         <include
             android:id="@+id/loading"
@@ -47,14 +54,14 @@
             layout="@layout/common_error_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:present="@{ viewState.isError }"
-            app:message="@{ viewState.error.message }"
             app:image="@{ viewState.error.image }"
             app:isTryAgainEnabled="@{ viewState.error.isTryAgainVisible }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/verticalBarrier" />
+            app:layout_constraintTop_toBottomOf="@id/verticalBarrier"
+            app:message="@{ viewState.error.message }"
+            app:present="@{ viewState.isError }" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCharacters"

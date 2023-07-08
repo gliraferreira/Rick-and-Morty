@@ -10,6 +10,7 @@
         <include
             android:id="@+id/toolbarView"
             layout="@layout/common_toolbar"
+            app:isBackEnabled="@{ true }"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +35,7 @@
             android:layout_marginTop="5dp"
             android:autofillHints="name"
             android:drawableEnd="@drawable/ic_search"
-            android:hint="@string/characters_search"
+            android:hint="@string/character_filter_name_hint"
             android:inputType="textFilter"
             android:paddingHorizontal="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -98,6 +99,7 @@
         </com.google.android.material.chip.ChipGroup>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnApply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"

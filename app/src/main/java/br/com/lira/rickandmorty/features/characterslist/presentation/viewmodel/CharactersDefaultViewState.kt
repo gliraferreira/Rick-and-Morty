@@ -16,8 +16,6 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
     private val _action = SingleLiveData<CharactersViewAction>()
     private val _isSearchEnabled = MutableLiveData<Boolean>().apply { value = true }
     private val _filter = MutableLiveData<CharacterFilter>().apply { value = CharacterFilter() }
-    private val _isSearchClearTextVisible = MutableLiveData<Boolean>().apply { value = false }
-    private val _isToolbarVisible = MutableLiveData<Boolean>().apply { value = false }
 
     private val _isSuccess = MutableLiveData<Boolean>()
     private val _isLoading = MutableLiveData<Boolean>()
@@ -64,10 +62,6 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
     fun sendAction(action: CharactersViewAction) {
         _action.value = action
-    }
-
-    fun postSearchStatus(isEnabled: Boolean) {
-        _isSearchEnabled.value = isEnabled
     }
 
     fun postFilter(newFilter: CharacterFilter?) {

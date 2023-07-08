@@ -6,4 +6,6 @@ import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFi
 interface CharacterFilterViewState {
 
     val filter: LiveData<CharacterFilter>
+    val action: LiveData<CharacterFilterViewAction>
+    val status: LiveData<Int>
 }
