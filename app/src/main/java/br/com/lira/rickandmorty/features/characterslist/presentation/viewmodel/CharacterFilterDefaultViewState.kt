@@ -9,11 +9,9 @@ class CharacterFilterDefaultViewState @Inject constructor() : CharacterFilterVie
 
     private val _filter = MutableLiveData<CharacterFilter>().apply { value = CharacterFilter() }
     private val _action = SingleLiveData<CharacterFilterViewAction>()
-    private val _status = MutableLiveData<Int>()
 
     override val filter get() = _filter
     override val action get() = _action
-    override val status get() = _status
 
     fun setFilter(block: (CharacterFilter?) -> CharacterFilter?) {
         _filter.value = block(_filter.value)
@@ -21,9 +19,5 @@ class CharacterFilterDefaultViewState @Inject constructor() : CharacterFilterVie
 
     fun sendAction(action: CharacterFilterViewAction) {
         _action.value = action
-    }
-
-    fun setStatus(statusRes: Int) {
-        _status.value = statusRes
     }
 }

@@ -2,8 +2,8 @@ package br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterFilterUIModelMapper
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterStatusMapper
-import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterStatusToResourceMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -11,16 +11,15 @@ import javax.inject.Inject
 class CharacterFilterViewModel @Inject constructor(
     private val mutableState: CharacterFilterDefaultViewState,
     private val statusMapper: CharacterStatusMapper,
-    private val statusResMapper: CharacterStatusToResourceMapper
+    private val filterUiMapper: CharacterFilterUIModelMapper
 ) : ViewModel() {
 
     val viewState: CharacterFilterViewState get() = mutableState
 
     fun init(currentFilter: CharacterFilter?) {
         mutableState.setFilter { currentFilter }
-        val filter = mutableState.filter.value
-        filter?.status?.let(statusResMapper::mapFrom)?.let {
-            mutableState.setStatus(it)
+        mutableState.filter.value?.let(filterUiMapper::mapFrom)?.let { filterUi ->
+            mutableState.sendAction(CharacterFilterViewAction.UpdateUI(filterUi))
         }
     }
 

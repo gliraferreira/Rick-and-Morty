@@ -7,5 +7,4 @@ interface CharacterFilterViewState {
 
     val filter: LiveData<CharacterFilter>
     val action: LiveData<CharacterFilterViewAction>
-    val status: LiveData<Int>
 }

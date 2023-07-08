@@ -10,6 +10,7 @@ import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.databinding.FragmentCharacterFilterBinding
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterFilterUIModel
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharacterFilterViewAction
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharacterFilterViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,17 +65,17 @@ class CharacterFilterFragment : Fragment() {
     }
 
     private fun observeViewState() {
-        viewModel.viewState.filter.observe(viewLifecycleOwner) { filter ->
-            binding.etName.setText(filter.name)
-        }
         viewModel.viewState.action.observe(viewLifecycleOwner) { action ->
             when (action) {
                is CharacterFilterViewAction.SendFilterResult -> sendFilterResult(action.filter)
+               is CharacterFilterViewAction.UpdateUI -> updateUi(action.filter)
             }
         }
-        viewModel.viewState.status.observe(viewLifecycleOwner) { status ->
-            binding.statusChipGroup.check(status)
-        }
+    }
+
+    private fun updateUi(filter: CharacterFilterUIModel) {
+        binding.etName.setText(filter.name)
+        filter.status?.let { binding.statusChipGroup.check(it) }
     }
 
     private fun sendFilterResult(filter: CharacterFilter?) {
