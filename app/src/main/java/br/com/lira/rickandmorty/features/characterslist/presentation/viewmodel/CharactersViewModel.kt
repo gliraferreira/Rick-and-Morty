@@ -25,6 +25,7 @@ class CharactersViewModel @Inject constructor(
     private val characterUiMapper: CharacterModelToUIMapper,
     private val errorMapper: CharactersErrorMapper
 ) : ViewModel() {
+
     val viewState: CharactersViewState get() = mutableState
 
     init {
@@ -65,11 +66,17 @@ class CharactersViewModel @Inject constructor(
         loadCharacters()
     }
 
+    fun onClearFiltersClicked() {
+        mutableState.clearFilter()
+        loadCharacters()
+    }
+
     private fun loadCharacters(isTryAgain: Boolean = false) {
         viewModelScope.launch {
+            val filter = mutableState.filter.value
             mutableState.clearCharactersList()
             mutableState.setLoadingState()
-            val filter = mutableState.filter.value
+            mutableState.updateIsFilteringResults(isFilteringResults(filter))
 
             if (isTryAgain) delay(DELAY_INTERVAL)
 
@@ -83,5 +90,13 @@ class CharactersViewModel @Inject constructor(
     private fun handleErrorState(refresh: LoadState.Error) {
         val error = errorMapper.mapFrom(refresh.error)
         mutableState.setErrorState(error)
+    }
+
+    private fun isFilteringResults(currentFilter: CharacterFilter?): Boolean {
+        val hasAnyFilter = currentFilter?.let {
+            it.name?.isNotEmpty() ?: false || it.status != null
+        } ?: false
+
+        return hasAnyFilter
     }
 }

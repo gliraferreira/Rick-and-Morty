@@ -15,6 +15,7 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
     private val _characters = MutableLiveData<PagingData<CharacterUIModel>?>()
     private val _action = SingleLiveData<CharactersViewAction>()
     private val _isSearchEnabled = MutableLiveData<Boolean>().apply { value = true }
+    private val _isFilteringResults = MutableLiveData<Boolean>().apply { value = false }
     private val _filter = MutableLiveData<CharacterFilter>().apply { value = CharacterFilter() }
 
     private val _isSuccess = MutableLiveData<Boolean>()
@@ -32,6 +33,7 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
     override val error get() = _error
     override val isSearchEnabled get() = _isSearchEnabled
+    override val isFilteringResults get() = _isFilteringResults
 
     fun setSuccessState() {
         _isSuccess.value = true
@@ -66,5 +68,13 @@ class CharactersDefaultViewState @Inject constructor() : CharactersViewState {
 
     fun postFilter(newFilter: CharacterFilter?) {
         _filter.value = newFilter
+    }
+
+    fun clearFilter() {
+        _filter.value = CharacterFilter()
+    }
+
+    fun updateIsFilteringResults(isFilterOn: Boolean) {
+        _isFilteringResults.value = isFilterOn
     }
 }

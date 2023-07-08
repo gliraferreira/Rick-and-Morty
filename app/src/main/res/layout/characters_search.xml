@@ -6,114 +6,27 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/toolbar_background"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/navigationIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:background="@color/toolbar_background"
-            android:contentDescription="@string/toolbar_back_description"
-            android:paddingHorizontal="10dp"
-            app:layout_constraintBottom_toTopOf="@id/firstRowBarrier"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_arrow_back" />
-
-        <EditText
-            android:id="@+id/search"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_gravity="end|center"
-            android:autofillHints="name"
-            android:background="@color/toolbar_background"
-            android:inputType="textFilter"
-            android:paddingHorizontal="10dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/gray"
-            app:layout_constraintBottom_toTopOf="@id/firstRowBarrier"
-            app:layout_constraintEnd_toStartOf="@id/clearText"
-            app:layout_constraintStart_toEndOf="@id/navigationIcon"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/clearText"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:background="@color/toolbar_background"
-            android:contentDescription="@string/characters_search_clear_description"
-            android:paddingStart="10dp"
-            android:paddingEnd="20dp"
-            app:layout_constraintBottom_toTopOf="@id/firstRowBarrier"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/search"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_close" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/firstRowBarrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="navigationIcon,search,clearText" />
+        android:paddingHorizontal="20dp">
 
         <TextView
-            android:id="@+id/statusTitle"
-            style="@style/TextAppearance.Material3.LabelLarge"
-            android:layout_width="0dp"
+            android:id="@+id/tvFilter"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/characters_filter_status"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:text="@string/characters_search_disclaimer"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/firstRowBarrier" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/statusChipGroup"
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/btnClearFilters"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:chipSpacingHorizontal="20dp"
-            app:layout_constraintStart_toStartOf="@id/statusTitle"
-            app:layout_constraintTop_toBottomOf="@id/statusTitle"
+            android:text="@string/characters_search_clear_filter"
+            android:layout_alignParentEnd="true"
             app:layout_constraintEnd_toEndOf="parent"
-            android:paddingBottom="5dp"
-            app:singleSelection="true">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/aliveStatusChip"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:checkable="true"
-                app:checkedIcon="@drawable/ic_check"
-                android:text="@string/character_status_alive"
-                android:textColor="@color/white"
-                app:chipBackgroundColor="@color/character_status_alive" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/deadStatusChip"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:checkable="true"
-                app:checkedIcon="@drawable/ic_check"
-                android:text="@string/character_status_dead"
-                android:textColor="@color/white"
-                app:chipBackgroundColor="@color/character_status_dead" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/unknownStatusChip"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:checkable="true"
-                app:checkedIcon="@drawable/ic_check"
-                android:text="@string/character_status_unknown"
-                android:textColor="@color/white"
-                app:chipBackgroundColor="@color/character_status_unknown" />
-
-        </com.google.android.material.chip.ChipGroup>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

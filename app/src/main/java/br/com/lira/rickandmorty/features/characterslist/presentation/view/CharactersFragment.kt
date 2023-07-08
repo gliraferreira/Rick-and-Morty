@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -53,6 +54,17 @@ class CharactersFragment : Fragment() {
         setupToolbar()
         setupRecyclerView()
         setupErrorView()
+        setupFilterResultListener()
+        setupSearchView()
+    }
+
+    private fun setupSearchView() {
+        binding.searchView.btnClearFilters.setOnClickListener {
+            viewModel.onClearFiltersClicked()
+        }
+    }
+
+    private fun setupFilterResultListener() {
         setFragmentResultListener(FILTER_REQUEST_KEY) { key, bundle ->
             val selectedFilter = bundle.getParcelable<CharacterFilter>(ARG_FILTER)
             viewModel.onCharacterFilterUpdated(selectedFilter)
@@ -85,13 +97,16 @@ class CharactersFragment : Fragment() {
         }
     }
 
-    private fun observeViewState() {
-        viewModel.viewState.characters.observe(viewLifecycleOwner) { data ->
+    private fun observeViewState() = with (viewModel.viewState) {
+        characters.observe(viewLifecycleOwner) { data ->
             data?.let {
                 charactersAdapter.submitData(viewLifecycleOwner.lifecycle, it)
             }
         }
-        viewModel.viewState.action.observe(viewLifecycleOwner) { action ->
+        isFilteringResults.observe(viewLifecycleOwner) {
+            binding.searchView.root.isVisible = it
+        }
+        action.observe(viewLifecycleOwner) { action ->
             when (action) {
                 is CharactersViewAction.OpenCharacterDetails -> openCharactersScreen(
                     action.characterId

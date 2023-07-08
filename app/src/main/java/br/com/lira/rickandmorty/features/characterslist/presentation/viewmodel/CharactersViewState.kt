@@ -17,4 +17,5 @@ interface CharactersViewState : ViewState {
     val isError: LiveData<Boolean>
     val shouldDisplayContent: LiveData<Boolean>
     val isSearchEnabled: LiveData<Boolean>
+    val isFilteringResults: LiveData<Boolean>
 }
