@@ -1,9 +1,10 @@
 package br.com.lira.rickandmorty.features.characterslist.presentation.model
 
-import androidx.annotation.IntegerRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 
 data class CharacterError(
-    @IntegerRes val message: Int,
-    @IntegerRes val image: Int,
+    @StringRes val message: Int,
+    @DrawableRes val image: Int,
     val isTryAgainVisible: Boolean
 )

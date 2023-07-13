@@ -3,16 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="character"
-            type="br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel" />
-
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="3dp"
@@ -25,7 +16,6 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
-            app:img="@{ character.image }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -38,7 +28,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{ character.name }"
             app:layout_constraintBottom_toTopOf="@id/status"
             app:layout_constraintStart_toEndOf="@+id/picture"
             app:layout_constraintTop_toTopOf="@+id/picture"
@@ -50,9 +39,7 @@
             android:layout_height="35dp"
             android:layout_marginStart="16dp"
             android:clickable="false"
-            android:text="@{ character.statusText }"
             android:textColor="@color/white"
-            app:bgColor="@{ character.statusColor }"
             app:layout_constraintBottom_toBottomOf="@id/picture"
             app:layout_constraintStart_toEndOf="@id/picture"
             app:layout_constraintTop_toBottomOf="@id/username"

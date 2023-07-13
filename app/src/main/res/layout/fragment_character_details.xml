@@ -4,13 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".features.characterdetails.presentation.view.CharacterDetailsFragment">
 
-    <data>
-
-        <variable
-            name="viewState"
-            type="br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel.CharacterDetailsViewState" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,19 +12,16 @@
         <include
             android:id="@+id/toolbarView"
             layout="@layout/common_toolbar"
-            app:isBackEnabled="@{ true }"
             app:layout_constraintBottom_toTopOf="@id/content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="@{ viewState.character.name }" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <include
             android:id="@+id/loading"
             layout="@layout/loading_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isVisible="@{ viewState.isLoading }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +32,6 @@
             layout="@layout/fragment_character_details_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:character="@{ viewState.character }"
-            app:isVisible="@{ viewState.shouldDisplayContent }"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbarView" />

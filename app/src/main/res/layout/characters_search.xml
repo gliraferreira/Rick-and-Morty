@@ -23,7 +23,7 @@
             android:id="@+id/btnClearFilters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/Widget.App.Button.Borderless"
             android:text="@string/characters_search_clear_filter"
             android:layout_alignParentEnd="true"
             app:layout_constraintEnd_toEndOf="parent"

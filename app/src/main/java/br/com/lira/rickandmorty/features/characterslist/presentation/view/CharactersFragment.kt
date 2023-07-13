@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.core.binding.setSrcRes
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.CharacterDetailsFragment
@@ -37,7 +38,6 @@ class CharactersFragment : Fragment() {
     ): View {
         binding = FragmentCharactersBinding.inflate(inflater).apply {
             lifecycleOwner = this@CharactersFragment
-            viewState = viewModel.viewState
         }
 
         return binding.root
@@ -75,6 +75,9 @@ class CharactersFragment : Fragment() {
         binding.toolbarView.searchIcon.setOnClickListener {
             viewModel.onSearchClicked()
         }
+        binding.toolbarView.searchIcon.isVisible = true
+        binding.toolbarView.navigationIcon.isVisible = false
+        binding.toolbarView.title.setText(R.string.characters_title)
     }
 
     private fun setupErrorView() {
@@ -97,7 +100,7 @@ class CharactersFragment : Fragment() {
         }
     }
 
-    private fun observeViewState() = with (viewModel.viewState) {
+    private fun observeViewState() = with(viewModel.viewState) {
         characters.observe(viewLifecycleOwner) { data ->
             data?.let {
                 charactersAdapter.submitData(viewLifecycleOwner.lifecycle, it)
@@ -105,6 +108,22 @@ class CharactersFragment : Fragment() {
         }
         isFilteringResults.observe(viewLifecycleOwner) {
             binding.searchView.root.isVisible = it
+        }
+        isLoading.observe(viewLifecycleOwner) {
+            binding.loading.root.isVisible = it
+        }
+        isError.observe(viewLifecycleOwner) {
+            binding.errorState.root.isVisible = it
+        }
+        shouldDisplayContent.observe(viewLifecycleOwner) {
+            binding.rvCharacters.isVisible = it
+        }
+        error.observe(viewLifecycleOwner) {
+            it?.let {
+                binding.errorState.description.setText(it.message)
+                binding.errorState.btnTryAgain.isVisible = it.isTryAgainVisible
+                binding.errorState.errorImageView.setSrcRes(it.image)
+            }
         }
         action.observe(viewLifecycleOwner) { action ->
             when (action) {

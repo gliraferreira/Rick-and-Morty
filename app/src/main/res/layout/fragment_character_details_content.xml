@@ -3,22 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="character"
-            type="br.com.lira.rickandmorty.features.characterdetails.presentation.model.CharacterDetailsUIModel" />
-
-        <variable
-            name="isVisible"
-            type="Boolean" />
-    </data>
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:present="@{ isVisible }"
         android:background="@color/common_background">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +27,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="25dp"
-                app:img="@{ character.image }"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +37,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@{ character.name }"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 app:layout_constraintEnd_toEndOf="@id/characterImage"
                 app:layout_constraintStart_toStartOf="@id/characterImage"
@@ -62,7 +48,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@{ character.lastLocation }"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintEnd_toEndOf="@id/tvName"
                 app:layout_constraintStart_toStartOf="@id/tvName"
@@ -79,7 +64,6 @@
                 app:layout_constraintEnd_toStartOf="@id/status"
                 app:layout_constraintStart_toStartOf="@id/characterImage"
                 app:layout_constraintTop_toBottomOf="@id/tvLocation"
-                app:textRes="@{ character.gender }"
                 tools:text="Male" />
 
             <com.google.android.material.chip.Chip
@@ -89,11 +73,9 @@
                 android:layout_marginTop="10dp"
                 android:clickable="false"
                 android:textColor="@color/white"
-                app:bgColor="@{ character.statusColor }"
                 app:layout_constraintEnd_toEndOf="@id/tvLocation"
                 app:layout_constraintStart_toStartOf="@id/tvLocation"
                 app:layout_constraintTop_toBottomOf="@id/tvLocation"
-                app:textRes="@{ character.statusText }"
                 tools:text="Alive" />
 
             <TextView
@@ -102,7 +84,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="20dp"
-                android:text="@{ character.species }"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 app:layout_constraintEnd_toEndOf="@id/characterImage"
                 app:layout_constraintStart_toEndOf="@id/status"

@@ -3,14 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="viewState"
-            type="br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewState" />
-
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,11 +11,9 @@
         <include
             android:id="@+id/toolbarView"
             layout="@layout/common_toolbar"
-            app:isSearchEnabled="@{ viewState.isSearchEnabled }"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="@{ @string/characters_title }" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <include
             android:id="@+id/searchView"
@@ -45,7 +35,6 @@
             layout="@layout/loading_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:isVisible="@{ viewState.isLoading }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,14 +45,10 @@
             layout="@layout/common_error_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:image="@{ viewState.error.image }"
-            app:isTryAgainEnabled="@{ viewState.error.isTryAgainVisible }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/verticalBarrier"
-            app:message="@{ viewState.error.message }"
-            app:present="@{ viewState.isError }" />
+            app:layout_constraintTop_toBottomOf="@id/verticalBarrier" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCharacters"
@@ -74,7 +59,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/verticalBarrier"
-            app:present="@{ viewState.shouldDisplayContent }"
             tools:listitem="@layout/list_item_character" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

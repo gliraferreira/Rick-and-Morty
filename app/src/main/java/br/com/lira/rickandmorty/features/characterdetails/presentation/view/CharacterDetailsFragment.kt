@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import br.com.lira.rickandmorty.core.binding.loadImage
+import br.com.lira.rickandmorty.core.binding.setBgColor
 import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.adapter.CharacterEpisodeAdapter
 import br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel.CharacterDetailsViewModel
@@ -35,7 +38,6 @@ class CharacterDetailsFragment : Fragment() {
     ): View? {
         binding = FragmentCharacterDetailsBinding.inflate(inflater).apply {
             lifecycleOwner = this@CharacterDetailsFragment
-            viewState = viewModel.viewState
         }
 
         return binding.root
@@ -45,6 +47,7 @@ class CharacterDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.init(characterId)
+        setupToolbar()
         setupViews()
         observeViewState()
     }
@@ -57,9 +60,36 @@ class CharacterDetailsFragment : Fragment() {
         }
     }
 
-    private fun observeViewState() {
-        viewModel.viewState.episodes.observe(viewLifecycleOwner) {
+    private fun setupToolbar() {
+        binding.toolbarView.searchIcon.isVisible = false
+        binding.toolbarView.navigationIcon.isVisible = true
+    }
+
+    private fun observeViewState() = with(viewModel.viewState) {
+        observeCharacter()
+        episodes.observe(viewLifecycleOwner) {
             episodesAdapter.submitList(it)
+        }
+        isLoading.observe(viewLifecycleOwner) {
+            binding.loading.root.isVisible = it
+        }
+        shouldDisplayContent.observe(viewLifecycleOwner) {
+            binding.content.root.isVisible = it
+        }
+    }
+
+    private fun observeCharacter() {
+        viewModel.viewState.character.observe(viewLifecycleOwner) {
+            binding.toolbarView.title.text = it.name
+            with(binding.content) {
+                characterImage.loadImage(it.image)
+                tvName.text = it.name
+                tvLocation.text = it.lastLocation
+                tvGender.setText(it.gender)
+                status.setBgColor(it.statusColor)
+                status.setText(it.statusText)
+                tvSpecies.text = it.species
+            }
         }
     }
 

@@ -9,9 +9,8 @@ interface CharacterDetailsViewState : ViewState {
     val character: LiveData<CharacterDetailsUIModel>
     val episodes: LiveData<List<CharacterEpisodeUIModel>>
     val state: LiveData<State>
-
-    fun isLoading(): LiveData<Boolean>
-    fun shouldDisplayContent(): LiveData<Boolean>
+    val isLoading: LiveData<Boolean>
+    val shouldDisplayContent: LiveData<Boolean>
 
     enum class State {
         LOADING, SUCCESS, ERROR

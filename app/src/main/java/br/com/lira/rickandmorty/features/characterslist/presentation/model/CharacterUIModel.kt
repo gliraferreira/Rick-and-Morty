@@ -1,14 +1,15 @@
 package br.com.lira.rickandmorty.features.characterslist.presentation.model
 
-import androidx.annotation.IntegerRes
+import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 
 data class CharacterUIModel(
     val id: Long,
     val name: String,
-    @IntegerRes val statusText: Int,
-    @IntegerRes val statusColor: Int,
+    @StringRes val statusText: Int,
+    @ColorRes val statusColor: Int,
     val species: String,
     val type: String,
-    @IntegerRes val gender: Int,
+    @StringRes val gender: Int,
     val image: String,
 )

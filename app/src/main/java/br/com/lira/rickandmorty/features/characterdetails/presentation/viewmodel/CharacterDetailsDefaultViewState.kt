@@ -16,12 +16,10 @@ class CharacterDetailsDefaultViewState @Inject constructor() : CharacterDetailsV
     override val character: LiveData<CharacterDetailsUIModel> get() = _character
     override val episodes: LiveData<List<CharacterEpisodeUIModel>> get() = _episodes
     override val state: LiveData<CharacterDetailsViewState.State> get() = _state
-
-    override fun isLoading() = Transformations.map(_state) {
+    override val isLoading = Transformations.map(_state) {
         it == CharacterDetailsViewState.State.LOADING
     }
-
-    override fun shouldDisplayContent() = Transformations.map(_state) {
+    override val shouldDisplayContent = Transformations.map(_state) {
         it == CharacterDetailsViewState.State.SUCCESS
     }
 

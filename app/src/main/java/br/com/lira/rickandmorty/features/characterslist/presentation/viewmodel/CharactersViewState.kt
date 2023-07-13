@@ -12,7 +12,7 @@ interface CharactersViewState : ViewState {
     val characters: LiveData<PagingData<CharacterUIModel>?>
     val action: LiveData<CharactersViewAction>
     val filter: LiveData<CharacterFilter>
-    val error: LiveData<CharacterError>
+    val error: LiveData<CharacterError?>
     val isLoading: LiveData<Boolean>
     val isError: LiveData<Boolean>
     val shouldDisplayContent: LiveData<Boolean>

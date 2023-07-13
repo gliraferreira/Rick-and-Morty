@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
+import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.databinding.FragmentCharacterFilterBinding
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterFilterUIModel
@@ -47,14 +49,12 @@ class CharacterFilterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.init(currentFilter)
+        setupToolbar()
         setupViews()
         observeViewState()
     }
 
     private fun setupViews() {
-        binding.toolbarView.navigationIcon.setOnClickListener {
-            activity?.onBackPressed()
-        }
         binding.btnApply.setOnClickListener {
             val name = binding.etName.text
             viewModel.onApplyFilterClicked(name)
@@ -64,11 +64,20 @@ class CharacterFilterFragment : Fragment() {
         }
     }
 
+    private fun setupToolbar() {
+        binding.toolbarView.navigationIcon.setOnClickListener {
+            activity?.onBackPressed()
+        }
+        binding.toolbarView.searchIcon.isVisible = false
+        binding.toolbarView.navigationIcon.isVisible = true
+        binding.toolbarView.title.setText(R.string.character_filter_title)
+    }
+
     private fun observeViewState() {
         viewModel.viewState.action.observe(viewLifecycleOwner) { action ->
             when (action) {
-               is CharacterFilterViewAction.SendFilterResult -> sendFilterResult(action.filter)
-               is CharacterFilterViewAction.UpdateUI -> updateUi(action.filter)
+                is CharacterFilterViewAction.SendFilterResult -> sendFilterResult(action.filter)
+                is CharacterFilterViewAction.UpdateUI -> updateUi(action.filter)
             }
         }
     }
