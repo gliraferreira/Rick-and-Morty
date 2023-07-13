@@ -49,6 +49,7 @@ class CharacterDetailsFragment : Fragment() {
         viewModel.init(characterId)
         setupToolbar()
         setupViews()
+        observeCharacter()
         observeViewState()
     }
 
@@ -66,7 +67,6 @@ class CharacterDetailsFragment : Fragment() {
     }
 
     private fun observeViewState() = with(viewModel.viewState) {
-        observeCharacter()
         episodes.observe(viewLifecycleOwner) {
             episodesAdapter.submitList(it)
         }
@@ -81,6 +81,7 @@ class CharacterDetailsFragment : Fragment() {
     private fun observeCharacter() {
         viewModel.viewState.character.observe(viewLifecycleOwner) {
             binding.toolbarView.title.text = it.name
+
             with(binding.content) {
                 characterImage.loadImage(it.image)
                 tvName.text = it.name

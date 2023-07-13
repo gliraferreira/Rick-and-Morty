@@ -48,6 +48,7 @@ class CharactersFragment : Fragment() {
 
         setupViews()
         observeViewState()
+        observeActions()
     }
 
     private fun setupViews() {
@@ -112,11 +113,15 @@ class CharactersFragment : Fragment() {
         isLoading.observe(viewLifecycleOwner) {
             binding.loading.root.isVisible = it
         }
-        isError.observe(viewLifecycleOwner) {
-            binding.errorState.root.isVisible = it
-        }
         shouldDisplayContent.observe(viewLifecycleOwner) {
             binding.rvCharacters.isVisible = it
+        }
+        observeErrorState()
+    }
+
+    private fun observeErrorState() = with(viewModel.viewState) {
+        isError.observe(viewLifecycleOwner) {
+            binding.errorState.root.isVisible = it
         }
         error.observe(viewLifecycleOwner) {
             it?.let {
@@ -125,7 +130,10 @@ class CharactersFragment : Fragment() {
                 binding.errorState.errorImageView.setSrcRes(it.image)
             }
         }
-        action.observe(viewLifecycleOwner) { action ->
+    }
+
+    private fun observeActions() {
+        viewModel.viewState.action.observe(viewLifecycleOwner) { action ->
             when (action) {
                 is CharactersViewAction.OpenCharacterDetails -> openCharactersScreen(
                     action.characterId
