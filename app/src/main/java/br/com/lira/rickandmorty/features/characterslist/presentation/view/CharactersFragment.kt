@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.core.binding.setSrcRes
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.CharacterDetailsFragment
@@ -127,7 +126,7 @@ class CharactersFragment : Fragment() {
             it?.let {
                 binding.errorState.description.setText(it.message)
                 binding.errorState.btnTryAgain.isVisible = it.isTryAgainVisible
-                binding.errorState.errorImageView.setSrcRes(it.image)
+                binding.errorState.errorImageView.setImageResource(it.image)
             }
         }
     }

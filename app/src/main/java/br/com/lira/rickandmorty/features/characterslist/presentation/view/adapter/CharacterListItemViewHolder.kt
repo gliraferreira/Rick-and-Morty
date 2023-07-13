@@ -1,8 +1,7 @@
 package br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter
 
 import androidx.recyclerview.widget.RecyclerView
-import br.com.lira.rickandmorty.core.binding.loadImage
-import br.com.lira.rickandmorty.core.binding.setBgColor
+import br.com.lira.rickandmorty.core.extension.loadImage
 import br.com.lira.rickandmorty.databinding.ListItemCharacterBinding
 import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel
 
@@ -17,7 +16,7 @@ class CharacterListItemViewHolder(
         }
         binding.picture.loadImage(character.image)
         binding.username.text = character.name
-        binding.status.setBgColor(character.statusColor)
+        binding.status.setChipBackgroundColorResource(character.statusColor)
         binding.status.setText(character.statusText)
     }
 }

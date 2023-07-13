@@ -9,6 +9,6 @@ class CharacterEpisodeUIModelMapper @Inject constructor() {
     fun mapFrom(episode: Episode) = CharacterEpisodeUIModel(
         id = episode.id,
         name = episode.name,
-        episode = episode.episode
+        episodeNumber = episode.episodeNumber
     )
 }

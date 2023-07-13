@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import br.com.lira.rickandmorty.core.binding.loadImage
-import br.com.lira.rickandmorty.core.binding.setBgColor
+import br.com.lira.rickandmorty.core.extension.loadImage
 import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.adapter.CharacterEpisodeAdapter
 import br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel.CharacterDetailsViewModel
@@ -87,7 +86,7 @@ class CharacterDetailsFragment : Fragment() {
                 tvName.text = it.name
                 tvLocation.text = it.lastLocation
                 tvGender.setText(it.gender)
-                status.setBgColor(it.statusColor)
+                status.setChipBackgroundColorResource(it.statusColor)
                 status.setText(it.statusText)
                 tvSpecies.text = it.species
             }

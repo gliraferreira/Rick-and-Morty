@@ -13,7 +13,7 @@ class EpisodeResponseToModelMapper @Inject constructor(
         id = response.id,
         name = response.name,
         airDate = response.airDate,
-        episode = response.episode,
+        episodeNumber = response.episodeNumber,
         characterIds = response.characters.map(urlMapper::mapId)
     )
 }

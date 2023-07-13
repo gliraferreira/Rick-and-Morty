@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-
-        <variable
-            name="isVisible"
-            type="Boolean" />
-
-    </data>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ProgressBar
         android:id="@+id/user_list_progress_bar"
@@ -17,7 +8,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/common_background"
-        app:present="@{ isVisible }" />
+        android:background="@color/common_background" />
 
 </layout>
