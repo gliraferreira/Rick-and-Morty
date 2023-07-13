@@ -6,7 +6,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp">
+        android:paddingHorizontal="20dp"
+        android:background="@color/common_background">
 
         <TextView
             android:id="@+id/tvFilter"
