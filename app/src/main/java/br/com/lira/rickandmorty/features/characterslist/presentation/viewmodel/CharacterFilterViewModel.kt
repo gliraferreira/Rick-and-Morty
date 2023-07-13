@@ -3,6 +3,7 @@ package br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterFilterUIModelMapper
+import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterGenderMapper
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterStatusMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -11,7 +12,8 @@ import javax.inject.Inject
 class CharacterFilterViewModel @Inject constructor(
     private val mutableState: CharacterFilterDefaultViewState,
     private val statusMapper: CharacterStatusMapper,
-    private val filterUiMapper: CharacterFilterUIModelMapper
+    private val filterUiMapper: CharacterFilterUIModelMapper,
+    private val genderMapper: CharacterGenderMapper
 ) : ViewModel() {
 
     val viewState: CharacterFilterViewState get() = mutableState
@@ -32,5 +34,10 @@ class CharacterFilterViewModel @Inject constructor(
     fun onStatusChecked(ids: List<Int>) {
         val status = ids.firstOrNull()?.let(statusMapper::mapFrom)
         mutableState.setFilter { it?.copy(status = status) }
+    }
+
+    fun onGenderChecked(ids: List<Int>) {
+        val gender = ids.firstOrNull()?.let(genderMapper::mapFrom)
+        mutableState.setFilter { it?.copy(gender = gender) }
     }
 }

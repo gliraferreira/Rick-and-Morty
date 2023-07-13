@@ -62,6 +62,9 @@ class CharacterFilterFragment : Fragment() {
         binding.statusChipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
             viewModel.onStatusChecked(checkedIds)
         }
+        binding.genderChipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
+            viewModel.onGenderChecked(checkedIds)
+        }
     }
 
     private fun setupToolbar() {
@@ -85,6 +88,7 @@ class CharacterFilterFragment : Fragment() {
     private fun updateUi(filter: CharacterFilterUIModel) {
         binding.etName.setText(filter.name)
         filter.status?.let { binding.statusChipGroup.check(it) }
+        filter.gender?.let { binding.genderChipGroup.check(it) }
     }
 
     private fun sendFilterResult(filter: CharacterFilter?) {

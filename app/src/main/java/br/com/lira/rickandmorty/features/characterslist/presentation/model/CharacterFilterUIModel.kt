@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class CharacterFilterUIModel(
     val name: String,
-    val status: Int?
+    val status: Int?,
+    val gender: Int?
 ) : Parcelable

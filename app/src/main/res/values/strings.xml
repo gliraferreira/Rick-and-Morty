@@ -10,6 +10,7 @@
     <string name="character_gender_male">Male</string>
     <string name="character_gender_female">Female</string>
     <string name="character_gender_unknown">Unknown</string>
+    <string name="character_gender_genderless">Genderless </string>
 
     <string name="characters_title">Rick and Morty</string>
     <string name="characters_search_clear_description">Clear text</string>
@@ -24,6 +25,7 @@
     <string name="character_filter_name">Name</string>
     <string name="character_filter_name_hint">Type a name here</string>
     <string name="character_filter_status">Status</string>
+    <string name="character_filter_gender">Gender</string>
     <string name="character_filter_submit_button">Apply Filters</string>
 
     <string name="toolbar_back_description">Navigate back</string>

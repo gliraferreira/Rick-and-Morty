@@ -94,7 +94,7 @@ class CharactersViewModel @Inject constructor(
 
     private fun isFilteringResults(currentFilter: CharacterFilter?): Boolean {
         val hasAnyFilter = currentFilter?.let {
-            it.name?.isNotEmpty() ?: false || it.status != null
+            it.name?.isNotEmpty() ?: false || it.status != null || it.gender != null
         } ?: false
 
         return hasAnyFilter

@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:text="@string/character_filter_name"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             app:layout_constraintStart_toStartOf="parent"
@@ -96,16 +96,78 @@
 
         </com.google.android.material.chip.ChipGroup>
 
+        <TextView
+            android:id="@+id/tvGender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/character_filter_gender"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statusChipGroup" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/genderChipGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="5dp"
+            app:chipSpacingHorizontal="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvGender"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/genderMaleChip"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:checkable="true"
+                android:text="@string/character_gender_male"
+                app:checkedIcon="@drawable/ic_check"
+                app:checkedIconTint="@color/colorPrimaryDark" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/genderFemaleChip"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:checkable="true"
+                android:text="@string/character_gender_female"
+                app:checkedIcon="@drawable/ic_check"
+                app:checkedIconTint="@color/colorPrimaryDark" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/genderUnknownChip"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:checkable="true"
+                android:text="@string/character_gender_unknown"
+                app:checkedIcon="@drawable/ic_check"
+                app:checkedIconTint="@color/colorPrimaryDark" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/genderGenderlessChip"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:checkable="true"
+                android:text="@string/character_gender_genderless"
+                app:checkedIcon="@drawable/ic_check"
+                app:checkedIconTint="@color/colorPrimaryDark" />
+
+        </com.google.android.material.chip.ChipGroup>
+
         <Button
             android:id="@+id/btnApply"
+            style="@style/Widget.App.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.App.Button"
-            android:padding="15dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
             android:text="@string/character_filter_submit_button"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/genderChipGroup" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

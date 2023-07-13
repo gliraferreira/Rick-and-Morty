@@ -16,6 +16,7 @@ class CharactersServiceDataSource @Inject constructor(
     ) = charactersApi.getAllCharacters(
         page = page,
         name = filter?.name,
-        status = filter?.status?.name?.lowercase()
+        status = filter?.status?.name?.lowercase(),
+        gender = filter?.gender?.name?.lowercase()
     )
 }
