@@ -94,11 +94,11 @@ class CharactersViewModel @Inject constructor(
         setState { it.setErrorState(error) }
     }
 
-    private fun isFilteringResults(currentFilter: CharacterFilter?): Boolean {
-        val hasAnyFilter = currentFilter?.let {
-            it.name?.isNotEmpty() ?: false || it.status != null || it.gender != null
-        } ?: false
-
-        return hasAnyFilter
-    }
+    private fun isFilteringResults(currentFilter: CharacterFilter?) = currentFilter?.let {
+        listOfNotNull<Any>(
+            it.name,
+            it.status,
+            it.gender
+        ).isNotEmpty()
+    } ?: false
 }
