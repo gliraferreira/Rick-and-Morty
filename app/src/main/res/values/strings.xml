@@ -15,7 +15,7 @@
     <string name="characters_title">Rick and Morty</string>
     <string name="characters_search_clear_description">Clear text</string>
     <string name="characters_search_empty_text">We couldn\'t find any characters</string>
-    <string name="characters_search_disclaimer">Filtering characters</string>
+    <string name="characters_search_disclaimer">Showing results for:</string>
     <string name="characters_search_clear_filter">Clear filters</string>
 
     <string name="character_details_title">Character Details</string>

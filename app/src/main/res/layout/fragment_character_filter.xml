@@ -139,20 +139,20 @@
                 app:checkedIconTint="@color/colorPrimaryDark" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/genderUnknownChip"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:checkable="true"
-                android:text="@string/character_gender_unknown"
-                app:checkedIcon="@drawable/ic_check"
-                app:checkedIconTint="@color/colorPrimaryDark" />
-
-            <com.google.android.material.chip.Chip
                 android:id="@+id/genderGenderlessChip"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:checkable="true"
                 android:text="@string/character_gender_genderless"
+                app:checkedIcon="@drawable/ic_check"
+                app:checkedIconTint="@color/colorPrimaryDark" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/genderUnknownChip"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:checkable="true"
+                android:text="@string/character_gender_unknown"
                 app:checkedIcon="@drawable/ic_check"
                 app:checkedIconTint="@color/colorPrimaryDark" />
 

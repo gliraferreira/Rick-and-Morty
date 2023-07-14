@@ -8,8 +8,8 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.domain.usecase.GetAllCharactersUseCase
+import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterFilterToTextMapper
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterModelToUIMapper
-import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharacterStatusMapper
 import br.com.lira.rickandmorty.features.characterslist.presentation.mapper.CharactersErrorMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -23,7 +23,8 @@ class CharactersViewModel @Inject constructor(
     private val getAllCharacters: GetAllCharactersUseCase,
     private val mutableState: CharactersDefaultViewState,
     private val characterUiMapper: CharacterModelToUIMapper,
-    private val errorMapper: CharactersErrorMapper
+    private val errorMapper: CharactersErrorMapper,
+    private val displayableFilterMapper: CharacterFilterToTextMapper,
 ) : ViewModel() {
 
     val viewState: CharactersViewState get() = mutableState
@@ -74,9 +75,7 @@ class CharactersViewModel @Inject constructor(
     private fun loadCharacters(isTryAgain: Boolean = false) {
         viewModelScope.launch {
             val filter = mutableState.filter.value
-            mutableState.clearCharactersList()
-            mutableState.setLoadingState()
-            mutableState.updateIsFilteringResults(isFilteringResults(filter))
+            updateState(filter)
 
             if (isTryAgain) delay(DELAY_INTERVAL)
 
@@ -85,6 +84,15 @@ class CharactersViewModel @Inject constructor(
                 mutableState.postCharacters(uiPagingData)
             }
         }
+    }
+
+    private fun updateState(filter: CharacterFilter?) {
+        mutableState.clearCharactersList()
+        mutableState.setLoadingState()
+
+        val filterDetails = filter?.let(displayableFilterMapper::mapFrom).orEmpty()
+        mutableState.postFilterDetails(filterDetails)
+        mutableState.updateIsFilteringResults(isFilteringResults(filter))
     }
 
     private fun handleErrorState(refresh: LoadState.Error) {

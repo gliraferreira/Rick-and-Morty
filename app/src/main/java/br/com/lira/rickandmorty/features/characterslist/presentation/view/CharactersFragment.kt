@@ -109,6 +109,9 @@ class CharactersFragment : Fragment() {
         isFilteringResults.observe(viewLifecycleOwner) {
             binding.searchView.root.isVisible = it
         }
+        filterDetails.observe(viewLifecycleOwner) {
+            binding.searchView.tvFilterDetails.text = it
+        }
         isLoading.observe(viewLifecycleOwner) {
             binding.loading.root.isVisible = it
         }

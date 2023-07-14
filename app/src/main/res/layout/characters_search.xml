@@ -13,10 +13,23 @@
             android:id="@+id/tvFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:paddingTop="10dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             android:text="@string/characters_search_disclaimer"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFilterDetails"/>
+
+        <TextView
+            android:id="@+id/tvFilterDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textStyle="bold"
+            tools:text="rick, alive, male"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFilter"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <Button
