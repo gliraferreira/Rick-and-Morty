@@ -11,6 +11,7 @@ import br.com.lira.rickandmorty.core.extension.loadImage
 import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.adapter.CharacterEpisodeAdapter
 import br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel.CharacterDetailsViewModel
+import br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel.CharacterDetailsViewState
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_CHARACTER_ID = "char_id"
@@ -34,7 +35,7 @@ class CharacterDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCharacterDetailsBinding.inflate(inflater).apply {
             lifecycleOwner = this@CharacterDetailsFragment
         }
@@ -48,7 +49,6 @@ class CharacterDetailsFragment : Fragment() {
         viewModel.init(characterId)
         setupToolbar()
         setupViews()
-        observeCharacter()
         observeViewState()
     }
 
@@ -65,40 +65,34 @@ class CharacterDetailsFragment : Fragment() {
         binding.toolbarView.navigationIcon.isVisible = true
     }
 
-    private fun observeViewState() = with(viewModel.viewState) {
-        episodes.observe(viewLifecycleOwner) {
-            episodesAdapter.submitList(it)
-        }
-        isLoading.observe(viewLifecycleOwner) {
-            binding.loading.root.isVisible = it
-        }
-        shouldDisplayContent.observe(viewLifecycleOwner) {
-            binding.content.root.isVisible = it
+    private fun observeViewState() {
+        viewModel.state.observe(viewLifecycleOwner) { state ->
+            episodesAdapter.submitList(state.episodes)
+            binding.loading.root.isVisible = state.isLoading
+            binding.content.root.isVisible = state.shouldDisplayContent
+            handleCharacterContent(state)
         }
     }
 
-    private fun observeCharacter() {
-        viewModel.viewState.character.observe(viewLifecycleOwner) {
-            binding.toolbarView.title.text = it.name
+    private fun handleCharacterContent(state: CharacterDetailsViewState) = with(binding.content) {
+        state.character?.let { character ->
 
-            with(binding.content) {
-                characterImage.loadImage(it.image)
-                tvName.text = it.name
-                tvLocation.text = it.lastLocation
-                tvGender.setText(it.gender)
-                status.setChipBackgroundColorResource(it.statusColor)
-                status.setText(it.statusText)
-                tvSpecies.text = it.species
-            }
+            binding.toolbarView.title.text = character.name
+            characterImage.loadImage(character.image)
+            tvName.text = character.name
+            tvLocation.text = character.lastLocation
+            tvGender.setText(character.gender)
+            status.setChipBackgroundColorResource(character.statusColor)
+            status.setText(character.statusText)
+            tvSpecies.text = character.species
         }
     }
 
     companion object {
-        fun newInstance(characterId: Long) =
-            CharacterDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putLong(ARG_CHARACTER_ID, characterId)
-                }
+        fun newInstance(characterId: Long) = CharacterDetailsFragment().apply {
+            arguments = Bundle().apply {
+                putLong(ARG_CHARACTER_ID, characterId)
             }
+        }
     }
 }

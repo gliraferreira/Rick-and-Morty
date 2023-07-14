@@ -1,18 +1,27 @@
 package br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
+import br.com.lira.rickandmorty.core.viewmodel.ViewState
 import br.com.lira.rickandmorty.features.characterdetails.presentation.model.CharacterDetailsUIModel
 import br.com.lira.rickandmorty.features.characterdetails.presentation.model.CharacterEpisodeUIModel
-import br.com.lira.rickandmorty.core.viewmodel.ViewState
 
-interface CharacterDetailsViewState : ViewState {
-    val character: LiveData<CharacterDetailsUIModel>
-    val episodes: LiveData<List<CharacterEpisodeUIModel>>
-    val state: LiveData<State>
-    val isLoading: LiveData<Boolean>
-    val shouldDisplayContent: LiveData<Boolean>
+data class CharacterDetailsViewState(
+    val character: CharacterDetailsUIModel? = null,
+    val episodes: List<CharacterEpisodeUIModel> = emptyList(),
+    val shouldDisplayContent: Boolean = false,
+    val isLoading: Boolean = false,
+    val isError: Boolean = false
+) : ViewState {
 
-    enum class State {
-        LOADING, SUCCESS, ERROR
-    }
+    fun setSuccessState(character: CharacterDetailsUIModel) = this.copy(
+        shouldDisplayContent = true,
+        isLoading = false,
+        isError = false,
+        character = character
+    )
+
+    fun setLoadingState() = this.copy(
+        shouldDisplayContent = false,
+        isLoading = true,
+        isError = false
+    )
 }

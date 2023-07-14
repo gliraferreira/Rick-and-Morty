@@ -1,8 +1,8 @@
 package br.com.lira.rickandmorty.features.characterdetails.presentation.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.lira.rickandmorty.core.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.characterdetails.domain.usecase.GetCharacterByIdUseCase
 import br.com.lira.rickandmorty.features.characterdetails.presentation.mapper.CharacterDetailsModelToUIMapper
 import br.com.lira.rickandmorty.features.characterdetails.presentation.mapper.CharacterEpisodeUIModelMapper
@@ -15,16 +15,13 @@ import javax.inject.Inject
 @HiltViewModel
 class CharacterDetailsViewModel @Inject constructor(
     private val getCharacterById: GetCharacterByIdUseCase,
-    private val mutableState: CharacterDetailsDefaultViewState,
     private val uiMapper: CharacterDetailsModelToUIMapper,
     private val getMultipleEpisodes: GetMultipleEpisodesUseCase,
     private val episodeUiMapper: CharacterEpisodeUIModelMapper
-) : ViewModel() {
-
-    val viewState: CharacterDetailsViewState get() = mutableState
+) : ViewModel<CharacterDetailsViewState, CharacterDetailsViewAction>(CharacterDetailsViewState()) {
 
     fun init(characterId: Long?) {
-        mutableState.postState(CharacterDetailsViewState.State.LOADING)
+        setState { it.setLoadingState() }
 
         viewModelScope.launch {
             runCatching {
@@ -40,8 +37,7 @@ class CharacterDetailsViewModel @Inject constructor(
 
     private fun handleCharacterSuccess(character: Character) {
         val uiModel = uiMapper.mapFrom(character)
-        mutableState.postCharacter(uiModel)
-        mutableState.postState(CharacterDetailsViewState.State.SUCCESS)
+        setState { it.setSuccessState(uiModel) }
     }
 
     private suspend fun fetchEpisodes(episodeIds: List<String>) {
@@ -49,7 +45,7 @@ class CharacterDetailsViewModel @Inject constructor(
             getMultipleEpisodes(episodeIds)
         }.onSuccess { episodes ->
             val episodesUi = episodes.map(episodeUiMapper::mapFrom)
-            mutableState.postEpisodes(episodesUi)
+            setState { it.copy(episodes = episodesUi) }
         }
     }
 }
