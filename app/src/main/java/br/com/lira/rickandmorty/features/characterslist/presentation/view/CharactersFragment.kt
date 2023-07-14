@@ -8,20 +8,22 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characterdetails.presentation.view.CharacterDetailsFragment
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersAdapter
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersLoadStateAdapter
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewAction
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewModel
+import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewState
 import dagger.hilt.android.AndroidEntryPoint
 
 const val FILTER_REQUEST_KEY = "filter_request_key"
 const val ARG_FILTER = "arg_filter"
-private const val LIST_FIRST_POSITION = 0
 
 @AndroidEntryPoint
 class CharactersFragment : Fragment() {
@@ -65,7 +67,7 @@ class CharactersFragment : Fragment() {
     }
 
     private fun setupFilterResultListener() {
-        setFragmentResultListener(FILTER_REQUEST_KEY) { key, bundle ->
+        setFragmentResultListener(FILTER_REQUEST_KEY) { _, bundle ->
             val selectedFilter = bundle.getParcelable<CharacterFilter>(ARG_FILTER)
             viewModel.onCharacterFilterUpdated(selectedFilter)
         }
@@ -100,42 +102,17 @@ class CharactersFragment : Fragment() {
         }
     }
 
-    private fun observeViewState() = with(viewModel.viewState) {
-        characters.observe(viewLifecycleOwner) { data ->
-            data?.let {
-                charactersAdapter.submitData(viewLifecycleOwner.lifecycle, it)
-            }
-        }
-        isFilteringResults.observe(viewLifecycleOwner) {
-            binding.searchView.root.isVisible = it
-        }
-        filterDetails.observe(viewLifecycleOwner) {
-            binding.searchView.tvFilterDetails.text = it
-        }
-        isLoading.observe(viewLifecycleOwner) {
-            binding.loading.root.isVisible = it
-        }
-        shouldDisplayContent.observe(viewLifecycleOwner) {
-            binding.rvCharacters.isVisible = it
-        }
-        observeErrorState()
-    }
-
-    private fun observeErrorState() = with(viewModel.viewState) {
-        isError.observe(viewLifecycleOwner) {
-            binding.errorState.root.isVisible = it
-        }
-        error.observe(viewLifecycleOwner) {
-            it?.let {
-                binding.errorState.description.setText(it.message)
-                binding.errorState.btnTryAgain.isVisible = it.isTryAgainVisible
-                binding.errorState.errorImageView.setImageResource(it.image)
-            }
+    private fun observeViewState() = with(binding) {
+        viewModel.state.observe(viewLifecycleOwner) { state ->
+            handleCharactersList(state.characters)
+            updateSearchView(state)
+            handleCurrentScreenState(state)
+            handleError(state)
         }
     }
 
     private fun observeActions() {
-        viewModel.viewState.action.observe(viewLifecycleOwner) { action ->
+        viewModel.action.observe(viewLifecycleOwner) { action ->
             when (action) {
                 is CharactersViewAction.OpenCharacterDetails -> openCharactersScreen(
                     action.characterId
@@ -145,6 +122,31 @@ class CharactersFragment : Fragment() {
                     action.currentFilter
                 )
             }
+        }
+    }
+
+    private fun handleError(state: CharactersViewState) = with(binding.errorState) {
+        state.error?.let {
+            description.setText(it.message)
+            btnTryAgain.isVisible = it.isTryAgainVisible
+            errorImageView.setImageResource(it.image)
+        }
+    }
+
+    private fun handleCurrentScreenState(state: CharactersViewState) = with(binding) {
+        loading.root.isVisible = state.isLoading
+        rvCharacters.isVisible = state.shouldDisplayContent
+        errorState.root.isVisible = state.isError
+    }
+
+    private fun updateSearchView(state: CharactersViewState) = with(binding) {
+        searchView.root.isVisible = state.isFilteringResults
+        searchView.tvFilterDetails.text = state.filterDetails
+    }
+
+    private fun handleCharactersList(characters: PagingData<CharacterUIModel>?) {
+        characters?.let {
+            charactersAdapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
     }
 
