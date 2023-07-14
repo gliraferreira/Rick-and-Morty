@@ -1,10 +1,19 @@
 package br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
+import br.com.lira.rickandmorty.core.viewmodel.ViewState
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.main.domain.model.CharacterGender
+import br.com.lira.rickandmorty.main.domain.model.CharacterStatus
 
-interface CharacterFilterViewState {
+data class CharacterFilterViewState(
+    val filter: CharacterFilter? = CharacterFilter()
+) : ViewState {
 
-    val filter: LiveData<CharacterFilter>
-    val action: LiveData<CharacterFilterViewAction>
+    fun updateStatus(status: CharacterStatus?) = this.copy(
+        filter = this.filter?.copy(status = status)
+    )
+
+    fun updateGender(gender: CharacterGender?) = this.copy(
+        filter = this.filter?.copy(gender = gender)
+    )
 }

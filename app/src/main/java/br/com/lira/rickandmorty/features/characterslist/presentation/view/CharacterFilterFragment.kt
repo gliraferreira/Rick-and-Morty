@@ -77,7 +77,7 @@ class CharacterFilterFragment : Fragment() {
     }
 
     private fun observeViewState() {
-        viewModel.viewState.action.observe(viewLifecycleOwner) { action ->
+        viewModel.action.observe(viewLifecycleOwner) { action ->
             when (action) {
                 is CharacterFilterViewAction.SendFilterResult -> sendFilterResult(action.filter)
                 is CharacterFilterViewAction.UpdateUI -> updateUi(action.filter)
