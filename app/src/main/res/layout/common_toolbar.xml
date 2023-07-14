@@ -28,14 +28,17 @@
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:textColor="@color/toolbar_title"
                 android:textSize="20sp"
+                android:maxLines="1"
+                app:autoSizeTextType="uniform"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/navigationIcon"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/searchIcon"
                 tools:text="Morty Smith" />
 
             <ImageButton
