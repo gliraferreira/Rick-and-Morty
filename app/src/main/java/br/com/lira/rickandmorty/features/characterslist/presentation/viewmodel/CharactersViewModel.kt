@@ -78,7 +78,7 @@ class CharactersViewModel @Inject constructor(
 
     private fun setLoadingState(filter: CharacterFilter?) {
         val filterDetails = filter?.let(displayableFilterMapper::mapFrom).orEmpty()
-        val isFilterOn = isFilteringResults(filter)
+        val isFilterOn = filterDetails.isNotEmpty()
 
         setState {
             it.copy(
@@ -93,12 +93,4 @@ class CharactersViewModel @Inject constructor(
         val error = errorMapper.mapFrom(refresh.error)
         setState { it.setErrorState(error) }
     }
-
-    private fun isFilteringResults(currentFilter: CharacterFilter?) = currentFilter?.let {
-        listOfNotNull<Any>(
-            it.name,
-            it.status,
-            it.gender
-        ).isNotEmpty()
-    } ?: false
 }
