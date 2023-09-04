@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rick and Morty</string>
+    <string name="app_name">Rick and Morty Hub</string>
     <string name="characters_loading">Loading...</string>
     <string name="retry">Retry</string>
 
@@ -12,7 +12,7 @@
     <string name="character_gender_unknown">Unknown</string>
     <string name="character_gender_genderless">Genderless </string>
 
-    <string name="characters_title">Rick and Morty</string>
+    <string name="characters_title">Rick and Morty Hub</string>
     <string name="characters_search_clear_description">Clear text</string>
     <string name="characters_search_empty_text">We couldn\'t find any characters</string>
     <string name="characters_search_disclaimer">Showing results for:</string>
