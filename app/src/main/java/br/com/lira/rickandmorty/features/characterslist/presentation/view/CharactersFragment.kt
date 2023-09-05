@@ -37,9 +37,7 @@ class CharactersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCharactersBinding.inflate(inflater).apply {
-            lifecycleOwner = this@CharactersFragment
-        }
+        binding = FragmentCharactersBinding.inflate(inflater)
 
         return binding.root
     }

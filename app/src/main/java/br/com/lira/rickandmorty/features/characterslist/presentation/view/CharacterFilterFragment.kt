@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
+import br.com.lira.rickandmorty.core.toolkit.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentCharacterFilterBinding
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterFilterUIModel
@@ -38,9 +40,7 @@ class CharacterFilterFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCharacterFilterBinding.inflate(inflater).apply {
-            lifecycleOwner = this@CharacterFilterFragment
-        }
+        binding = FragmentCharacterFilterBinding.inflate(inflater)
 
         return binding.root
     }
@@ -69,7 +69,7 @@ class CharacterFilterFragment : Fragment() {
 
     private fun setupToolbar() {
         binding.toolbarView.navigationIcon.setOnClickListener {
-            activity?.onBackPressed()
+            this@CharacterFilterFragment.popBackStack()
         }
         binding.toolbarView.searchIcon.isVisible = false
         binding.toolbarView.navigationIcon.isVisible = true
@@ -93,7 +93,7 @@ class CharacterFilterFragment : Fragment() {
 
     private fun sendFilterResult(filter: CharacterFilter?) {
         setFragmentResult(FILTER_REQUEST_KEY, bundleOf(ARG_FILTER to filter))
-        activity?.onBackPressed()
+        popBackStack()
     }
 
     companion object {

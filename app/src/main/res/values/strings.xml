@@ -33,5 +33,10 @@
 
     <string name="common_error_title">There was an error</string>
     <string name="try_again">Try again</string>
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+
+    <string name="title_characters">Characters</string>
+    <string name="title_episodes">Episodes</string>
+    <string name="title_locations">Locations</string>
 
 </resources>

@@ -1,48 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/common_background"
+    android:paddingBottom="3dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/picture"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_round_account_circle" />
+
+    <TextView
+        android:id="@+id/username"
+        style="@style/TextAppearance.Material3.LabelLarge"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="3dp"
-        android:background="@color/common_background">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@id/status"
+        app:layout_constraintStart_toEndOf="@+id/picture"
+        app:layout_constraintTop_toTopOf="@+id/picture"
+        tools:text="Rick" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/picture"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_round_account_circle" />
-
-        <TextView
-            android:id="@+id/username"
-            style="@style/TextAppearance.Material3.LabelLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@id/status"
-            app:layout_constraintStart_toEndOf="@+id/picture"
-            app:layout_constraintTop_toTopOf="@+id/picture"
-            tools:text="Rick" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_marginStart="16dp"
-            android:clickable="false"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/picture"
-            app:layout_constraintStart_toEndOf="@id/picture"
-            app:layout_constraintTop_toBottomOf="@id/username"
-            tools:text="Alive" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <com.google.android.material.chip.Chip
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:clickable="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/picture"
+        app:layout_constraintStart_toEndOf="@id/picture"
+        app:layout_constraintTop_toBottomOf="@id/username"
+        tools:text="Alive" />
+</androidx.constraintlayout.widget.ConstraintLayout>
