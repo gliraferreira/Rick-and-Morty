@@ -100,7 +100,7 @@ class CharactersFragment : Fragment() {
         }
     }
 
-    private fun observeViewState() = with(binding) {
+    private fun observeViewState() {
         viewModel.state.observe(viewLifecycleOwner) { state ->
             handleCharactersList(state.characters)
             updateSearchView(state)

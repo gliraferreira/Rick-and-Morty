@@ -86,10 +86,7 @@ fun FragmentManager.clearBackStack() {
 }
 
 fun FragmentManager.setupFragmentHost(@IdRes hostRes: Int, fragment: Fragment) {
-    this.commit {
-        setReorderingAllowed(true)
-        replace(hostRes, fragment, fragment::class.simpleName)
-    }
+    this.commitNavigation(hostRes, fragment, true)
 }
 
 @Suppress("LongParameterList")
