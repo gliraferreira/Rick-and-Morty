@@ -6,19 +6,19 @@
     <color name="gray">#CDCDCD</color>
     <color name="darkGray">#414445</color>
 
-    <color name="colorPrimary">@color/white</color>
-    <color name="colorPrimaryDark">@color/darkGray</color>
+    <color name="colorPrimary">#fafaff</color>
+    <color name="colorPrimaryDark">#1c1c1c</color>
 
     <color name="toolbar_background">@color/colorPrimaryDark</color>
-    <color name="toolbar_title">@color/colorPrimary</color>
+    <color name="toolbar_title">@color/gray</color>
     <color name="icon">@color/gray</color>
 
-    <color name="common_background">@color/white</color>
+    <color name="common_background">@color/colorPrimary</color>
 
     <color name="button_color">@color/colorPrimaryDark</color>
     <color name="button_color_on_primary">@color/colorPrimary</color>
 
-    <color name="character_status_alive">#4CAF50</color>
-    <color name="character_status_dead">#F44336</color>
+    <color name="character_status_alive">#11D819</color>
+    <color name="character_status_dead">#FB2B1C</color>
     <color name="character_status_unknown">#7C7676</color>
 </resources>

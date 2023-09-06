@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -77,11 +78,10 @@ class CharacterDetailsFragment : Fragment() {
 
             binding.toolbarView.title.text = character.name
             characterImage.loadImage(character.image)
+            characterImage.borderColor = ContextCompat.getColor(requireContext(), character.statusColor)
             tvName.text = character.name
             tvLocation.text = character.lastLocation
             tvGender.setText(character.gender)
-            status.setChipBackgroundColorResource(character.statusColor)
-            status.setText(character.statusText)
             tvSpecies.text = character.species
         }
     }

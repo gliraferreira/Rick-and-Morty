@@ -35,6 +35,7 @@ class CharacterModelToUIMapper @Inject constructor() {
     private fun mapGender(gender: CharacterGender) = when (gender) {
         CharacterGender.MALE -> R.string.character_gender_male
         CharacterGender.FEMALE -> R.string.character_gender_female
+        CharacterGender.GENDERLESS -> R.string.character_gender_genderless
         else -> R.string.character_gender_unknown
     }
 }
