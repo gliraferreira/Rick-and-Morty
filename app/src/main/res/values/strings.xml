@@ -20,6 +20,9 @@
 
     <string name="character_details_title">Character Details</string>
     <string name="character_details_episodes_title">Episodes</string>
+    <string name="character_details_species_label">Species</string>
+    <string name="character_details_location_label">Current location</string>
+    <string name="character_details_gender_label">Gender</string>
 
     <string name="character_filter_title">Search Characters</string>
     <string name="character_filter_name">Name</string>
