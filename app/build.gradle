@@ -10,11 +10,11 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "br.com.lira.rickandmorty"
+        applicationId 'br.com.lira.rickandmortyhub'
         minSdk 21
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName '0.3.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
