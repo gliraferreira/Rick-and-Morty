@@ -17,6 +17,8 @@ android {
         versionName '0.3.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'baseUrl', "\"https://rickandmortyapi.com/api/\""
     }
 
     buildTypes {
@@ -64,7 +66,9 @@ dependencies {
     implementation "com.squareup.picasso:picasso:$picasso_version"
     implementation "de.hdodenhof:circleimageview:$circleimageview_version"
 
+    testImplementation "io.mockk:mockk:${mockk_version}"
     testImplementation "junit:junit:$junit_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_androidx_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 

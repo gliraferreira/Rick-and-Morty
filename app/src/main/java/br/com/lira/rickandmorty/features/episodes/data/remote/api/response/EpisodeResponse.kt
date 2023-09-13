@@ -11,7 +11,5 @@ data class EpisodeResponse (
     val airDate: String,
     @Json(name = "episode")
     val episodeNumber: String,
-    val characters: List<String>,
-    val url: String,
-    val created: String
+    val characters: List<String>
 )

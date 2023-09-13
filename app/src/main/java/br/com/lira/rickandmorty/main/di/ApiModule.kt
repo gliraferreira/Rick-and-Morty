@@ -1,5 +1,6 @@
 package br.com.lira.rickandmorty.main.di
 
+import br.com.lira.rickandmorty.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,11 +10,12 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-private const val BASE_URL = "https://rickandmortyapi.com/api/"
-
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
+
+    @Provides
+    fun provideBaseUrl() = BuildConfig.baseUrl
 
     @Singleton
     @Provides
@@ -25,10 +27,10 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit =
+    fun providesRetrofit(okHttpClient: OkHttpClient, baseUrl: String): Retrofit =
         Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create())
-            .baseUrl(BASE_URL)
+            .baseUrl(baseUrl)
             .client(okHttpClient)
             .build()
 }

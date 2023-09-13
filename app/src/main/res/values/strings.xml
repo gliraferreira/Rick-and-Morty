@@ -31,6 +31,8 @@
     <string name="character_filter_gender">Gender</string>
     <string name="character_filter_submit_button">Search</string>
 
+    <string name="episode_number_details">Season %s - Episode %s</string>
+
     <string name="toolbar_back_description">Navigate back</string>
     <string name="toolbar_search_description">Search</string>
 
