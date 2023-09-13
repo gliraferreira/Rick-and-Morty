@@ -1,12 +1,12 @@
-package br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter
+package br.com.lira.rickandmorty.main.presentation.adapter
 
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
-import br.com.lira.rickandmorty.databinding.CharactersLoadStateFooterViewItemBinding
+import br.com.lira.rickandmorty.databinding.LoadStateFooterViewItemBinding
 
-class CharactersLoadStateViewHolder(
-    private val binding: CharactersLoadStateFooterViewItemBinding,
+class PagingLoadStateViewHolder(
+    private val binding: LoadStateFooterViewItemBinding,
     retry: () -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 

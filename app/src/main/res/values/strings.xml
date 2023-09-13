@@ -12,7 +12,6 @@
     <string name="character_gender_unknown">Unknown</string>
     <string name="character_gender_genderless">Genderless </string>
 
-    <string name="characters_title">Characters</string>
     <string name="characters_search_clear_description">Clear text</string>
     <string name="characters_search_empty_text">We couldn\'t find any characters</string>
     <string name="characters_search_disclaimer">Showing results for:</string>
@@ -32,6 +31,7 @@
     <string name="character_filter_submit_button">Search</string>
 
     <string name="episode_number_details">Season %s - Episode %s</string>
+    <string name="episode_season_title">Season %s</string>
 
     <string name="toolbar_back_description">Navigate back</string>
     <string name="toolbar_search_description">Search</string>

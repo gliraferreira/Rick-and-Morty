@@ -18,6 +18,9 @@ class CharacterListItemViewHolder(
         binding.picture.loadImage(character.image)
         binding.username.text = character.name
         binding.gender.setText(character.gender)
-        binding.picture.borderColor = ContextCompat.getColor(binding.root.context, character.statusColor)
+        binding.picture.borderColor = ContextCompat.getColor(
+            binding.root.context,
+            character.statusColor
+        )
     }
 }

@@ -16,7 +16,7 @@ import br.com.lira.rickandmorty.features.characterdetails.presentation.view.Char
 import br.com.lira.rickandmorty.features.characterslist.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterUIModel
 import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersAdapter
-import br.com.lira.rickandmorty.features.characterslist.presentation.view.adapter.CharactersLoadStateAdapter
+import br.com.lira.rickandmorty.main.presentation.adapter.PagingLoadStateAdapter
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewAction
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewModel
 import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewState
@@ -77,7 +77,7 @@ class CharactersFragment : Fragment() {
         }
         binding.toolbarView.searchIcon.isVisible = true
         binding.toolbarView.navigationIcon.isVisible = false
-        binding.toolbarView.title.setText(R.string.characters_title)
+        binding.toolbarView.title.setText(R.string.title_characters)
     }
 
     private fun setupErrorView() {
@@ -92,7 +92,7 @@ class CharactersFragment : Fragment() {
         }
         binding.rvCharacters.adapter = charactersAdapter.apply {
             withLoadStateFooter(
-                footer = CharactersLoadStateAdapter()
+                footer = PagingLoadStateAdapter()
             )
             addLoadStateListener { loadState ->
                 viewModel.onLoadStateChanged(loadState)

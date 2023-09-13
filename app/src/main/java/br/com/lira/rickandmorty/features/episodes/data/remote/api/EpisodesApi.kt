@@ -13,7 +13,7 @@ interface EpisodesApi {
         @Path("ids") episodeIds: List<String>
     ): List<EpisodeResponse>
 
-    @GET("episode/{ids}")
+    @GET("episode")
     suspend fun getAllEpisodes(
         @Query("page") page: Int
     ): PageResponse<EpisodeResponse>

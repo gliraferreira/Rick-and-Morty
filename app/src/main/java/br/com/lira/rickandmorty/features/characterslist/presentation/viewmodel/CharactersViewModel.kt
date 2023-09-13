@@ -70,7 +70,7 @@ class CharactersViewModel @Inject constructor(
             if (isTryAgain) delay(DELAY_INTERVAL)
 
             getAllCharacters(filter).cachedIn(viewModelScope).collect { result ->
-                val uiPagingData = result.map { characterUiMapper.mapFrom(it) }
+                val uiPagingData = result.map(characterUiMapper::mapFrom)
                 setState { it.copy(characters = uiPagingData) }
             }
         }
