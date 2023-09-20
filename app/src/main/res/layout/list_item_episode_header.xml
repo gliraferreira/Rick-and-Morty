@@ -5,19 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/colorPrimaryDark"
-    android:layout_marginHorizontal="20dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="5dp"
+    android:layout_marginHorizontal="@dimen/screen_margin"
+    android:layout_marginTop="@dimen/spacing_5"
+    android:layout_marginBottom="@dimen/spacing_7"
     android:orientation="horizontal"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation">
 
     <TextView
         android:id="@+id/title"
         style="@style/TextAppearance.Material3.TitleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingVertical="10dp"
+        android:paddingVertical="@dimen/spacing_5"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/textOnPrimaryDark"
         android:textStyle="bold"

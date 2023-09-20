@@ -52,7 +52,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCharacters"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/auto_content"
         android:layout_marginBottom="@dimen/bottom_navigation_height"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
