@@ -87,7 +87,7 @@ class CharactersFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        charactersAdapter = CharactersAdapter() {
+        charactersAdapter = CharactersAdapter {
             viewModel.onCharacterClicked(it)
         }
         binding.rvCharacters.adapter = charactersAdapter.apply {
@@ -125,9 +125,9 @@ class CharactersFragment : Fragment() {
 
     private fun handleError(state: CharactersViewState) = with(binding.errorState) {
         state.error?.let {
-            description.setText(it.message)
+            description.text = it.message
             btnTryAgain.isVisible = it.isTryAgainVisible
-            errorImageView.setImageResource(it.image)
+            errorImageView.setImageDrawable(it.image)
         }
     }
 

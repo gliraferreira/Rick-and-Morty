@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.databinding.FragmentEpisodesBinding
+import br.com.lira.rickandmorty.features.characterslist.presentation.viewmodel.CharactersViewState
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
 import br.com.lira.rickandmorty.features.episodes.presentation.view.adapter.EpisodesListAdapter
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewModel
@@ -44,6 +45,7 @@ class EpisodesFragment : Fragment() {
     private fun setupViews() {
         setupToolbar()
         setupRecyclerView()
+        setupErrorView()
     }
 
     private fun setupToolbar() {
@@ -64,10 +66,25 @@ class EpisodesFragment : Fragment() {
         }
     }
 
+    private fun setupErrorView() {
+        binding.errorState.btnTryAgain.setOnClickListener {
+            viewModel.onTryAgainClicked()
+        }
+    }
+
+    private fun handleError(state: EpisodesListViewState) = with(binding.errorState) {
+        state.error?.let {
+            description.text = it.message
+            btnTryAgain.isVisible = it.isTryAgainVisible
+            errorImageView.setImageDrawable(it.image)
+        }
+    }
+
     private fun observeViewState() {
         viewModel.state.observe(viewLifecycleOwner) { state ->
             handleEpisodesList(state.episodes)
             handleCurrentScreenState(state)
+            handleError(state)
         }
     }
 

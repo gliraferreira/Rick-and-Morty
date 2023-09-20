@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.episodes.presentation.viewmodel
 
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.core.viewmodel.ViewState
-import br.com.lira.rickandmorty.features.characterslist.presentation.model.CharacterError
+import br.com.lira.rickandmorty.main.presentation.model.GenericError
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
 
 data class EpisodesListViewState(
@@ -10,6 +10,7 @@ data class EpisodesListViewState(
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val shouldDisplayContent: Boolean = false,
+    val error: GenericError? = null,
 ) : ViewState {
 
     fun setSuccessState() = this.copy(
@@ -24,9 +25,10 @@ data class EpisodesListViewState(
         isError = false
     )
 
-    fun setErrorState(error: CharacterError) = this.copy(
+    fun setErrorState(error: GenericError) = this.copy(
         shouldDisplayContent = false,
         isLoading = false,
-        isError = true
+        isError = true,
+        error = error
     )
 }

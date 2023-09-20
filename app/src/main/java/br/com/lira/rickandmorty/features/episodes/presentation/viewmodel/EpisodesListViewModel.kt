@@ -3,23 +3,27 @@ package br.com.lira.rickandmorty.features.episodes.presentation.viewmodel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
-import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import androidx.paging.insertSeparators
 import androidx.paging.map
 import br.com.lira.rickandmorty.core.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.episodes.domain.usecase.GetAllEpisodesUseCase
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodeModelToUIMapper
-import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
+import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesErrorMapper
+import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesLIstSeparatorMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+
+private const val DELAY_INTERVAL = 500L
 
 @HiltViewModel
 class EpisodesListViewModel @Inject constructor(
     private val getAllEpisodes: GetAllEpisodesUseCase,
-    private val episodeUiMapper: EpisodeModelToUIMapper
+    private val episodeUiMapper: EpisodeModelToUIMapper,
+    private val errorMapper: EpisodesErrorMapper,
+    private val separatorMapper: EpisodesLIstSeparatorMapper,
 ) : ViewModel<EpisodesListViewState, EpisodesListViewAction>(EpisodesListViewState()) {
 
     init {
@@ -30,31 +34,29 @@ class EpisodesListViewModel @Inject constructor(
         when (val refresh = loadState.source.refresh) {
             is LoadState.NotLoading -> setState { it.setSuccessState() }
             is LoadState.Loading -> setState { it.setLoadingState() }
-            is LoadState.Error -> {}
+            is LoadState.Error -> handleErrorState(refresh)
         }
     }
 
-    private fun loadEpisodes() {
+    fun onTryAgainClicked() {
+        loadEpisodes(isTryAgain = true)
+    }
+
+    private fun loadEpisodes(isTryAgain: Boolean = false) {
         viewModelScope.launch {
+
+            if (isTryAgain) delay(DELAY_INTERVAL)
+
             getAllEpisodes()
-                .map { pagingData -> pagingData.map(episodeUiMapper::mapFrom) }
-                .map { mapEpisodeHeader(it) }
+                .map { it.map(episodeUiMapper::mapFrom) }
+                .map(separatorMapper::mapFrom)
                 .cachedIn(viewModelScope)
                 .collect { result -> setState { it.copy(episodes = result) } }
         }
     }
 
-    private fun mapEpisodeHeader(
-        pagingData: PagingData<EpisodeUIModel.EpisodeUI>
-    ) = pagingData.insertSeparators { before, after ->
-        if (after == null) {
-            return@insertSeparators null
-        }
-
-        if (before == null || before.seasonNumber != after.seasonNumber) {
-            return@insertSeparators EpisodeUIModel.Header(after.seasonNumber)
-        }
-
-        return@insertSeparators null
+    private fun handleErrorState(refresh: LoadState.Error) {
+        val error = errorMapper.mapFrom(refresh.error)
+        setState { it.setErrorState(error) }
     }
 }
