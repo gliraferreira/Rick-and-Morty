@@ -7,8 +7,6 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.insertSeparators
 import androidx.paging.map
-import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.core.toolkit.ResourceProvider
 import br.com.lira.rickandmorty.core.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.episodes.domain.usecase.GetAllEpisodesUseCase
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodeModelToUIMapper
@@ -21,8 +19,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class EpisodesListViewModel @Inject constructor(
     private val getAllEpisodes: GetAllEpisodesUseCase,
-    private val episodeUiMapper: EpisodeModelToUIMapper,
-    private val resourceProvider: ResourceProvider
+    private val episodeUiMapper: EpisodeModelToUIMapper
 ) : ViewModel<EpisodesListViewState, EpisodesListViewAction>(EpisodesListViewState()) {
 
     init {
@@ -43,25 +40,21 @@ class EpisodesListViewModel @Inject constructor(
                 .map { pagingData -> pagingData.map(episodeUiMapper::mapFrom) }
                 .map { mapEpisodeHeader(it) }
                 .cachedIn(viewModelScope)
-                .collect { result -> setState { it.copy(episodes = result) }}
+                .collect { result -> setState { it.copy(episodes = result) } }
         }
     }
 
-    private fun mapEpisodeHeader(it: PagingData<EpisodeUIModel.Episode>) =
-        it.insertSeparators { before, after ->
-            if (after == null) {
-                return@insertSeparators null
-            }
-
-            if (before == null || before.seasonNumber != after.seasonNumber) {
-                val title = resourceProvider.getString(
-                    R.string.episode_season_title,
-                    after.seasonNumber
-                )
-
-                return@insertSeparators EpisodeUIModel.Header(title)
-            }
-
+    private fun mapEpisodeHeader(
+        pagingData: PagingData<EpisodeUIModel.EpisodeUI>
+    ) = pagingData.insertSeparators { before, after ->
+        if (after == null) {
             return@insertSeparators null
         }
+
+        if (before == null || before.seasonNumber != after.seasonNumber) {
+            return@insertSeparators EpisodeUIModel.Header(after.seasonNumber)
+        }
+
+        return@insertSeparators null
+    }
 }

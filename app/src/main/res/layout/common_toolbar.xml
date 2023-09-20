@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:maxLines="1"
-            android:textColor="@color/toolbar_title"
+            android:textColor="@color/textOnPrimaryDark"
             android:textSize="20sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"

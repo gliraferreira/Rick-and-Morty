@@ -43,7 +43,7 @@ class EpisodesListAdapter(
         val item = getItem(position)
         when (holder) {
             is EpisodeListViewHolder.EpisodeItemViewHolder -> {
-                val episode = item as? EpisodeUIModel.Episode
+                val episode = item as? EpisodeUIModel.EpisodeUI
                 episode?.let(holder::bind)
             }
 
@@ -56,7 +56,7 @@ class EpisodesListAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            is EpisodeUIModel.Episode -> EPISODE_ITEM_TYPE
+            is EpisodeUIModel.EpisodeUI -> EPISODE_ITEM_TYPE
             is EpisodeUIModel.Header -> HEADER_ITEM_TYPE
             else -> super.getItemViewType(position)
         }

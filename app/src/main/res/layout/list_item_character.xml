@@ -1,46 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/common_background"
-    android:paddingBottom="3dp">
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/picture"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        app:civ_border_width="@dimen/profile_picture_border"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_round_account_circle" />
-
-    <TextView
-        android:id="@+id/username"
-        style="@style/TextAppearance.Material3.TitleMedium"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/gender"
-        app:layout_constraintStart_toEndOf="@+id/picture"
-        app:layout_constraintTop_toTopOf="@+id/picture"
-        tools:text="Rick" />
+        android:background="@color/common_background"
+        android:paddingBottom="3dp">
 
-    <TextView
-        android:id="@+id/gender"
-        style="@style/TextAppearance.Material3.BodyMedium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        app:layout_constraintBottom_toBottomOf="@id/picture"
-        app:layout_constraintStart_toEndOf="@id/picture"
-        app:layout_constraintTop_toBottomOf="@id/username"
-        tools:text="Rick" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/picture"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            app:civ_border_width="@dimen/profile_picture_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_round_account_circle" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/username"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/gender"
+            app:layout_constraintStart_toEndOf="@+id/picture"
+            app:layout_constraintTop_toTopOf="@+id/picture"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Rick" />
+
+        <TextView
+            android:id="@+id/gender"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/picture"
+            app:layout_constraintStart_toEndOf="@id/picture"
+            app:layout_constraintTop_toBottomOf="@id/username"
+            tools:text="Rick" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

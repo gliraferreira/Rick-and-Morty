@@ -10,7 +10,7 @@
     <color name="colorPrimaryDark">#1c1c1c</color>
 
     <color name="toolbar_background">@color/colorPrimaryDark</color>
-    <color name="toolbar_title">@color/gray</color>
+    <color name="textOnPrimaryDark">@color/gray</color>
     <color name="icon">@color/gray</color>
 
     <color name="common_background">@color/colorPrimary</color>

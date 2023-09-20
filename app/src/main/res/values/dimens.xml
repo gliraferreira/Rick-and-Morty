@@ -3,4 +3,5 @@
     <dimen name="profile_picture_border">3dp</dimen>
     <dimen name="profile_picture_border_details">7dp</dimen>
     <dimen name="profile_picture_details">150dp</dimen>
+    <dimen name="episodes_character_picture">40dp</dimen>
 </resources>

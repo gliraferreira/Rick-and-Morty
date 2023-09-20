@@ -2,6 +2,7 @@ package br.com.lira.rickandmorty.features.episodes.presentation.view.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.databinding.ListItemEpisodeBinding
 import br.com.lira.rickandmorty.databinding.ListItemEpisodeHeaderBinding
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
@@ -15,12 +16,17 @@ sealed class EpisodeListViewHolder(
         private val onEpisodeClicked: (Long) -> Unit
     ) : EpisodeListViewHolder(binding.root) {
 
-        fun bind(episode: EpisodeUIModel.Episode) {
+        fun bind(episode: EpisodeUIModel.EpisodeUI) {
             binding.root.setOnClickListener {
                 onEpisodeClicked(episode.id)
             }
-            binding.username.text = episode.name
-            binding.gender.text = episode.seasonNumber
+
+            binding.episodeNumber.text = episode.episodeNumber
+            binding.episodeTitle.text = episode.name
+            binding.episodeDetails.text = binding.root.context.getString(
+                R.string.episode_item_details,
+                episode.airDate
+            )
         }
     }
 
@@ -29,7 +35,7 @@ sealed class EpisodeListViewHolder(
     ) : EpisodeListViewHolder(binding.root) {
 
         fun bind(episode: EpisodeUIModel.Header) {
-            binding.username.text = episode.title
+            binding.title.text = episode.title
         }
     }
 }

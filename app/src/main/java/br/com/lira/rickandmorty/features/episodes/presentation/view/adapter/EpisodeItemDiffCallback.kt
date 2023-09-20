@@ -10,8 +10,8 @@ object EpisodeItemDiffCallback : DiffUtil.ItemCallback<EpisodeUIModel>() {
         newItem: EpisodeUIModel
     ): Boolean {
         return when {
-            oldItem is EpisodeUIModel.Episode &&
-                    newItem is EpisodeUIModel.Episode -> oldItem.id == newItem.id
+            oldItem is EpisodeUIModel.EpisodeUI &&
+                    newItem is EpisodeUIModel.EpisodeUI -> oldItem.id == newItem.id
 
             oldItem is EpisodeUIModel.Header &&
                     newItem is EpisodeUIModel.Header -> oldItem.title == newItem.title
