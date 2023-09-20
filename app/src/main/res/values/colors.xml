@@ -12,6 +12,7 @@
     <color name="toolbar_background">@color/colorPrimaryDark</color>
     <color name="textOnPrimaryDark">@color/gray</color>
     <color name="icon">@color/gray</color>
+    <color name="iconDark">@color/darkGray</color>
 
     <color name="common_background">@color/colorPrimary</color>
 

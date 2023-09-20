@@ -16,6 +16,7 @@
     <string name="characters_search_empty_text">We couldn\'t find any characters</string>
     <string name="characters_search_disclaimer">Showing results for:</string>
     <string name="characters_search_clear_filter">Clear search</string>
+    <string name="characters_list_details_description">Go to details</string>
 
     <string name="character_details_title">Character Details</string>
     <string name="character_details_episodes_title">Episodes</string>
