@@ -17,9 +17,6 @@ import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.Episode
 import br.com.lira.rickandmorty.main.presentation.adapter.PagingLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
-const val FILTER_REQUEST_KEY = "filter_request_key"
-const val ARG_FILTER = "arg_filter"
-
 @AndroidEntryPoint
 class EpisodesFragment : Fragment() {
 
@@ -51,6 +48,7 @@ class EpisodesFragment : Fragment() {
 
     private fun setupToolbar() {
         binding.toolbarView.navigationIcon.isVisible = false
+        binding.toolbarView.searchIcon.isVisible = false
         binding.toolbarView.title.setText(R.string.title_episodes)
     }
 
