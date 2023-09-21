@@ -40,8 +40,8 @@ class EpisodeResponseToModelMapperTest {
     @Test
     fun `mapFrom when gets a response return season and episode number separated`() {
         val responseEpisodeNumber = "S01E03"
-        val expectedSeasonNumber = "01"
-        val expectedEpisodeNumber = "03"
+        val expectedSeasonNumber = 1
+        val expectedEpisodeNumber = 3
         val response = EpisodeStub.episodeResponseStub.copy(
             episodeNumber = responseEpisodeNumber
         )

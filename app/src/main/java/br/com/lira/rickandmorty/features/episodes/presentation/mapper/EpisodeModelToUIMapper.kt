@@ -13,11 +13,11 @@ class EpisodeModelToUIMapper @Inject constructor(
     fun mapFrom(episode: Episode) = EpisodeUIModel.EpisodeUI(
         id = episode.id,
         name = episode.name,
-        seasonNumber = resourceProvider.getString(
+        formattedSeasonNumber = resourceProvider.getString(
             R.string.episode_season_title,
-            episode.seasonNumber.toInt()
+            episode.seasonNumber
         ),
-        episodeNumber = resourceProvider.getString(
+        formattedEpisodeNumber = resourceProvider.getString(
             R.string.episode_number_description,
             episode.episodeNumber.toInt()
         ),

@@ -4,7 +4,7 @@ data class Episode(
     val id: Long,
     val name: String,
     val airDate: String,
-    val seasonNumber: String,
-    val episodeNumber: String,
+    val seasonNumber: Int,
+    val episodeNumber: Int,
     val characterIds: List<String>,
 )

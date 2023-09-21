@@ -23,6 +23,7 @@
     <string name="character_details_species_label">Species</string>
     <string name="character_details_location_label">Current location</string>
     <string name="character_details_gender_label">Gender</string>
+    <string name="character_details_episode_number">Season %d - Episode %d</string>
 
     <string name="character_filter_title">Search Characters</string>
     <string name="character_filter_name">Name</string>
@@ -31,7 +32,6 @@
     <string name="character_filter_gender">Gender</string>
     <string name="character_filter_submit_button">Search</string>
 
-    <string name="episode_number_details">Season %s - Episode %s</string>
     <string name="episode_season_title">Season %d</string>
     <string name="episode_number_description">Episode %d</string>
     <string name="episode_item_details">Air Date: %s</string>

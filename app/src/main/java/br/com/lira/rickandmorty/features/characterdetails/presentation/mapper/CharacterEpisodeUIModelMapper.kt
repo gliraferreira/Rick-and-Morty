@@ -14,7 +14,7 @@ class CharacterEpisodeUIModelMapper @Inject constructor(
         id = episode.id,
         name = episode.name,
         episodeNumber = resourceProvider.getString(
-            R.string.episode_number_details,
+            R.string.character_details_episode_number,
             episode.seasonNumber,
             episode.episodeNumber
         )

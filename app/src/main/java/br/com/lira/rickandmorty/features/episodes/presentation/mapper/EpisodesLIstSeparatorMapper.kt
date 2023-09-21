@@ -14,8 +14,8 @@ class EpisodesLIstSeparatorMapper @Inject constructor() {
             return@insertSeparators null
         }
 
-        if (before == null || before.seasonNumber != after.seasonNumber) {
-            return@insertSeparators EpisodeUIModel.Header(after.seasonNumber)
+        if (before == null || before.formattedSeasonNumber != after.formattedSeasonNumber) {
+            return@insertSeparators EpisodeUIModel.Header(after.formattedSeasonNumber)
         }
 
         return@insertSeparators null

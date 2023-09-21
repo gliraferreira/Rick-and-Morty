@@ -26,7 +26,8 @@ class EpisodeResponseToModelMapper @Inject constructor(
         .indexOfFirst { it.equals(EPISODE_PREFIX, true) }
         .takeIf { it != -1 }
         ?.let { episode.substring(1, it) }
-        .orEmpty()
+        ?.toInt()
+        ?: 0
 
     private fun getEpisodeNumber(
         episode: String
@@ -34,5 +35,6 @@ class EpisodeResponseToModelMapper @Inject constructor(
         .indexOfFirst { it.equals(EPISODE_PREFIX, true) }
         .takeIf { it != -1 }
         ?.let { episode.substring(it + 1) }
-        .orEmpty()
+        ?.toInt()
+        ?: 0
 }

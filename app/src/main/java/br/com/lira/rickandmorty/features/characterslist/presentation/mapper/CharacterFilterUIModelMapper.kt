@@ -11,17 +11,17 @@ class CharacterFilterUIModelMapper @Inject constructor() {
 
     fun mapFrom(filter: CharacterFilter) = CharacterFilterUIModel(
         name = filter.name.orEmpty(),
-        status = filter.status?.let(::mapStatus),
-        gender = filter.gender?.let(::mapGender)
+        selectedStatus = filter.status?.let(::mapStatusChip),
+        selectedGender = filter.gender?.let(::mapGenderChip)
     )
 
-    private fun mapStatus(status: CharacterStatus) = when (status) {
+    private fun mapStatusChip(status: CharacterStatus) = when (status) {
         CharacterStatus.ALIVE -> R.id.aliveStatusChip
         CharacterStatus.DEAD -> R.id.deadStatusChip
         else -> R.id.unknownStatusChip
     }
 
-    private fun mapGender(gender: CharacterGender) = when (gender) {
+    private fun mapGenderChip(gender: CharacterGender) = when (gender) {
         CharacterGender.FEMALE -> R.id.genderFemaleChip
         CharacterGender.MALE -> R.id.genderMaleChip
         CharacterGender.GENDERLESS -> R.id.genderGenderlessChip

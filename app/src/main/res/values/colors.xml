@@ -20,6 +20,6 @@
     <color name="button_color_on_primary">@color/colorPrimary</color>
 
     <color name="character_status_alive">#11D819</color>
-    <color name="character_status_dead">#FB2B1C</color>
+    <color name="character_status_dead">#EA1102</color>
     <color name="character_status_unknown">#7C7676</color>
 </resources>

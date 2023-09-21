@@ -20,8 +20,8 @@ object EpisodeStub {
         id = 1,
         name = "Pilot",
         airDate = "December 2, 2013",
-        seasonNumber = "01",
-        episodeNumber = "02",
+        seasonNumber = 1,
+        episodeNumber = 2,
         characterIds = listOf(
             "1",
             "2"

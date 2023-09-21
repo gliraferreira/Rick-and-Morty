@@ -86,8 +86,8 @@ class CharacterFilterFragment : Fragment() {
 
     private fun updateUi(filter: CharacterFilterUIModel) {
         binding.etName.setText(filter.name)
-        filter.status?.let { binding.statusChipGroup.check(it) }
-        filter.gender?.let { binding.genderChipGroup.check(it) }
+        filter.selectedStatus?.let { binding.statusChipGroup.check(it) }
+        filter.selectedGender?.let { binding.genderChipGroup.check(it) }
     }
 
     private fun sendFilterResult(filter: CharacterFilter?) {

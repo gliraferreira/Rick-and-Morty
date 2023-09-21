@@ -2,7 +2,6 @@ package br.com.lira.rickandmorty.features.episodes.presentation.view.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.databinding.ListItemEpisodeBinding
 import br.com.lira.rickandmorty.databinding.ListItemEpisodeHeaderBinding
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
@@ -21,7 +20,7 @@ sealed class EpisodeListViewHolder(
                 onEpisodeClicked(episode.id)
             }
 
-            binding.episodeNumber.text = episode.episodeNumber
+            binding.episodeNumber.text = episode.formattedEpisodeNumber
             binding.episodeTitle.text = episode.name
             binding.episodeDetails.text = episode.airDate
         }
