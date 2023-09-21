@@ -8,7 +8,7 @@
     <dimen name="screen_margin">@dimen/spacing_4</dimen>
 
     <dimen name="card_corner_radius">8dp</dimen>
-    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
 
     <dimen name="character_list_item_profile_picture_border">3dp</dimen>
     <dimen name="character_list_item_profile_picture">55dp</dimen>

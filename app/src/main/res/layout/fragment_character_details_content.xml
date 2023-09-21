@@ -135,7 +135,7 @@
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tvEpisodesHeader"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvEpisodesHeader"
             tools:listitem="@layout/list_item_character_episode" />
     </androidx.constraintlayout.widget.ConstraintLayout>

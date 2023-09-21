@@ -23,10 +23,7 @@ sealed class EpisodeListViewHolder(
 
             binding.episodeNumber.text = episode.episodeNumber
             binding.episodeTitle.text = episode.name
-            binding.episodeDetails.text = binding.root.context.getString(
-                R.string.episode_item_details,
-                episode.airDate
-            )
+            binding.episodeDetails.text = episode.airDate
         }
     }
 
