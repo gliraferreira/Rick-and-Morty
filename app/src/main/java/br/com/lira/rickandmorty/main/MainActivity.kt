@@ -2,16 +2,12 @@ package br.com.lira.rickandmorty.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.core.toolkit.setupFragmentHost
 import br.com.lira.rickandmorty.databinding.ActivityMainBinding
-import br.com.lira.rickandmorty.features.characterslist.presentation.view.CharactersFragment
-import br.com.lira.rickandmorty.features.episodes.presentation.view.EpisodesFragment
+import br.com.lira.rickandmorty.features.characters.presentation.ui.CharactersFragment
+import br.com.lira.rickandmorty.features.episodes.presentation.ui.EpisodesFragment
 import br.com.lira.rickandmorty.features.locations.presentation.view.LocationsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint

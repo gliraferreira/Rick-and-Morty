@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_characters"
-        android:name="br.com.lira.rickandmorty.features.characterslist.presentation.view.CharactersFragment"
+        android:name="br.com.lira.rickandmorty.features.characters.presentation.ui.CharactersFragment"
         android:label="navigation_characters"
         tools:layout="@layout/fragment_characters" />
 
     <fragment
         android:id="@+id/navigation_episodes"
-        android:name="br.com.lira.rickandmorty.features.episodes.presentation.view.EpisodesFragment"
+        android:name="br.com.lira.rickandmorty.features.episodes.presentation.ui.EpisodesFragment"
         android:label="navigation_episodes"
         tools:layout="@layout/fragment_episodes" />
 

@@ -1,9 +1,5 @@
 package br.com.lira.rickandmorty.features.episodes.di
 
-import br.com.lira.rickandmorty.features.characterslist.data.remote.datasource.CharactersRemoteDataSource
-import br.com.lira.rickandmorty.features.characterslist.data.remote.datasource.CharactersServiceDataSource
-import br.com.lira.rickandmorty.features.characterslist.data.repository.CharactersDefaultRepository
-import br.com.lira.rickandmorty.features.characterslist.domain.repository.CharactersRepository
 import br.com.lira.rickandmorty.features.episodes.data.remote.datasource.EpisodesRemoteDataSource
 import br.com.lira.rickandmorty.features.episodes.data.remote.datasource.EpisodesServiceDataSource
 import br.com.lira.rickandmorty.features.episodes.data.repository.EpisodesDefaultRepository

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/common_background"
-    tools:context=".features.characterdetails.presentation.view.CharacterDetailsFragment">
+    tools:context=".features.characters.presentation.ui.CharacterDetailsFragment">
 
     <include
         android:id="@+id/toolbarView"

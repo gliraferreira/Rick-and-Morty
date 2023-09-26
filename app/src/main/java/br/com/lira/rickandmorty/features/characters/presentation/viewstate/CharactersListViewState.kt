@@ -1,16 +1,21 @@
-package br.com.lira.rickandmorty.features.episodes.presentation.viewmodel
+package br.com.lira.rickandmorty.features.characters.presentation.viewstate
 
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.core.viewmodel.ViewState
+import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.main.presentation.model.GenericUIError
-import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
+import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterUIModel
 
-data class EpisodesListViewState(
-    val episodes: PagingData<EpisodeUIModel>? = PagingData.empty(),
+data class CharactersListViewState(
+    val characters: PagingData<CharacterUIModel>? = PagingData.empty(),
+    val filter: CharacterFilter? = CharacterFilter(),
+    val error: GenericUIError? = null,
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val shouldDisplayContent: Boolean = false,
-    val error: GenericUIError? = null,
+    val isSearchEnabled: Boolean = false,
+    val isFilteringResults: Boolean = false,
+    val filterDetails: String = ""
 ) : ViewState {
 
     fun setSuccessState() = this.copy(
