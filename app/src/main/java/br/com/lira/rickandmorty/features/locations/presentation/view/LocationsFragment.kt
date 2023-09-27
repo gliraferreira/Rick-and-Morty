@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.databinding.FragmentLocationsBinding
-import br.com.lira.rickandmorty.features.characters.presentation.ui.adapter.CharactersListAdapter
+import br.com.lira.rickandmorty.main.presentation.adapter.CharactersListAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharactersListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

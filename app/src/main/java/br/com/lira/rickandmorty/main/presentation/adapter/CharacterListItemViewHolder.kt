@@ -1,9 +1,9 @@
-package br.com.lira.rickandmorty.features.characters.presentation.ui.adapter
+package br.com.lira.rickandmorty.main.presentation.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import br.com.lira.rickandmorty.core.extension.loadImage
 import br.com.lira.rickandmorty.databinding.ListItemCharacterBinding
-import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
 
 class CharacterListItemViewHolder(
     private val binding: ListItemCharacterBinding,

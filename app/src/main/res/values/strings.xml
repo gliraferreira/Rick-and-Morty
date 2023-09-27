@@ -36,6 +36,11 @@
     <string name="episode_number_description">Episode %d</string>
     <string name="episode_item_details">Air Date: %s</string>
 
+    <string name="episode_details_title">Episode details</string>
+    <string name="episode_details_air_date_label">Released on</string>
+    <string name="episode_details_characters_list_label">Characters</string>
+    <string name="episode_details_episode_number">Season %d - Episode %d</string>
+
     <string name="toolbar_back_description">Navigate back</string>
     <string name="toolbar_search_description">Search</string>
 

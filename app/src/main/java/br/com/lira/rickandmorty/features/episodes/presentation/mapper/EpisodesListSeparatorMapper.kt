@@ -5,7 +5,7 @@ import androidx.paging.insertSeparators
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
 import javax.inject.Inject
 
-class EpisodesLIstSeparatorMapper @Inject constructor() {
+class EpisodesListSeparatorMapper @Inject constructor() {
 
     fun mapFrom(
         pagingData: PagingData<EpisodeUIModel.EpisodeUI>

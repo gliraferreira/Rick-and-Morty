@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.features.characters.presentation.model
+package br.com.lira.rickandmorty.main.presentation.model
 
 import androidx.annotation.ColorInt
 

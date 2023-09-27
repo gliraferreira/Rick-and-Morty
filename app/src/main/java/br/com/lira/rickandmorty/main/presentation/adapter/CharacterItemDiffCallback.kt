@@ -1,7 +1,7 @@
-package br.com.lira.rickandmorty.features.characters.presentation.ui.adapter
+package br.com.lira.rickandmorty.main.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
 
 object CharacterItemDiffCallback : DiffUtil.ItemCallback<CharacterUIModel>() {
 

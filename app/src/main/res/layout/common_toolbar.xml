@@ -38,7 +38,7 @@
             app:layout_constraintEnd_toStartOf="@id/searchIcon"
             app:layout_constraintStart_toEndOf="@id/navigationIcon"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Morty Smith" />
+            tools:text="Rick and Morty" />
 
         <ImageButton
             android:id="@+id/searchIcon"

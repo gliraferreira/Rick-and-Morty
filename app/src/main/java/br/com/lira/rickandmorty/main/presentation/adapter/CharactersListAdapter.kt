@@ -1,10 +1,10 @@
-package br.com.lira.rickandmorty.features.characters.presentation.ui.adapter
+package br.com.lira.rickandmorty.main.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import br.com.lira.rickandmorty.databinding.ListItemCharacterBinding
-import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
 
 class CharactersListAdapter(
     private val onCharacterClicked: (Long) -> Unit

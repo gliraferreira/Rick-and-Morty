@@ -7,7 +7,6 @@ sealed class EpisodeUIModel {
         val name: String,
         val formattedSeasonNumber: String,
         val formattedEpisodeNumber: String,
-        val charactersQuantity: Int,
         val airDate: String
     ) : EpisodeUIModel()
 

@@ -9,7 +9,7 @@ import br.com.lira.rickandmorty.core.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.episodes.domain.usecase.GetAllEpisodesUseCase
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodeModelToUIMapper
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesErrorMapper
-import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesLIstSeparatorMapper
+import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesListSeparatorMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.delay
@@ -23,7 +23,7 @@ class EpisodesListViewModel @Inject constructor(
     private val getAllEpisodes: GetAllEpisodesUseCase,
     private val episodeUiMapper: EpisodeModelToUIMapper,
     private val errorMapper: EpisodesErrorMapper,
-    private val separatorMapper: EpisodesLIstSeparatorMapper,
+    private val separatorMapper: EpisodesListSeparatorMapper,
 ) : ViewModel<EpisodesListViewState, EpisodesListViewAction>(EpisodesListViewState()) {
 
     init {
@@ -40,6 +40,10 @@ class EpisodesListViewModel @Inject constructor(
 
     fun onTryAgainClicked() {
         loadEpisodes(isTryAgain = true)
+    }
+
+    fun onEpisodeClicked(episodeId: Long) {
+        sendAction { EpisodesListViewAction.OpenEpisodeDetails(episodeId) }
     }
 
     private fun loadEpisodes(isTryAgain: Boolean = false) {

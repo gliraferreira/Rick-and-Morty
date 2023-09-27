@@ -5,7 +5,7 @@ import br.com.lira.rickandmorty.core.toolkit.ResourceProvider
 import br.com.lira.rickandmorty.main.domain.model.Character
 import br.com.lira.rickandmorty.main.domain.model.CharacterGender
 import br.com.lira.rickandmorty.main.domain.model.CharacterStatus
-import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
 import javax.inject.Inject
 
 class CharacterModelToUIMapper @Inject constructor(

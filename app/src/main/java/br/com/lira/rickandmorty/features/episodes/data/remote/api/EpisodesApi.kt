@@ -17,4 +17,9 @@ interface EpisodesApi {
     suspend fun getAllEpisodes(
         @Query("page") page: Int
     ): PageResponse<EpisodeResponse>
+
+    @GET("episode/{id}")
+    suspend fun getEpisodeById(
+        @Path("id") episodeId: Long?
+    ): EpisodeResponse
 }

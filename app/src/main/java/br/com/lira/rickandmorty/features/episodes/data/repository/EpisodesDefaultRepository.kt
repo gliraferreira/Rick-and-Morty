@@ -19,7 +19,7 @@ class EpisodesDefaultRepository @Inject constructor(
 ) : EpisodesRepository {
 
     override suspend fun getMultipleEpisodes(episodeIds: List<String>): List<Episode> {
-        return remoteDataSource.getMultipleEpisodes(episodeIds)
+        return remoteDataSource.getMultipleEpisodes(episodeIds).map(episodeMapper::mapFrom)
     }
 
     override suspend fun getAllEpisodes() = Pager(PagingConfig(pageSize = 20)) {
@@ -29,4 +29,8 @@ class EpisodesDefaultRepository @Inject constructor(
             episodeMapper = episodeMapper
         )
     }.flow
+
+    override suspend fun getEpisode(episodeId: Long?): Episode {
+        return remoteDataSource.getEpisode(episodeId).let(episodeMapper::mapFrom)
+    }
 }

@@ -9,4 +9,6 @@ interface EpisodesRepository {
     suspend fun getMultipleEpisodes(episodeIds: List<String>): List<Episode>
 
     suspend fun getAllEpisodes(): Flow<PagingData<Episode>>
+
+    suspend fun getEpisode(episodeId: Long?): Episode
 }

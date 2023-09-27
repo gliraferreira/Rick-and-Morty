@@ -11,7 +11,7 @@ private const val EPISODE_ITEM_TYPE = 0
 private const val HEADER_ITEM_TYPE = 1
 
 class EpisodesListAdapter(
-    private val onCharacterClicked: (Long) -> Unit
+    private val onEpisodeClicked: (Long) -> Unit
 ) : PagingDataAdapter<EpisodeUIModel, EpisodeListViewHolder>(EpisodeItemDiffCallback) {
 
     override fun onCreateViewHolder(
@@ -26,7 +26,7 @@ class EpisodesListAdapter(
                     parent,
                     false
                 ),
-                onEpisodeClicked = onCharacterClicked
+                onEpisodeClicked = onEpisodeClicked
             )
 
             else -> EpisodeListViewHolder.HeaderViewHolder(

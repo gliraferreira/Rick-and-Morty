@@ -9,7 +9,9 @@ data class CharacterDetailsViewState(
     val episodes: List<CharacterEpisodeUIModel> = emptyList(),
     val shouldDisplayContent: Boolean = false,
     val isLoading: Boolean = false,
-    val isError: Boolean = false
+    val isError: Boolean = false,
+    val shouldDisplayEpisodes: Boolean = false,
+    val isEpisodesLoading: Boolean = false
 ) : ViewState {
 
     fun setSuccessState(character: CharacterDetailsUIModel) = this.copy(
@@ -23,5 +25,21 @@ data class CharacterDetailsViewState(
         shouldDisplayContent = false,
         isLoading = true,
         isError = false
+    )
+
+    fun setEpisodesLoadingState() = this.copy(
+        shouldDisplayEpisodes = false,
+        isEpisodesLoading = true
+    )
+
+    fun setEpisodesSuccessState(episodes: List<CharacterEpisodeUIModel>) = this.copy(
+        shouldDisplayEpisodes = true,
+        isEpisodesLoading = false,
+        episodes = episodes
+    )
+
+    fun setEpisodesErrorState() = this.copy(
+        shouldDisplayEpisodes = false,
+        isEpisodesLoading = false
     )
 }

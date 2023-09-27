@@ -24,8 +24,8 @@
             android:id="@+id/characterImage"
             android:layout_width="@dimen/character_details_profile_picture"
             android:layout_height="@dimen/character_details_profile_picture"
-            android:layout_marginTop="@dimen/spacing_1"
             android:layout_marginStart="@dimen/screen_margin"
+            android:layout_marginTop="@dimen/spacing_1"
             app:civ_border_width="@dimen/character_details_profile_picture_border"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -33,15 +33,15 @@
 
         <TextView
             android:id="@+id/tvName"
+            style="@style/TextAppearance.Material3.TitleLarge"
             android:layout_width="@dimen/auto_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_5"
             android:layout_marginEnd="@dimen/screen_margin"
             android:maxLines="1"
-            app:autoSizeMinTextSize="18sp"
-            style="@style/TextAppearance.Material3.TitleLarge"
-            app:autoSizeTextType="uniform"
             android:textStyle="bold"
+            app:autoSizeMinTextSize="18sp"
+            app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/characterImage"
             app:layout_constraintTop_toBottomOf="@id/characterImage"
@@ -49,59 +49,59 @@
 
         <TextView
             android:id="@+id/tvSpeciesLabel"
+            style="@style/TextAppearance.Material3.LabelMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_5"
             android:text="@string/character_details_species_label"
-            style="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintStart_toStartOf="@id/tvName"
             app:layout_constraintTop_toBottomOf="@id/tvName" />
 
         <TextView
             android:id="@+id/tvSpecies"
+            style="@style/TextAppearance.Material3.BodyLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/TextAppearance.Material3.BodyLarge"
             app:layout_constraintStart_toStartOf="@id/tvName"
             app:layout_constraintTop_toBottomOf="@id/tvSpeciesLabel"
             tools:text="Human" />
 
         <TextView
             android:id="@+id/tvLocationLabel"
+            style="@style/TextAppearance.Material3.LabelMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_5"
             android:text="@string/character_details_location_label"
-            style="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintStart_toStartOf="@id/tvSpecies"
             app:layout_constraintTop_toBottomOf="@id/tvSpecies" />
 
         <TextView
             android:id="@+id/tvLocation"
+            style="@style/TextAppearance.Material3.BodyLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/TextAppearance.Material3.BodyLarge"
             app:layout_constraintStart_toStartOf="@id/tvSpecies"
             app:layout_constraintTop_toBottomOf="@id/tvLocationLabel"
             tools:text="Earth" />
 
         <TextView
             android:id="@+id/tvGenderLabel"
+            style="@style/TextAppearance.Material3.LabelMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_5"
             android:text="@string/character_details_gender_label"
-            style="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintStart_toStartOf="@id/tvLocation"
             app:layout_constraintTop_toBottomOf="@id/tvLocation"
             tools:text="Male" />
 
         <TextView
             android:id="@+id/tvGender"
+            style="@style/TextAppearance.Material3.BodyLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/spacing_7"
-            style="@style/TextAppearance.Material3.BodyLarge"
             app:layout_constraintStart_toStartOf="@id/tvLocation"
             app:layout_constraintTop_toBottomOf="@id/tvGenderLabel"
             tools:text="Male" />
@@ -138,6 +138,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvEpisodesHeader"
             tools:listitem="@layout/list_item_character_episode" />
+
+        <include
+            android:id="@+id/episodesLoading"
+            layout="@layout/loading_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEpisodesHeader" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

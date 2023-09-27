@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.extension.loadImage
+import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import br.com.lira.rickandmorty.features.characters.presentation.ui.adapter.CharacterEpisodeAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharacterDetailsViewModel
 import br.com.lira.rickandmorty.features.characters.presentation.viewstate.CharacterDetailsViewState
+import br.com.lira.rickandmorty.features.episodes.presentation.ui.EpisodeDetailsFragment
+import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewAction
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_CHARACTER_ID = "char_id"
@@ -66,9 +69,15 @@ class CharacterDetailsFragment : Fragment() {
 
     private fun observeViewState() {
         viewModel.state.observe(viewLifecycleOwner) { state ->
-            episodesAdapter.submitList(state.episodes)
-            binding.loading.root.isVisible = state.isLoading
-            binding.content.root.isVisible = state.shouldDisplayContent
+            with(binding) {
+                loading.root.isVisible = state.isLoading
+                content.root.isVisible = state.shouldDisplayContent
+
+                content.episodesLoading.root.isVisible = state.isEpisodesLoading
+                content.rvEpisodes.isVisible = state.shouldDisplayEpisodes
+                episodesAdapter.submitList(state.episodes)
+            }
+
             handleCharacterContent(state)
         }
     }
@@ -77,11 +86,13 @@ class CharacterDetailsFragment : Fragment() {
         state.character?.let { character ->
 
             binding.toolbarView.title.text = character.name
+
             characterImage.loadImage(character.image)
-            characterImage.borderColor = ContextCompat.getColor(requireContext(), character.statusColor)
+            characterImage.borderColor = character.statusColor
+
             tvName.text = character.name
             tvLocation.text = character.lastLocation
-            tvGender.setText(character.gender)
+            tvGender.text = character.gender
             tvSpecies.text = character.species
         }
     }

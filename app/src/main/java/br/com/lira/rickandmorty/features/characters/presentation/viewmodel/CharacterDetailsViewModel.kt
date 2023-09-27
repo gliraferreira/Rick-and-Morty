@@ -44,10 +44,13 @@ class CharacterDetailsViewModel @Inject constructor(
 
     private suspend fun fetchEpisodes(episodeIds: List<String>) {
         runCatching {
+            setState { it.setEpisodesLoadingState() }
             getMultipleEpisodes(episodeIds)
         }.onSuccess { episodes ->
             val episodesUi = episodes.map(episodeUiMapper::mapFrom)
-            setState { it.copy(episodes = episodesUi) }
+            setState { it.setEpisodesSuccessState(episodes = episodesUi) }
+        }.onFailure {
+            setState { it.setEpisodesErrorState() }
         }
     }
 }

@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentEpisodesBinding
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
 import br.com.lira.rickandmorty.features.episodes.presentation.ui.adapter.EpisodesListAdapter
+import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewAction
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewModel
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewState
 import br.com.lira.rickandmorty.main.presentation.adapter.PagingLoadStateAdapter
@@ -39,6 +41,7 @@ class EpisodesFragment : Fragment() {
 
         setupViews()
         observeViewState()
+        observeViewActions()
     }
 
     private fun setupViews() {
@@ -54,8 +57,8 @@ class EpisodesFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        episodesAdapter = EpisodesListAdapter() {}
-        binding.rvCharacters.adapter = episodesAdapter.apply {
+        episodesAdapter = EpisodesListAdapter(viewModel::onEpisodeClicked)
+        binding.episodesList.adapter = episodesAdapter.apply {
             withLoadStateFooter(
                 footer = PagingLoadStateAdapter()
             )
@@ -79,6 +82,16 @@ class EpisodesFragment : Fragment() {
         }
     }
 
+    private fun observeViewActions() {
+        viewModel.action.observe(viewLifecycleOwner) { viewAction ->
+            when (viewAction) {
+                is EpisodesListViewAction.OpenEpisodeDetails -> openEpisodeDetailsScreen(
+                    viewAction.episodeId
+                )
+            }
+        }
+    }
+
     private fun observeViewState() {
         viewModel.state.observe(viewLifecycleOwner) { state ->
             handleEpisodesList(state.episodes)
@@ -93,9 +106,16 @@ class EpisodesFragment : Fragment() {
         }
     }
 
+    private fun openEpisodeDetailsScreen(episodeId: Long) {
+        navigateToFragment(
+            R.id.app_nav_host_fragment,
+            EpisodeDetailsFragment.newInstance(episodeId)
+        )
+    }
+
     private fun handleCurrentScreenState(state: EpisodesListViewState) = with(binding) {
         loading.root.isVisible = state.isLoading
-        rvCharacters.isVisible = state.shouldDisplayContent
+        episodesList.isVisible = state.shouldDisplayContent
         errorState.root.isVisible = state.isError
     }
 }

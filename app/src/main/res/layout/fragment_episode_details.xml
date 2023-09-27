@@ -4,21 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/common_background">
+    android:background="@color/common_background"
+    tools:context=".features.characters.presentation.ui.CharacterDetailsFragment">
 
     <include
         android:id="@+id/toolbarView"
         layout="@layout/common_toolbar"
+        app:layout_constraintBottom_toTopOf="@id/content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/verticalBarrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="toolbarView" />
 
     <include
         android:id="@+id/loading"
@@ -31,24 +26,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/errorState"
-        layout="@layout/common_error_view"
+        android:id="@+id/content"
+        layout="@layout/fragment_episode_details_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/verticalBarrier" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/episodesList"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/auto_content"
+        android:layout_height="0dp"
         android:layout_marginBottom="@dimen/bottom_navigation_height"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/verticalBarrier"
-        tools:listitem="@layout/list_item_character" />
+        app:layout_constraintTop_toBottomOf="@id/toolbarView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

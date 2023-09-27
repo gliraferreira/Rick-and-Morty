@@ -13,8 +13,8 @@ import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
-import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterUIModel
-import br.com.lira.rickandmorty.features.characters.presentation.ui.adapter.CharactersListAdapter
+import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.main.presentation.adapter.CharactersListAdapter
 import br.com.lira.rickandmorty.main.presentation.adapter.PagingLoadStateAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharactersListViewAction
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharactersListViewModel

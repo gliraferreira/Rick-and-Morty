@@ -1,27 +1,24 @@
-package br.com.lira.rickandmorty.features.characters.presentation.viewstate
+package br.com.lira.rickandmorty.features.episodes.presentation.viewmodel
 
-import androidx.paging.PagingData
 import br.com.lira.rickandmorty.core.viewmodel.ViewState
-import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
-import br.com.lira.rickandmorty.main.presentation.model.GenericUIError
 import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeDetailsUIModel
+import br.com.lira.rickandmorty.main.presentation.model.GenericUIError
 
-data class CharactersListViewState(
-    val characters: PagingData<CharacterUIModel>? = PagingData.empty(),
-    val filter: CharacterFilter? = CharacterFilter(),
-    val error: GenericUIError? = null,
+data class EpisodeDetailsViewState(
+    val episode: EpisodeDetailsUIModel? = null,
+    val characters: List<CharacterUIModel> = emptyList(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val shouldDisplayContent: Boolean = false,
-    val isSearchEnabled: Boolean = false,
-    val isFilteringResults: Boolean = false,
-    val filterDetails: String = ""
+    val error: GenericUIError? = null,
 ) : ViewState {
 
-    fun setSuccessState() = this.copy(
+    fun setSuccessState(episode: EpisodeDetailsUIModel) = this.copy(
         shouldDisplayContent = true,
         isLoading = false,
-        isError = false
+        isError = false,
+        episode = episode
     )
 
     fun setLoadingState() = this.copy(
