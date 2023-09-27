@@ -73,13 +73,19 @@ class CharacterDetailsFragment : Fragment() {
                 loading.root.isVisible = state.isLoading
                 content.root.isVisible = state.shouldDisplayContent
 
-                content.episodesLoading.root.isVisible = state.isEpisodesLoading
-                content.rvEpisodes.isVisible = state.shouldDisplayEpisodes
-                episodesAdapter.submitList(state.episodes)
+                handleEpisodes(state)
             }
 
             handleCharacterContent(state)
         }
+    }
+
+    private fun handleEpisodes(state: CharacterDetailsViewState) = with(binding.content) {
+        episodesLoading.root.isVisible = state.isEpisodesLoading
+        rvEpisodes.isVisible = state.shouldDisplayEpisodes
+        tvEpisodesHeader.isVisible = state.shouldDisplayEpisodes
+        tvEpisodesHeader.text = state.episodesHeader
+        episodesAdapter.submitList(state.episodes)
     }
 
     private fun handleCharacterContent(state: CharacterDetailsViewState) = with(binding.content) {

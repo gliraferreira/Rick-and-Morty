@@ -48,7 +48,7 @@ class EpisodeDetailsFragment : Fragment() {
     }
 
     private fun setupViews() {
-        charactersAdapter = CharactersListAdapter {  }
+        charactersAdapter = CharactersListAdapter(false) { }
         binding.content.charactersList.adapter = charactersAdapter
     }
 
@@ -79,7 +79,7 @@ class EpisodeDetailsFragment : Fragment() {
         charactersAdapter.submitList(state.characters)
     }
 
-    private fun handleEpisode(state: EpisodeDetailsViewState) = with (binding.content) {
+    private fun handleEpisode(state: EpisodeDetailsViewState) = with(binding.content) {
         state.episode?.let { episodeUi ->
             tvName.text = episodeUi.name
             episodeNumber.text = episodeUi.episodeNumber

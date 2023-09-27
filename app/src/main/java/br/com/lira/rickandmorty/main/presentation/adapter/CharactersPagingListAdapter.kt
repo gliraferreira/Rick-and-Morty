@@ -7,6 +7,7 @@ import br.com.lira.rickandmorty.databinding.ListItemCharacterBinding
 import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
 
 class CharactersPagingListAdapter(
+    private val isNavigationEnabled: Boolean = false,
     private val onCharacterClicked: (Long) -> Unit
 ) : PagingDataAdapter<CharacterUIModel, CharacterListItemViewHolder>(CharacterItemDiffCallback) {
 
@@ -19,7 +20,8 @@ class CharactersPagingListAdapter(
             parent,
             false
         ),
-        onCharacterClicked = onCharacterClicked
+        onCharacterClicked = onCharacterClicked,
+        isNavigationEnabled = isNavigationEnabled
     )
 
     override fun onBindViewHolder(holder: CharacterListItemViewHolder, position: Int) {

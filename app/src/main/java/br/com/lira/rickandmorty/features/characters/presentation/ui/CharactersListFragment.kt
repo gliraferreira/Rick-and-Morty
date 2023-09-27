@@ -86,7 +86,7 @@ class CharactersFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        charactersAdapter = CharactersPagingListAdapter {
+        charactersAdapter = CharactersPagingListAdapter(true) {
             viewModel.onCharacterClicked(it)
         }
         binding.rvCharacters.adapter = charactersAdapter.apply {

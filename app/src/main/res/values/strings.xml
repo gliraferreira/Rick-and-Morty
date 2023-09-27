@@ -19,7 +19,7 @@
     <string name="characters_list_details_description">Go to details</string>
 
     <string name="character_details_title">Character Details</string>
-    <string name="character_details_episodes_title">Episodes</string>
+    <string name="character_details_episodes_title">Episodes (%d)</string>
     <string name="character_details_species_label">Species</string>
     <string name="character_details_location_label">Current location</string>
     <string name="character_details_gender_label">Gender</string>

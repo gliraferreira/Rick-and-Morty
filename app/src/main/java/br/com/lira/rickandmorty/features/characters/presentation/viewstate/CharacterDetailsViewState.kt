@@ -7,6 +7,7 @@ import br.com.lira.rickandmorty.features.characters.presentation.model.Character
 data class CharacterDetailsViewState(
     val character: CharacterDetailsUIModel? = null,
     val episodes: List<CharacterEpisodeUIModel> = emptyList(),
+    val episodesHeader: String = "",
     val shouldDisplayContent: Boolean = false,
     val isLoading: Boolean = false,
     val isError: Boolean = false,
@@ -32,11 +33,13 @@ data class CharacterDetailsViewState(
         isEpisodesLoading = true
     )
 
-    fun setEpisodesSuccessState(episodes: List<CharacterEpisodeUIModel>) = this.copy(
-        shouldDisplayEpisodes = true,
-        isEpisodesLoading = false,
-        episodes = episodes
-    )
+    fun setEpisodesSuccessState(episodes: List<CharacterEpisodeUIModel>, header: String) =
+        this.copy(
+            shouldDisplayEpisodes = true,
+            isEpisodesLoading = false,
+            episodes = episodes,
+            episodesHeader = header
+        )
 
     fun setEpisodesErrorState() = this.copy(
         shouldDisplayEpisodes = false,

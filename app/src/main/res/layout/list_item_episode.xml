@@ -12,10 +12,9 @@
     app:cardCornerRadius="@dimen/card_corner_radius"
     app:cardElevation="@dimen/card_elevation">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="@dimen/spacing_3">
 
         <TextView
@@ -23,14 +22,19 @@
             style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Episode #" />
 
         <TextView
             android:id="@+id/episodeTitle"
             style="@style/TextAppearance.Material3.TitleMedium"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/episodeNumber"
+            app:layout_constraintTop_toBottomOf="@id/episodeNumber"
+            app:layout_constraintEnd_toStartOf="@id/navigationIcon"
             tools:text="Episode Title" />
 
         <TextView
@@ -38,7 +42,22 @@
             style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/episodeTitle"
+            app:layout_constraintTop_toBottomOf="@id/episodeTitle"
             tools:text="Characters: 0 | Air Date: N/A" />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/navigationIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/common_background"
+            android:clickable="false"
+            android:contentDescription="@string/characters_list_details_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_right"
+            app:tint="@color/iconDark" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
