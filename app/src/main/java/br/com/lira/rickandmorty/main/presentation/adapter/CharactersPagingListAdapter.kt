@@ -2,13 +2,13 @@ package br.com.lira.rickandmorty.main.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
+import androidx.paging.PagingDataAdapter
 import br.com.lira.rickandmorty.databinding.ListItemCharacterBinding
 import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
 
-class CharactersListAdapter(
+class CharactersPagingListAdapter(
     private val onCharacterClicked: (Long) -> Unit
-) : ListAdapter<CharacterUIModel, CharacterListItemViewHolder>(CharacterItemDiffCallback) {
+) : PagingDataAdapter<CharacterUIModel, CharacterListItemViewHolder>(CharacterItemDiffCallback) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

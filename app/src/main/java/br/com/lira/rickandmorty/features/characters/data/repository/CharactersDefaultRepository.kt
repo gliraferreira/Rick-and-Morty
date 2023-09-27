@@ -8,13 +8,16 @@ import br.com.lira.rickandmorty.features.characters.data.remote.datasource.Chara
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.domain.repository.CharactersRepository
 import br.com.lira.rickandmorty.features.characters.data.mapper.CharacterResponseToModelMapper
+import br.com.lira.rickandmorty.features.characters.data.mapper.CharacterResponseToShortModelMapper
 import br.com.lira.rickandmorty.main.domain.model.Character
+import br.com.lira.rickandmorty.main.domain.model.CharacterShort
 import javax.inject.Inject
 
 class CharactersDefaultRepository @Inject constructor(
     private val remoteDataSource: CharactersRemoteDataSource,
     private val charactersResponseMapper: CharacterResponseToModelMapper,
     private val urlMapper: UrlMapper,
+    private val characterShortMapper: CharacterResponseToShortModelMapper
 ) : CharactersRepository {
 
     override suspend fun getAllCharacters(
@@ -33,4 +36,8 @@ class CharactersDefaultRepository @Inject constructor(
 
         return charactersResponseMapper.mapFrom(response)
     }
+
+    override suspend fun getMultipleCharacters(
+        ids: List<String>
+    ) = remoteDataSource.getMultipleCharacters(ids).map(characterShortMapper::mapFrom)
 }

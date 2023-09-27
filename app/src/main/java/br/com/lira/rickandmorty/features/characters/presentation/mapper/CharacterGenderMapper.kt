@@ -1,16 +1,17 @@
 package br.com.lira.rickandmorty.features.characters.presentation.mapper
 
-import androidx.annotation.IdRes
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.core.toolkit.ResourceProvider
 import br.com.lira.rickandmorty.main.domain.model.CharacterGender
 import javax.inject.Inject
 
-class CharacterGenderMapper @Inject constructor() {
+class CharacterGenderMapper @Inject constructor(
+    private val resourceProvider: ResourceProvider
+) {
 
-    fun mapFrom(@IdRes chipRes: Int) = when (chipRes) {
-        R.id.genderFemaleChip -> CharacterGender.FEMALE
-        R.id.genderMaleChip -> CharacterGender.MALE
-        R.id.genderGenderlessChip -> CharacterGender.GENDERLESS
-        else -> CharacterGender.UNKNOWN
-    }
+    fun mapFrom(gender: CharacterGender) = when (gender) {
+        CharacterGender.MALE -> R.string.character_gender_male
+        CharacterGender.FEMALE -> R.string.character_gender_female
+        else -> R.string.character_gender_unknown
+    }.let(resourceProvider::getString)
 }

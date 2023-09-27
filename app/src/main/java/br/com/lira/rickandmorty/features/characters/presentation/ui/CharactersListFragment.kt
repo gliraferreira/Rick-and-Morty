@@ -14,7 +14,7 @@ import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
-import br.com.lira.rickandmorty.main.presentation.adapter.CharactersListAdapter
+import br.com.lira.rickandmorty.main.presentation.adapter.CharactersPagingListAdapter
 import br.com.lira.rickandmorty.main.presentation.adapter.PagingLoadStateAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharactersListViewAction
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharactersListViewModel
@@ -30,7 +30,7 @@ class CharactersFragment : Fragment() {
     private lateinit var binding: FragmentCharactersBinding
     private val viewModel: CharactersListViewModel by viewModels()
 
-    private lateinit var charactersAdapter: CharactersListAdapter
+    private lateinit var charactersAdapter: CharactersPagingListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -86,7 +86,7 @@ class CharactersFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        charactersAdapter = CharactersListAdapter {
+        charactersAdapter = CharactersPagingListAdapter {
             viewModel.onCharacterClicked(it)
         }
         binding.rvCharacters.adapter = charactersAdapter.apply {

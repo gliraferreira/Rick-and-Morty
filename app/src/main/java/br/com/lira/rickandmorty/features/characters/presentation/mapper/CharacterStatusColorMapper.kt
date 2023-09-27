@@ -5,12 +5,13 @@ import br.com.lira.rickandmorty.core.toolkit.ResourceProvider
 import br.com.lira.rickandmorty.main.domain.model.CharacterStatus
 import javax.inject.Inject
 
-class CharacterStatusMapper @Inject constructor(
+class CharacterStatusColorMapper @Inject constructor(
     private val resourceProvider: ResourceProvider
 ) {
+
     fun mapFrom(status: CharacterStatus) = when (status) {
-        CharacterStatus.ALIVE -> R.string.character_status_alive
-        CharacterStatus.DEAD -> R.string.character_status_dead
-        else -> R.string.character_status_unknown
-    }.let(resourceProvider::getString)
+        CharacterStatus.ALIVE -> R.color.character_status_alive
+        CharacterStatus.DEAD -> R.color.character_status_dead
+        else -> R.color.character_status_unknown
+    }.let(resourceProvider::getColor)
 }

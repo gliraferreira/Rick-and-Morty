@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.databinding.FragmentLocationsBinding
-import br.com.lira.rickandmorty.main.presentation.adapter.CharactersListAdapter
+import br.com.lira.rickandmorty.main.presentation.adapter.CharactersPagingListAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharactersListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,7 +20,7 @@ class LocationsFragment : Fragment() {
     private lateinit var binding: FragmentLocationsBinding
     private val viewModel: CharactersListViewModel by viewModels()
 
-    private lateinit var charactersAdapter: CharactersListAdapter
+    private lateinit var charactersAdapter: CharactersPagingListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.features.characters.data.remote.response
+package br.com.lira.rickandmorty.features.characters.data.remote.api.response
 
 import br.com.lira.rickandmorty.main.data.remote.response.LocationResponse
 import com.squareup.moshi.JsonClass

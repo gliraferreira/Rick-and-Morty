@@ -1,8 +1,9 @@
 package br.com.lira.rickandmorty.features.characters.data.remote.datasource
 
-import br.com.lira.rickandmorty.features.characters.data.remote.response.CharacterResponse
+import br.com.lira.rickandmorty.features.characters.data.remote.api.response.CharacterResponse
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.main.data.remote.response.PageResponse
+import retrofit2.http.Path
 
 interface CharactersRemoteDataSource {
 
@@ -12,4 +13,6 @@ interface CharactersRemoteDataSource {
     ): PageResponse<CharacterResponse>
 
     suspend fun getCharacter(characterId: Long?): CharacterResponse
+
+    suspend fun getMultipleCharacters(ids: List<String>): List<CharacterResponse>
 }

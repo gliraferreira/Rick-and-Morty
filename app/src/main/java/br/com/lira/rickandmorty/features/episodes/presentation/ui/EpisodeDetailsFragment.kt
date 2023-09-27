@@ -10,8 +10,9 @@ import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentEpisodeDetailsBinding
-import br.com.lira.rickandmorty.main.presentation.adapter.CharactersListAdapter
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewModel
+import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewState
+import br.com.lira.rickandmorty.main.presentation.adapter.CharactersListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_EPISODE_ID = "episode_id"
@@ -62,11 +63,27 @@ class EpisodeDetailsFragment : Fragment() {
 
     private fun observeViewState() {
         viewModel.state.observe(viewLifecycleOwner) { state ->
-            state?.episode?.let { episodeUi ->
-                binding.content.tvName.text = episodeUi.name
-                binding.content.episodeNumber.text = episodeUi.episodeNumber
-                binding.content.airDate.text = episodeUi.airDate
-            }
+            binding.loading.root.isVisible = state.isLoading
+            binding.content.root.isVisible = state.shouldDisplayCharacters
+
+            handleEpisode(state)
+            handleCharactersList(state)
+        }
+    }
+
+    private fun handleCharactersList(state: EpisodeDetailsViewState) = with(binding.content) {
+        charactersList.isVisible = state.shouldDisplayCharacters
+        episodesLoading.root.isVisible = state.isCharactersLoading
+        charactersListHeader.isVisible = state.shouldDisplayCharacters
+        charactersListHeader.text = state.charactersHeader
+        charactersAdapter.submitList(state.characters)
+    }
+
+    private fun handleEpisode(state: EpisodeDetailsViewState) = with (binding.content) {
+        state.episode?.let { episodeUi ->
+            tvName.text = episodeUi.name
+            episodeNumber.text = episodeUi.episodeNumber
+            airDate.text = episodeUi.airDate
         }
     }
 

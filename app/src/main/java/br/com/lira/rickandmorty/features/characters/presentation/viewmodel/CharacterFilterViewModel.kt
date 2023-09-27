@@ -3,8 +3,8 @@ package br.com.lira.rickandmorty.features.characters.presentation.viewmodel
 import br.com.lira.rickandmorty.core.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterFilterUIModelMapper
-import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterGenderMapper
-import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterStatusMapper
+import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterFilterGenderMapper
+import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterFilterStatusMapper
 import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharacterFilterViewAction
 import br.com.lira.rickandmorty.features.characters.presentation.viewstate.CharacterFilterViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,9 +12,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharacterFilterViewModel @Inject constructor(
-    private val statusMapper: CharacterStatusMapper,
+    private val statusMapper: CharacterFilterStatusMapper,
     private val filterUiMapper: CharacterFilterUIModelMapper,
-    private val genderMapper: CharacterGenderMapper
+    private val genderMapper: CharacterFilterGenderMapper
 ) : ViewModel<CharacterFilterViewState, CharacterFilterViewAction>(CharacterFilterViewState()) {
 
     fun init(currentFilter: CharacterFilter?) {

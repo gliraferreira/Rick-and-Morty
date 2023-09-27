@@ -1,15 +1,15 @@
 package br.com.lira.rickandmorty.features.characters.presentation.mapper
 
-import br.com.lira.rickandmorty.main.domain.model.Character
+import br.com.lira.rickandmorty.main.domain.model.CharacterShort
 import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
 import javax.inject.Inject
 
-class CharacterModelToUIMapper @Inject constructor(
+class CharacterShortToUIMapper @Inject constructor(
     private val statusColorMapper: CharacterStatusColorMapper,
     private val genderMapper: CharacterGenderMapper
 ) {
 
-    fun mapFrom(character: Character) = CharacterUIModel(
+    fun mapFrom(character: CharacterShort) = CharacterUIModel(
         id = character.id,
         name = character.name,
         statusColor = statusColorMapper.mapFrom(character.status),

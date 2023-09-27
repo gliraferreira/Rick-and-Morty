@@ -20,7 +20,6 @@
             android:layout_marginStart="@dimen/screen_margin"
             app:autoSizeMinTextSize="18sp"
             style="@style/TextAppearance.Material3.DisplayLarge"
-            app:autoSizeTextType="uniform"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,22 +36,12 @@
             tools:text="Season 5 - Episode 2" />
 
         <TextView
-            android:id="@+id/airDateLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_5"
-            android:text="@string/episode_details_air_date_label"
-            style="@style/TextAppearance.Material3.LabelLarge"
-            app:layout_constraintStart_toStartOf="@id/episodeNumber"
-            app:layout_constraintTop_toBottomOf="@id/episodeNumber"/>
-
-        <TextView
             android:id="@+id/airDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.Material3.BodyLarge"
             app:layout_constraintStart_toStartOf="@id/tvName"
-            app:layout_constraintTop_toBottomOf="@id/airDateLabel"
+            app:layout_constraintTop_toBottomOf="@id/episodeNumber"
             tools:text="September 10, 2017" />
 
         <View
@@ -71,10 +60,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_5"
-            android:text="@string/episode_details_characters_list_label"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constraintStart_toStartOf="@id/divider"
-            app:layout_constraintTop_toBottomOf="@id/divider" />
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            tools:text="Characters (20)"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/charactersList"
