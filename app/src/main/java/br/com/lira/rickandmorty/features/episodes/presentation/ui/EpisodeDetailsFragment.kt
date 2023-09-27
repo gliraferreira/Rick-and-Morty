@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -31,7 +32,10 @@ class EpisodeDetailsFragment : Fragment() {
         arguments?.let {
             episodeId = it.getLong(ARG_EPISODE_ID)
         }
+
+        setupBackPressed()
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +49,12 @@ class EpisodeDetailsFragment : Fragment() {
         setupToolbar()
         setupViews()
         observeViewState()
+    }
+
+    private fun setupBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            popBackStack()
+        }
     }
 
     private fun setupViews() {

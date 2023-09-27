@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.extension.loadImage
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
+import br.com.lira.rickandmorty.core.toolkit.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import br.com.lira.rickandmorty.features.characters.presentation.ui.adapter.CharacterEpisodeAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharacterDetailsViewModel
@@ -34,6 +36,7 @@ class CharacterDetailsFragment : Fragment() {
         arguments?.let {
             characterId = it.getLong(ARG_CHARACTER_ID)
         }
+        setupBackPressed()
     }
 
     override fun onCreateView(
@@ -52,6 +55,12 @@ class CharacterDetailsFragment : Fragment() {
         setupToolbar()
         setupViews()
         observeViewState()
+    }
+
+    private fun setupBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            popBackStack()
+        }
     }
 
     private fun setupViews() {
