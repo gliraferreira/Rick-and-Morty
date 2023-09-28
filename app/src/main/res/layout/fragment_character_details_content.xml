@@ -24,26 +24,24 @@
             android:id="@+id/characterImage"
             android:layout_width="@dimen/character_details_profile_picture"
             android:layout_height="@dimen/character_details_profile_picture"
-            android:layout_marginStart="@dimen/screen_margin"
             android:layout_marginTop="@dimen/spacing_1"
             app:civ_border_width="@dimen/character_details_profile_picture_border"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_round_account_circle" />
 
         <TextView
             android:id="@+id/tvName"
-            style="@style/TextAppearance.Material3.TitleLarge"
+            style="@style/TextAppearance.Material3.DisplayMedium"
             android:layout_width="@dimen/auto_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_5"
             android:layout_marginEnd="@dimen/screen_margin"
-            android:maxLines="1"
-            android:textStyle="bold"
+            android:layout_marginStart="@dimen/screen_margin"
             app:autoSizeMinTextSize="18sp"
-            app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/characterImage"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/characterImage"
             tools:text="Morty Smith" />
 

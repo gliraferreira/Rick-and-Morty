@@ -20,7 +20,6 @@
             android:layout_marginStart="@dimen/screen_margin"
             app:autoSizeMinTextSize="18sp"
             style="@style/TextAppearance.Material3.DisplayLarge"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,7 +29,8 @@
             android:id="@+id/episodeNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/TextAppearance.Material3.HeadlineMedium"
+            android:layout_marginTop="@dimen/spacing_2"
+            style="@style/TextAppearance.Material3.HeadlineSmall"
             app:layout_constraintStart_toStartOf="@id/tvName"
             app:layout_constraintTop_toBottomOf="@id/tvName"
             tools:text="Season 5 - Episode 2" />
