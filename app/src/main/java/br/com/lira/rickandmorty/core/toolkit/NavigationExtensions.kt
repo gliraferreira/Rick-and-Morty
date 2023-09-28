@@ -67,6 +67,7 @@ fun Fragment.navigateToFragment(
         hostRes = hostRes,
         fragment = destination,
         allowStateLoss = allowStateLoss,
+        fragmentAnimation = fragmentAnimation
     )
 }
 

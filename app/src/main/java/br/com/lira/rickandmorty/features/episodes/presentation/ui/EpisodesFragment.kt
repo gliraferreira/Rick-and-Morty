@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.core.toolkit.SlideFromRightAnimation
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentEpisodesBinding
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
@@ -108,8 +109,9 @@ class EpisodesFragment : Fragment() {
 
     private fun openEpisodeDetailsScreen(episodeId: Long) {
         navigateToFragment(
-            R.id.app_nav_host_fragment,
-            EpisodeDetailsFragment.newInstance(episodeId)
+            hostRes = R.id.app_nav_host_fragment,
+            destination = EpisodeDetailsFragment.newInstance(episodeId),
+            fragmentAnimation = SlideFromRightAnimation
         )
     }
 
