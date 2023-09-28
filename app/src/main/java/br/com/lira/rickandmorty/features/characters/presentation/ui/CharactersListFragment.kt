@@ -10,6 +10,7 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.core.toolkit.SlideToLeftAnimation
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
@@ -149,15 +150,17 @@ class CharactersFragment : Fragment() {
 
     private fun openCharacterFilterScreen(currentFilter: CharacterFilter?) {
         navigateToFragment(
-            R.id.app_nav_host_fragment,
-            CharacterFilterFragment.newInstance(currentFilter)
+            hostRes = R.id.app_nav_host_fragment,
+            destination = CharacterFilterFragment.newInstance(currentFilter),
+            fragmentAnimation = SlideToLeftAnimation
         )
     }
 
     private fun openCharactersScreen(characterId: Long) {
         navigateToFragment(
-            R.id.app_nav_host_fragment,
-            CharacterDetailsFragment.newInstance(characterId)
+            hostRes = R.id.app_nav_host_fragment,
+            destination = CharacterDetailsFragment.newInstance(characterId),
+            fragmentAnimation = SlideToLeftAnimation
         )
     }
 }

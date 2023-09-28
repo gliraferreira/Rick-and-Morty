@@ -61,6 +61,7 @@ fun Fragment.navigateToFragment(
     @IdRes hostRes: Int,
     destination: Fragment,
     allowStateLoss: Boolean = false,
+    fragmentAnimation: FragmentAnimation? = null
 ) {
     parentFragmentManager.commitNavigation(
         hostRes = hostRes,
@@ -96,8 +97,10 @@ fun FragmentManager.commitNavigation(
     allowStateLoss: Boolean,
     popBackTo: String? = null,
     flag: PopBackStackFlags = PopBackStackFlags.EXCLUSIVE,
+    fragmentAnimation: FragmentAnimation? = null
 ) {
     commit(allowStateLoss) {
+        fragmentAnimation?.setupAnimation(this)
         setReorderingAllowed(true)
         replace(hostRes, fragment, fragment::class.simpleName)
         popBackTo?.let { backFragmentDestination -> popBackStack(backFragmentDestination, flag.value) }
