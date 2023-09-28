@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.characters.presentation.mapper
 
 import androidx.annotation.IdRes
 import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.main.domain.model.CharacterGender
+import br.com.lira.rickandmorty.features.shared.domain.model.CharacterGender
 import javax.inject.Inject
 
 class CharacterFilterGenderMapper @Inject constructor() {

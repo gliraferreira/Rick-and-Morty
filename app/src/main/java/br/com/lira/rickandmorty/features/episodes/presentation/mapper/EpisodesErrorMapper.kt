@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.episodes.presentation.mapper
 
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.ResourceProvider
-import br.com.lira.rickandmorty.main.presentation.model.GenericUIError
+import br.com.lira.rickandmorty.features.shared.presentation.model.GenericUIError
 import javax.inject.Inject
 
 class EpisodesErrorMapper @Inject constructor(

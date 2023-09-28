@@ -5,8 +5,8 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import br.com.lira.rickandmorty.core.mapper.UrlMapper
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
-import br.com.lira.rickandmorty.features.characters.data.mapper.CharacterResponseToModelMapper
-import br.com.lira.rickandmorty.main.domain.model.Character
+import br.com.lira.rickandmorty.features.characters.data.remote.mapper.CharacterResponseToModelMapper
+import br.com.lira.rickandmorty.features.characters.domain.model.Character
 
 class CharacterPagingDataSource constructor(
     private val filter: CharacterFilter? = null,

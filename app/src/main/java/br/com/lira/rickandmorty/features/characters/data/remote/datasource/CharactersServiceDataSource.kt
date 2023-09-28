@@ -1,9 +1,7 @@
 package br.com.lira.rickandmorty.features.characters.data.remote.datasource
 
 import br.com.lira.rickandmorty.features.characters.data.remote.api.CharactersApi
-import br.com.lira.rickandmorty.features.characters.data.remote.api.response.CharacterResponse
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
-import br.com.lira.rickandmorty.main.domain.model.Character
 import javax.inject.Inject
 
 class CharactersServiceDataSource @Inject constructor(

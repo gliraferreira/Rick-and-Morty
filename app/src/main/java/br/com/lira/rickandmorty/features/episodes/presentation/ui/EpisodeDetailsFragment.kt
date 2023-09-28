@@ -13,7 +13,7 @@ import br.com.lira.rickandmorty.core.toolkit.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentEpisodeDetailsBinding
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewModel
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewState
-import br.com.lira.rickandmorty.main.presentation.adapter.CharactersListAdapter
+import br.com.lira.rickandmorty.features.shared.presentation.adapter.CharactersListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_EPISODE_ID = "episode_id"

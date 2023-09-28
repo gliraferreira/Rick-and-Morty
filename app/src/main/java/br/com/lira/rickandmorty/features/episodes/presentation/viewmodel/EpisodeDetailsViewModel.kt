@@ -9,8 +9,8 @@ import br.com.lira.rickandmorty.features.characters.presentation.mapper.Characte
 import br.com.lira.rickandmorty.features.episodes.domain.usecase.GetEpisodeByIdUseCase
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodeModelToDetailsUIMapper
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesErrorMapper
-import br.com.lira.rickandmorty.main.domain.model.CharacterShort
-import br.com.lira.rickandmorty.main.domain.model.Episode
+import br.com.lira.rickandmorty.features.shared.domain.model.CharacterShort
+import br.com.lira.rickandmorty.features.shared.domain.model.Episode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch

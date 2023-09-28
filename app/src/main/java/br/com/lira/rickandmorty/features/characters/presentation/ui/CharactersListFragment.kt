@@ -14,9 +14,9 @@ import br.com.lira.rickandmorty.core.toolkit.SlideFromRightAnimation
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
-import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
-import br.com.lira.rickandmorty.main.presentation.adapter.CharactersPagingListAdapter
-import br.com.lira.rickandmorty.main.presentation.adapter.PagingLoadStateAdapter
+import br.com.lira.rickandmorty.features.shared.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.features.characters.presentation.ui.adapter.CharactersPagingListAdapter
+import br.com.lira.rickandmorty.features.shared.presentation.adapter.PagingLoadStateAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharactersListViewAction
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharactersListViewModel
 import br.com.lira.rickandmorty.features.characters.presentation.viewstate.CharactersListViewState

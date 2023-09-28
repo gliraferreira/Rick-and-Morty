@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.episodes.data.remote.datasource
 
 import br.com.lira.rickandmorty.features.episodes.data.remote.api.EpisodesApi
 import br.com.lira.rickandmorty.features.episodes.data.remote.api.response.EpisodeResponse
-import br.com.lira.rickandmorty.main.data.remote.response.PageResponse
+import br.com.lira.rickandmorty.features.shared.remote.response.PageResponse
 import javax.inject.Inject
 
 class EpisodesServiceDataSource @Inject constructor(

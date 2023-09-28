@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.stub
 
 import br.com.lira.rickandmorty.features.episodes.data.remote.api.response.EpisodeResponse
-import br.com.lira.rickandmorty.main.domain.model.Episode
+import br.com.lira.rickandmorty.features.shared.domain.model.Episode
 
 object EpisodeStub {
 

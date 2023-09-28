@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.features.episodes.data.remote.api
 
 import br.com.lira.rickandmorty.features.episodes.data.remote.api.response.EpisodeResponse
-import br.com.lira.rickandmorty.main.data.remote.response.PageResponse
+import br.com.lira.rickandmorty.features.shared.remote.response.PageResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

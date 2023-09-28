@@ -7,10 +7,9 @@ import br.com.lira.rickandmorty.features.characters.data.remote.datasource.Chara
 import br.com.lira.rickandmorty.features.characters.data.remote.datasource.CharactersRemoteDataSource
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.domain.repository.CharactersRepository
-import br.com.lira.rickandmorty.features.characters.data.mapper.CharacterResponseToModelMapper
-import br.com.lira.rickandmorty.features.characters.data.mapper.CharacterResponseToShortModelMapper
-import br.com.lira.rickandmorty.main.domain.model.Character
-import br.com.lira.rickandmorty.main.domain.model.CharacterShort
+import br.com.lira.rickandmorty.features.characters.data.remote.mapper.CharacterResponseToModelMapper
+import br.com.lira.rickandmorty.features.characters.data.remote.mapper.CharacterResponseToShortModelMapper
+import br.com.lira.rickandmorty.features.characters.domain.model.Character
 import javax.inject.Inject
 
 class CharactersDefaultRepository @Inject constructor(

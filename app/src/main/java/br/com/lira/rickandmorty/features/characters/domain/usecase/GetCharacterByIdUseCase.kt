@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.features.characters.domain.usecase
 
 import br.com.lira.rickandmorty.features.characters.domain.repository.CharactersRepository
-import br.com.lira.rickandmorty.main.domain.model.Character
+import br.com.lira.rickandmorty.features.characters.domain.model.Character
 import javax.inject.Inject
 
 class GetCharacterByIdUseCase @Inject constructor(

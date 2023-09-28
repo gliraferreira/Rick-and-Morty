@@ -1,10 +1,9 @@
 package br.com.lira.rickandmorty.features.episodes.presentation.viewmodel
 
 import br.com.lira.rickandmorty.core.viewmodel.ViewState
-import br.com.lira.rickandmorty.main.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.features.shared.presentation.model.CharacterUIModel
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeDetailsUIModel
-import br.com.lira.rickandmorty.main.domain.model.CharacterShort
-import br.com.lira.rickandmorty.main.presentation.model.GenericUIError
+import br.com.lira.rickandmorty.features.shared.presentation.model.GenericUIError
 
 data class EpisodeDetailsViewState(
     val episode: EpisodeDetailsUIModel? = null,

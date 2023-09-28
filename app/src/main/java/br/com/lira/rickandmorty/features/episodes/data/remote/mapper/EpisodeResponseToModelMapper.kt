@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.episodes.data.remote.mapper
 
 import br.com.lira.rickandmorty.core.mapper.UrlMapper
 import br.com.lira.rickandmorty.features.episodes.data.remote.api.response.EpisodeResponse
-import br.com.lira.rickandmorty.main.domain.model.Episode
+import br.com.lira.rickandmorty.features.shared.domain.model.Episode
 import javax.inject.Inject
 
 private const val EPISODE_PREFIX = 'e'
