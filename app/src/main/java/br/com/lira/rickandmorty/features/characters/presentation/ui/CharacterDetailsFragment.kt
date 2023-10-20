@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.extension.loadImage
+import br.com.lira.rickandmorty.core.toolkit.addPopBackStackHandler
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.core.toolkit.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
@@ -36,7 +37,7 @@ class CharacterDetailsFragment : Fragment() {
         arguments?.let {
             characterId = it.getLong(ARG_CHARACTER_ID)
         }
-        setupBackPressed()
+        addPopBackStackHandler()
     }
 
     override fun onCreateView(
@@ -55,12 +56,6 @@ class CharacterDetailsFragment : Fragment() {
         setupToolbar()
         setupViews()
         observeViewState()
-    }
-
-    private fun setupBackPressed() {
-        requireActivity().onBackPressedDispatcher.addCallback(this) {
-            popBackStack()
-        }
     }
 
     private fun setupViews() {

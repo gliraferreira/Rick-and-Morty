@@ -54,7 +54,7 @@ class EpisodeDetailsViewModel @Inject constructor(
             R.string.episode_details_characters_list_label,
             characters.size
         )
-        val charactersUi = characters.shuffled().map(characterMapper::mapFrom)
+        val charactersUi = characters.map(characterMapper::mapFrom)
         setState { it.setCharactersSuccessState(charactersUi, charactersHeader) }
     }
 

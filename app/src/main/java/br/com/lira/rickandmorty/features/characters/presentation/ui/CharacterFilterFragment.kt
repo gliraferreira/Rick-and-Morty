@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.core.toolkit.addPopBackStackHandler
 import br.com.lira.rickandmorty.core.toolkit.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentCharacterFilterBinding
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
@@ -34,7 +35,7 @@ class CharacterFilterFragment : Fragment() {
             currentFilter = it.getParcelable(ARG_CURRENT_FILTER)
         }
 
-        setupBackPressed()
+        addPopBackStackHandler()
     }
 
     override fun onCreateView(
@@ -54,12 +55,6 @@ class CharacterFilterFragment : Fragment() {
         setupToolbar()
         setupViews()
         observeViewState()
-    }
-
-    private fun setupBackPressed() {
-        requireActivity().onBackPressedDispatcher.addCallback(this) {
-            popBackStack()
-        }
     }
 
     private fun setupViews() {

@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface LocationsApi {
 
-    @GET("episode")
+    @GET("location")
     suspend fun getAllLocations(
         @Query("page") page: Int
     ): PageResponse<LocationResponse>

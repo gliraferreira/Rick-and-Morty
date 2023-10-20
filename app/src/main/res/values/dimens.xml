@@ -10,7 +10,7 @@
     <dimen name="card_corner_radius">8dp</dimen>
     <dimen name="card_elevation">4dp</dimen>
 
-    <dimen name="character_list_item_profile_picture_border">5dp</dimen>
+    <dimen name="character_list_item_profile_picture_border">3dp</dimen>
     <dimen name="character_list_item_profile_picture">55dp</dimen>
 
     <dimen name="character_details_profile_picture_border">5dp</dimen>

@@ -1,5 +1,6 @@
 package br.com.lira.rickandmorty.core.toolkit
 
+import androidx.activity.addCallback
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -77,6 +78,12 @@ fun Fragment.popBackStack() {
 
 fun Fragment.clearBackStack() {
     parentFragmentManager.clearBackStack()
+}
+
+fun Fragment.addPopBackStackHandler() {
+    requireActivity().onBackPressedDispatcher.addCallback(this) {
+        popBackStack()
+    }
 }
 
 fun FragmentManager.clearBackStack() {
