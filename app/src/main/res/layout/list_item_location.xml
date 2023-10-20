@@ -53,7 +53,6 @@
             android:layout_height="wrap_content"
             android:background="@color/common_background"
             android:clickable="false"
-            android:visibility="gone"
             android:contentDescription="@string/characters_list_details_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

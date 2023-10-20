@@ -6,4 +6,6 @@ import br.com.lira.rickandmorty.features.shared.remote.response.PageResponse
 interface LocationsRemoteDataSource {
 
     suspend fun getAllLocations(page: Int): PageResponse<LocationResponse>
+
+    suspend fun getLocationById(locationId: Long?): LocationResponse
 }

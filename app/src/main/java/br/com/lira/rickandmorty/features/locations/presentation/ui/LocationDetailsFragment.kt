@@ -1,37 +1,36 @@
-package br.com.lira.rickandmorty.features.episodes.presentation.ui
+package br.com.lira.rickandmorty.features.locations.presentation.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.addPopBackStackHandler
 import br.com.lira.rickandmorty.core.toolkit.popBackStack
-import br.com.lira.rickandmorty.databinding.FragmentEpisodeDetailsBinding
-import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewModel
-import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewState
+import br.com.lira.rickandmorty.databinding.FragmentLocationDetailsBinding
+import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationDetailsViewModel
+import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationDetailsViewState
 import br.com.lira.rickandmorty.features.shared.presentation.adapter.CharactersListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
-private const val ARG_EPISODE_ID = "episode_id"
+private const val ARG_LOCATION_ID = "location_id"
 
 @AndroidEntryPoint
-class EpisodeDetailsFragment : Fragment() {
+class LocationDetailsFragment : Fragment() {
 
-    private var episodeId: Long? = null
-    private lateinit var binding: FragmentEpisodeDetailsBinding
-    private val viewModel: EpisodeDetailsViewModel by viewModels()
+    private var locationId: Long? = null
+    private lateinit var binding: FragmentLocationDetailsBinding
+    private val viewModel: LocationDetailsViewModel by viewModels()
 
     private lateinit var charactersAdapter: CharactersListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            episodeId = it.getLong(ARG_EPISODE_ID)
+            locationId = it.getLong(ARG_LOCATION_ID)
         }
 
         addPopBackStackHandler()
@@ -40,12 +39,12 @@ class EpisodeDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = FragmentEpisodeDetailsBinding.inflate(inflater).also { binding = it }.root
+    ) = FragmentLocationDetailsBinding.inflate(inflater).also { binding = it }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.init(episodeId)
+        viewModel.init(locationId)
         setupToolbar()
         setupViews()
         observeViewState()
@@ -57,7 +56,7 @@ class EpisodeDetailsFragment : Fragment() {
     }
 
     private fun setupToolbar() = with(binding.toolbarView) {
-        title.setText(R.string.episode_details_title)
+        title.setText(R.string.location_details_title)
         searchIcon.isVisible = false
         navigationIcon.isVisible = true
         navigationIcon.setOnClickListener {
@@ -69,32 +68,41 @@ class EpisodeDetailsFragment : Fragment() {
         viewModel.state.observe(viewLifecycleOwner) { state ->
             binding.loading.root.isVisible = state.isLoading
             binding.content.root.isVisible = state.shouldDisplayContent
+            binding.errorState.root.isVisible = state.isError
 
-            handleEpisode(state)
+            handleLocation(state)
             handleCharactersList(state)
+            handleError(state)
         }
     }
 
-    private fun handleCharactersList(state: EpisodeDetailsViewState) = with(binding.content) {
+    private fun handleCharactersList(state: LocationDetailsViewState) = with(binding.content) {
         charactersList.isVisible = state.shouldDisplayCharacters
         episodesLoading.root.isVisible = state.isCharactersLoading
-        charactersListHeader.isVisible = state.shouldDisplayCharacters
         charactersListHeader.text = state.charactersHeader
         charactersAdapter.submitList(state.characters)
     }
 
-    private fun handleEpisode(state: EpisodeDetailsViewState) = with(binding.content) {
-        state.episode?.let { episodeUi ->
-            tvName.text = episodeUi.name
-            episodeNumber.text = episodeUi.episodeNumber
-            airDate.text = episodeUi.airDate
+    private fun handleLocation(state: LocationDetailsViewState) = with(binding.content) {
+        state.location?.let { locationUi ->
+            locationName.text = locationUi.name
+            locationType.text = locationUi.type
+            locationDimension.text = locationUi.dimension
+        }
+    }
+
+    private fun handleError(state: LocationDetailsViewState) = with(binding.errorState) {
+        state.error?.let {
+            description.text = it.message
+            btnTryAgain.isVisible = it.isTryAgainVisible
+            errorImageView.setImageDrawable(it.image)
         }
     }
 
     companion object {
-        fun newInstance(episodeId: Long) = EpisodeDetailsFragment().apply {
+        fun newInstance(locationId: Long) = LocationDetailsFragment().apply {
             arguments = Bundle().apply {
-                putLong(ARG_EPISODE_ID, episodeId)
+                putLong(ARG_LOCATION_ID, locationId)
             }
         }
     }

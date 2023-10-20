@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.features.characters.domain.usecase
+package br.com.lira.rickandmorty.features.shared.domain.usecase
 
 import br.com.lira.rickandmorty.features.characters.domain.repository.CharactersRepository
 import br.com.lira.rickandmorty.features.shared.domain.model.CharacterShort

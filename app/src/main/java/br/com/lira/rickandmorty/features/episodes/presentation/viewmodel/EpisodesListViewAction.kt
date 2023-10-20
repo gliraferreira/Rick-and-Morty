@@ -4,5 +4,5 @@ import br.com.lira.rickandmorty.core.viewmodel.ViewAction
 
 sealed class EpisodesListViewAction : ViewAction {
 
-    data class OpenEpisodeDetails(val episodeId: Long): EpisodesListViewAction()
+    data class OpenEpisodeDetails(val episodeId: Long) : EpisodesListViewAction()
 }

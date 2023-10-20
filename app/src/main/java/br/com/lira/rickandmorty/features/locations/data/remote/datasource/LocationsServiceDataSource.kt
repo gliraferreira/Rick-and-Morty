@@ -12,4 +12,8 @@ class LocationsServiceDataSource @Inject constructor(
     override suspend fun getAllLocations(page: Int): PageResponse<LocationResponse> {
         return locationsApi.getAllLocations(page)
     }
+
+    override suspend fun getLocationById(locationId: Long?): LocationResponse {
+        return locationsApi.getLocationById(locationId)
+    }
 }

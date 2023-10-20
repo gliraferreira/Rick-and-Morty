@@ -2,11 +2,11 @@ package br.com.lira.rickandmorty.features.locations.presentation.viewmodel
 
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.core.viewmodel.ViewState
-import br.com.lira.rickandmorty.features.locations.presentation.model.LocationItemUI
+import br.com.lira.rickandmorty.features.locations.presentation.model.LocationUIModel
 import br.com.lira.rickandmorty.features.shared.presentation.model.GenericUIError
 
 data class LocationsListViewState(
-    val locations: PagingData<LocationItemUI> = PagingData.empty(),
+    val locations: PagingData<LocationUIModel> = PagingData.empty(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val shouldDisplayContent: Boolean = false,

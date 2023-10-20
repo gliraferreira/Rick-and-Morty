@@ -9,9 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.core.toolkit.SlideFromRightAnimation
+import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentLocationsBinding
-import br.com.lira.rickandmorty.features.locations.presentation.model.LocationItemUI
+import br.com.lira.rickandmorty.features.episodes.presentation.ui.EpisodeDetailsFragment
+import br.com.lira.rickandmorty.features.locations.presentation.model.LocationUIModel
 import br.com.lira.rickandmorty.features.locations.presentation.ui.adapter.LocationsAdapter
+import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewAction
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewModel
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewState
 import br.com.lira.rickandmorty.features.shared.presentation.adapter.PagingLoadStateAdapter
@@ -36,6 +40,7 @@ class LocationsFragment : Fragment() {
 
         setupViews()
         observeViewState()
+        observeViewActions()
     }
 
     private fun setupViews() {
@@ -51,7 +56,7 @@ class LocationsFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        locationsAdapter = LocationsAdapter()
+        locationsAdapter = LocationsAdapter(viewModel::onLocationClicked)
         binding.locationsLIst.adapter = locationsAdapter.apply {
             withLoadStateFooter(
                 footer = PagingLoadStateAdapter()
@@ -76,6 +81,16 @@ class LocationsFragment : Fragment() {
         }
     }
 
+    private fun observeViewActions() {
+        viewModel.action.observe(viewLifecycleOwner) { viewAction ->
+            when (viewAction) {
+                is LocationsListViewAction.OpenLocationDetails -> openLocationDetailsScreen(
+                    viewAction.locationId
+                )
+            }
+        }
+    }
+
     private fun observeViewState() {
         viewModel.state.observe(viewLifecycleOwner) { state ->
             handleLocationsList(state.locations)
@@ -84,7 +99,7 @@ class LocationsFragment : Fragment() {
         }
     }
 
-    private fun handleLocationsList(locations: PagingData<LocationItemUI>?) {
+    private fun handleLocationsList(locations: PagingData<LocationUIModel>?) {
         locations?.let {
             locationsAdapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
@@ -94,5 +109,13 @@ class LocationsFragment : Fragment() {
         loading.root.isVisible = state.isLoading
         locationsLIst.isVisible = state.shouldDisplayContent
         errorState.root.isVisible = state.isError
+    }
+
+    private fun openLocationDetailsScreen(locationId: Long) {
+        navigateToFragment(
+            hostRes = R.id.app_nav_host_fragment,
+            destination = LocationDetailsFragment.newInstance(locationId),
+            fragmentAnimation = SlideFromRightAnimation
+        )
     }
 }

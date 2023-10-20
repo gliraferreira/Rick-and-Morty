@@ -25,8 +25,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
+        android:id="@+id/errorState"
+        layout="@layout/common_error_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarView" />
+
+    <include
         android:id="@+id/content"
-        layout="@layout/fragment_episode_details_content"
+        layout="@layout/fragment_location_details_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/bottom_navigation_height"

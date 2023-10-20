@@ -37,6 +37,10 @@ class LocationsListViewModel @Inject constructor(
         loadLocations()
     }
 
+    fun onLocationClicked(locationId: Long) {
+        sendAction { LocationsListViewAction.OpenLocationDetails(locationId) }
+    }
+
     private fun loadLocations() {
         viewModelScope.launch {
             getAllLocations()
