@@ -9,7 +9,8 @@ This app harnesses the power of the Rick and Morty API, allowing you to effortle
 - **Episode Guide**: Access a comprehensive list of episodes and immerse yourself in their detailed descriptions.
 - **Locations List**: Discover all the distinct locations from the Rick and Morty series and explore the residents inhabiting them, providing an immersive insight into the show's diverse settings.
 
-| Screenshot 1 | Screenshot 2 | Screenshot 3 |
+## Screenshots
+| Characters | Episodes | Locations |
 | --- | --- | --- |
 | ![Characters](screenshots/Screen_1.png) | ![Episodes](screenshots/Screen_2.png) | ![Locations](screenshots/Screen_3.png) |
 | *Characters List* | *Episodes List* | *Locations List* |
