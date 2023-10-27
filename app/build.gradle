@@ -12,9 +12,9 @@ android {
     defaultConfig {
         applicationId 'br.com.lira.rickandmortyhub'
         minSdk 21
-        targetSdk 32
-        versionCode 3
-        versionName '0.3.0'
+        targetSdk 33
+        versionCode 100
+        versionName '1.0.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -26,6 +26,7 @@ android {
             minifyEnabled false
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
@@ -73,9 +74,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$junit_androidx_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 
-    debugImplementation "com.facebook.flipper:flipper:$flipper_version"
-    debugImplementation "com.facebook.flipper:flipper-network-plugin:$flipper_version"
-    debugImplementation "com.facebook.soloader:soloader:$soloader_version"
-
-    releaseImplementation "com.facebook.flipper:flipper-noop:$flipper_noop_version"
+    implementation "com.facebook.flipper:flipper:$flipper_version"
+    implementation "com.facebook.flipper:flipper-network-plugin:$flipper_version"
+    implementation "com.facebook.soloader:soloader:$soloader_version"
 }
