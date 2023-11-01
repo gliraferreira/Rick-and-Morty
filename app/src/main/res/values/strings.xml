@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rick and Morty Hub</string>
+    <string name="app_name">Rick and Morty Characters Guide</string>
     <string name="characters_loading">Loading...</string>
     <string name="retry">Retry</string>
 
