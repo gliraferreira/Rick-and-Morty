@@ -3,11 +3,13 @@
 **Rick and Morty Characters List** is your passport to the quirky and exciting universe of Rick and Morty, brought to life as an Android app built with Kotlin. 
 This app harnesses the power of the Rick and Morty API, allowing you to effortlessly list, filter, and explore characters, episodes, and locations from the show.
 
-<p align="center">
-  <a href="https://play.google.com/store/apps/details?id=br.com.lira.rickandmortyhub">
-    <img src="https://github.com/gliraferreira/Rick-and-Morty/assets/114413864/baa0afa9-cd8e-4d82-afc9-3c14a64e5cdc" alt="Rick and Morty Characters List" width="200">
-  </a>
-</p>
+<div align="center">
+    <h4><b>You can check the app on Google Play too!</b></h4>
+    <a href="https://play.google.com/store/apps/details?id=br.com.lira.rickandmortyhub">
+        <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="60" />
+    </a>
+</div>
+
 
 ## Features
 - **Character Catalog**: Explore a rich ensemble of characters from the Rick and Morty universe and delve into their extensive details.
