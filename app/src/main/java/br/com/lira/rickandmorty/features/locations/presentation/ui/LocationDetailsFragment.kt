@@ -14,12 +14,14 @@ import br.com.lira.rickandmorty.databinding.FragmentLocationDetailsBinding
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationDetailsViewModel
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationDetailsViewState
 import br.com.lira.rickandmorty.features.shared.presentation.adapter.CharactersListAdapter
+import br.com.lira.rickandmorty.main.navigation.ImmersiveNavigationMode
+import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_LOCATION_ID = "location_id"
 
 @AndroidEntryPoint
-class LocationDetailsFragment : Fragment() {
+class LocationDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNavigationMode {
 
     private var locationId: Long? = null
     private lateinit var binding: FragmentLocationDetailsBinding

@@ -19,11 +19,13 @@ import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.Locati
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewModel
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewState
 import br.com.lira.rickandmorty.features.shared.presentation.adapter.PagingLoadStateAdapter
+import br.com.lira.rickandmorty.main.navigation.DefaultNavigationMode
+import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class LocationsFragment : Fragment() {
+class LocationsFragment : Fragment(), NavigationModeHandler by DefaultNavigationMode {
 
     private lateinit var binding: FragmentLocationsBinding
     private val viewModel: LocationsListViewModel by viewModels()

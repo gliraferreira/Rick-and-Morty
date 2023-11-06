@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -18,12 +17,14 @@ import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterFilterUIModel
 import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharacterFilterViewAction
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharacterFilterViewModel
+import br.com.lira.rickandmorty.main.navigation.ImmersiveNavigationMode
+import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_CURRENT_FILTER = "arg_current_filter"
 
 @AndroidEntryPoint
-class CharacterFilterFragment : Fragment() {
+class CharacterFilterFragment : Fragment(), NavigationModeHandler by ImmersiveNavigationMode {
 
     private lateinit var binding: FragmentCharacterFilterBinding
     private val viewModel: CharacterFilterViewModel by viewModels()

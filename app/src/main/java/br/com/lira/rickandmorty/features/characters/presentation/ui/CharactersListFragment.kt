@@ -20,13 +20,15 @@ import br.com.lira.rickandmorty.features.shared.presentation.adapter.PagingLoadS
 import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharactersListViewAction
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharactersListViewModel
 import br.com.lira.rickandmorty.features.characters.presentation.viewstate.CharactersListViewState
+import br.com.lira.rickandmorty.main.navigation.DefaultNavigationMode
+import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 const val FILTER_REQUEST_KEY = "filter_request_key"
 const val ARG_FILTER = "arg_filter"
 
 @AndroidEntryPoint
-class CharactersFragment : Fragment() {
+class CharactersFragment : Fragment(), NavigationModeHandler by DefaultNavigationMode {
 
     private lateinit var binding: FragmentCharactersBinding
     private val viewModel: CharactersListViewModel by viewModels()

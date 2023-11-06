@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,12 +14,14 @@ import br.com.lira.rickandmorty.databinding.FragmentEpisodeDetailsBinding
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewModel
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewState
 import br.com.lira.rickandmorty.features.shared.presentation.adapter.CharactersListAdapter
+import br.com.lira.rickandmorty.main.navigation.ImmersiveNavigationMode
+import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_EPISODE_ID = "episode_id"
 
 @AndroidEntryPoint
-class EpisodeDetailsFragment : Fragment() {
+class EpisodeDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNavigationMode {
 
     private var episodeId: Long? = null
     private lateinit var binding: FragmentEpisodeDetailsBinding

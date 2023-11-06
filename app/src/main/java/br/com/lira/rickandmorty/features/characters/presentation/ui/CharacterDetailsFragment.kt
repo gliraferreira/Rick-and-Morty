@@ -4,27 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.extension.loadImage
 import br.com.lira.rickandmorty.core.toolkit.addPopBackStackHandler
-import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
-import br.com.lira.rickandmorty.core.toolkit.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import br.com.lira.rickandmorty.features.characters.presentation.ui.adapter.CharacterEpisodeAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharacterDetailsViewModel
 import br.com.lira.rickandmorty.features.characters.presentation.viewstate.CharacterDetailsViewState
-import br.com.lira.rickandmorty.features.episodes.presentation.ui.EpisodeDetailsFragment
-import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewAction
+import br.com.lira.rickandmorty.main.navigation.ImmersiveNavigationMode
+import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_CHARACTER_ID = "char_id"
 
 @AndroidEntryPoint
-class CharacterDetailsFragment : Fragment() {
+class CharacterDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNavigationMode {
 
     private var characterId: Long? = null
     private lateinit var binding: FragmentCharacterDetailsBinding

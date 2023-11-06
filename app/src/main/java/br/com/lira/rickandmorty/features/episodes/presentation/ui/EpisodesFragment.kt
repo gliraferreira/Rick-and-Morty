@@ -18,10 +18,12 @@ import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.Episode
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewModel
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewState
 import br.com.lira.rickandmorty.features.shared.presentation.adapter.PagingLoadStateAdapter
+import br.com.lira.rickandmorty.main.navigation.DefaultNavigationMode
+import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EpisodesFragment : Fragment() {
+class EpisodesFragment : Fragment(), NavigationModeHandler by DefaultNavigationMode {
 
     private lateinit var binding: FragmentEpisodesBinding
     private val viewModel: EpisodesListViewModel by viewModels()
