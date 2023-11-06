@@ -104,7 +104,6 @@
             android:textColor="@color/colorPrimaryDark"
             app:layout_constraintStart_toStartOf="@id/tvSpecies"
             app:layout_constraintTop_toBottomOf="@id/tvLocationLabel"
-            android:drawableEnd="@drawable/ic_arrow_right"
             tools:text="Earth (Replacement Dimension)" />
 
         <View
