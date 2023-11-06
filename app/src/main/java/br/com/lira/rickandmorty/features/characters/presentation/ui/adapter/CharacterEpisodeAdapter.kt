@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.ListAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterEpisodeUIModel
 import br.com.lira.rickandmorty.databinding.ListItemCharacterEpisodeBinding
 
-class CharacterEpisodeAdapter : ListAdapter<CharacterEpisodeUIModel, CharacterEpisodeViewHolder>(
+class CharacterEpisodeAdapter(
+    private val onEpisodeClicked: (Long) -> Unit
+) : ListAdapter<CharacterEpisodeUIModel, CharacterEpisodeViewHolder>(
     CharacterEpisodeItemDiffCallback
 ) {
 
@@ -18,7 +20,8 @@ class CharacterEpisodeAdapter : ListAdapter<CharacterEpisodeUIModel, CharacterEp
             LayoutInflater.from(parent.context),
             parent,
             false
-        )
+        ),
+        onEpisodeClicked = onEpisodeClicked
     )
 
     override fun onBindViewHolder(holder: CharacterEpisodeViewHolder, position: Int) {

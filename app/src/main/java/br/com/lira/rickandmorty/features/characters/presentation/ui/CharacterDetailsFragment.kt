@@ -11,11 +11,14 @@ import br.com.lira.rickandmorty.core.extension.loadImage
 import br.com.lira.rickandmorty.core.toolkit.addPopBackStackHandler
 import br.com.lira.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import br.com.lira.rickandmorty.features.characters.presentation.ui.adapter.CharacterEpisodeAdapter
+import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharacterDetailsViewAction
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharacterDetailsViewModel
 import br.com.lira.rickandmorty.features.characters.presentation.viewstate.CharacterDetailsViewState
+import br.com.lira.rickandmorty.features.episodes.presentation.navigation.EpisodesNavigator
 import br.com.lira.rickandmorty.main.navigation.ImmersiveNavigationMode
 import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val ARG_CHARACTER_ID = "char_id"
 
@@ -27,6 +30,9 @@ class CharacterDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveN
     private val viewModel: CharacterDetailsViewModel by viewModels()
 
     private lateinit var episodesAdapter: CharacterEpisodeAdapter
+
+    @Inject
+    lateinit var episodeNavigator: EpisodesNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,10 +58,11 @@ class CharacterDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveN
         setupToolbar()
         setupViews()
         observeViewState()
+        observeActions()
     }
 
     private fun setupViews() {
-        episodesAdapter = CharacterEpisodeAdapter()
+        episodesAdapter = CharacterEpisodeAdapter(viewModel::onEpisodeClicked)
         binding.content.rvEpisodes.adapter = episodesAdapter
         binding.toolbarView.navigationIcon.setOnClickListener {
             activity?.onBackPressed()
@@ -65,6 +72,16 @@ class CharacterDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveN
     private fun setupToolbar() {
         binding.toolbarView.searchIcon.isVisible = false
         binding.toolbarView.navigationIcon.isVisible = true
+    }
+
+    private fun observeActions() {
+        viewModel.action.observe(viewLifecycleOwner) { action ->
+            when (action) {
+                is CharacterDetailsViewAction.OpenEpisodeDetails -> {
+                    openEpisodeDetailsScreen(action.episodeId)
+                }
+            }
+        }
     }
 
     private fun observeViewState() {
@@ -101,6 +118,10 @@ class CharacterDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveN
             tvGender.text = character.gender
             tvSpecies.text = character.species
         }
+    }
+
+    private fun openEpisodeDetailsScreen(episodeId: Long) {
+        episodeNavigator.openEpisodeDetails(this, episodeId)
     }
 
     companion object {

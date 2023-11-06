@@ -34,6 +34,10 @@ class CharacterDetailsViewModel @Inject constructor(
         }
     }
 
+    fun onEpisodeClicked(episodeId: Long) {
+        sendAction { CharacterDetailsViewAction.OpenEpisodeDetails(episodeId) }
+    }
+
     private suspend fun handleCharacterSuccess(character: Character) {
         val uiModel = uiMapper.mapFrom(character)
         setState { it.setSuccessState(uiModel) }

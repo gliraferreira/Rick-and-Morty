@@ -19,11 +19,13 @@
 
         <TextView
             android:id="@+id/tvName"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/auto_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="@dimen/spacing_6"
+            app:layout_constraintEnd_toStartOf="@id/navigationIcon"
             tools:text="Close Rick-counters of the Rick Kind" />
 
         <TextView
@@ -34,6 +36,21 @@
             app:layout_constraintStart_toStartOf="@id/tvName"
             app:layout_constraintTop_toBottomOf="@id/tvName"
             tools:text="S01E10" />
+
+        <ImageButton
+            android:id="@+id/navigationIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/common_background"
+            android:clickable="false"
+            android:contentDescription="@string/characters_list_details_description"
+            android:padding="@dimen/spacing_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvName"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_right"
+            app:tint="@color/iconDark" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

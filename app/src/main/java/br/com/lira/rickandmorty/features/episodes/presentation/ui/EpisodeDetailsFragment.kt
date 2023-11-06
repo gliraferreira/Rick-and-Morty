@@ -11,12 +11,16 @@ import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.addPopBackStackHandler
 import br.com.lira.rickandmorty.core.toolkit.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentEpisodeDetailsBinding
+import br.com.lira.rickandmorty.features.characters.presentation.CharacterNavigator
+import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharactersListViewAction
+import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewAction
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewModel
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewState
 import br.com.lira.rickandmorty.features.shared.presentation.adapter.CharactersListAdapter
 import br.com.lira.rickandmorty.main.navigation.ImmersiveNavigationMode
 import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val ARG_EPISODE_ID = "episode_id"
 
@@ -28,6 +32,9 @@ class EpisodeDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNav
     private val viewModel: EpisodeDetailsViewModel by viewModels()
 
     private lateinit var charactersAdapter: CharactersListAdapter
+
+    @Inject
+    lateinit var characterNavigator: CharacterNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,10 +57,13 @@ class EpisodeDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNav
         setupToolbar()
         setupViews()
         observeViewState()
+        observeActions()
     }
 
     private fun setupViews() {
-        charactersAdapter = CharactersListAdapter(false) { }
+        charactersAdapter = CharactersListAdapter(true) {
+            viewModel.onCharacterClicked(it)
+        }
         binding.content.charactersList.adapter = charactersAdapter
     }
 
@@ -63,6 +73,16 @@ class EpisodeDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNav
         navigationIcon.isVisible = true
         navigationIcon.setOnClickListener {
             popBackStack()
+        }
+    }
+
+    private fun observeActions() {
+        viewModel.action.observe(viewLifecycleOwner) { action ->
+            when (action) {
+                is EpisodeDetailsViewAction.OpenCharacterDetails -> {
+                    openCharactersScreen(action.characterId)
+                }
+            }
         }
     }
 
@@ -90,6 +110,10 @@ class EpisodeDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNav
             episodeNumber.text = episodeUi.episodeNumber
             airDate.text = episodeUi.airDate
         }
+    }
+
+    private fun openCharactersScreen(characterId: Long) {
+        characterNavigator.openCharacterDetails(this, characterId)
     }
 
     companion object {

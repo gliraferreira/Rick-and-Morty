@@ -4,13 +4,13 @@ import androidx.lifecycle.viewModelScope
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.ResourceProvider
 import br.com.lira.rickandmorty.core.viewmodel.ViewModel
-import br.com.lira.rickandmorty.features.shared.domain.usecase.GetMultipleCharactersUseCase
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterShortToUIMapper
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesErrorMapper
 import br.com.lira.rickandmorty.features.locations.domain.model.Location
 import br.com.lira.rickandmorty.features.locations.domain.usecase.GetLocationByIdUseCase
 import br.com.lira.rickandmorty.features.locations.presentation.mapper.LocationUIMapper
 import br.com.lira.rickandmorty.features.shared.domain.model.CharacterShort
+import br.com.lira.rickandmorty.features.shared.domain.usecase.GetMultipleCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -33,6 +33,10 @@ class LocationDetailsViewModel @Inject constructor(
                 .onSuccess { handleEpisodeSuccess(it) }
                 .onFailure { handleErrorState(it) }
         }
+    }
+
+    fun onCharacterClicked(characterId: Long) {
+        sendAction { LocationDetailsViewAction.OpenCharacterDetails(characterId) }
     }
 
     private suspend fun handleEpisodeSuccess(location: Location) {

@@ -11,12 +11,15 @@ import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.core.toolkit.addPopBackStackHandler
 import br.com.lira.rickandmorty.core.toolkit.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentLocationDetailsBinding
+import br.com.lira.rickandmorty.features.characters.presentation.CharacterNavigator
+import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationDetailsViewAction
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationDetailsViewModel
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationDetailsViewState
 import br.com.lira.rickandmorty.features.shared.presentation.adapter.CharactersListAdapter
 import br.com.lira.rickandmorty.main.navigation.ImmersiveNavigationMode
 import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val ARG_LOCATION_ID = "location_id"
 
@@ -28,6 +31,9 @@ class LocationDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNa
     private val viewModel: LocationDetailsViewModel by viewModels()
 
     private lateinit var charactersAdapter: CharactersListAdapter
+
+    @Inject
+    lateinit var characterNavigator: CharacterNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,10 +56,13 @@ class LocationDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNa
         setupToolbar()
         setupViews()
         observeViewState()
+        observeActions()
     }
 
     private fun setupViews() {
-        charactersAdapter = CharactersListAdapter(false) { }
+        charactersAdapter = CharactersListAdapter(true) {
+            viewModel.onCharacterClicked(it)
+        }
         binding.content.charactersList.adapter = charactersAdapter
     }
 
@@ -63,6 +72,16 @@ class LocationDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNa
         navigationIcon.isVisible = true
         navigationIcon.setOnClickListener {
             popBackStack()
+        }
+    }
+
+    private fun observeActions() {
+        viewModel.action.observe(viewLifecycleOwner) { action ->
+            when (action) {
+                is LocationDetailsViewAction.OpenCharacterDetails -> {
+                    openCharactersScreen(action.characterId)
+                }
+            }
         }
     }
 
@@ -99,6 +118,10 @@ class LocationDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveNa
             btnTryAgain.isVisible = it.isTryAgainVisible
             errorImageView.setImageDrawable(it.image)
         }
+    }
+
+    private fun openCharactersScreen(characterId: Long) {
+        characterNavigator.openCharacterDetails(this, characterId)
     }
 
     companion object {

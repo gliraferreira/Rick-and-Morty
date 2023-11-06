@@ -14,6 +14,7 @@ import br.com.lira.rickandmorty.core.toolkit.SlideFromRightAnimation
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.features.characters.presentation.CharacterNavigator
 import br.com.lira.rickandmorty.features.shared.presentation.model.CharacterUIModel
 import br.com.lira.rickandmorty.features.characters.presentation.ui.adapter.CharactersPagingListAdapter
 import br.com.lira.rickandmorty.features.shared.presentation.adapter.PagingLoadStateAdapter
@@ -23,6 +24,7 @@ import br.com.lira.rickandmorty.features.characters.presentation.viewstate.Chara
 import br.com.lira.rickandmorty.main.navigation.DefaultNavigationMode
 import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 const val FILTER_REQUEST_KEY = "filter_request_key"
 const val ARG_FILTER = "arg_filter"
@@ -34,6 +36,9 @@ class CharactersFragment : Fragment(), NavigationModeHandler by DefaultNavigatio
     private val viewModel: CharactersListViewModel by viewModels()
 
     private lateinit var charactersAdapter: CharactersPagingListAdapter
+
+    @Inject
+    lateinit var characterNavigator: CharacterNavigator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -151,18 +156,10 @@ class CharactersFragment : Fragment(), NavigationModeHandler by DefaultNavigatio
     }
 
     private fun openCharacterFilterScreen(currentFilter: CharacterFilter?) {
-        navigateToFragment(
-            hostRes = R.id.app_nav_host_fragment,
-            destination = CharacterFilterFragment.newInstance(currentFilter),
-            fragmentAnimation = SlideFromRightAnimation
-        )
+        characterNavigator.openCharacterFilter(this, currentFilter)
     }
 
     private fun openCharactersScreen(characterId: Long) {
-        navigateToFragment(
-            hostRes = R.id.app_nav_host_fragment,
-            destination = CharacterDetailsFragment.newInstance(characterId),
-            fragmentAnimation = SlideFromRightAnimation
-        )
+        characterNavigator.openCharacterDetails(this, characterId)
     }
 }

@@ -13,6 +13,7 @@ import br.com.lira.rickandmorty.core.toolkit.SlideFromRightAnimation
 import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentEpisodesBinding
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
+import br.com.lira.rickandmorty.features.episodes.presentation.navigation.EpisodesNavigator
 import br.com.lira.rickandmorty.features.episodes.presentation.ui.adapter.EpisodesListAdapter
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewAction
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewModel
@@ -21,6 +22,7 @@ import br.com.lira.rickandmorty.features.shared.presentation.adapter.PagingLoadS
 import br.com.lira.rickandmorty.main.navigation.DefaultNavigationMode
 import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class EpisodesFragment : Fragment(), NavigationModeHandler by DefaultNavigationMode {
@@ -29,6 +31,9 @@ class EpisodesFragment : Fragment(), NavigationModeHandler by DefaultNavigationM
     private val viewModel: EpisodesListViewModel by viewModels()
 
     private lateinit var episodesAdapter: EpisodesListAdapter
+
+    @Inject
+    lateinit var episodeNavigator: EpisodesNavigator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -110,11 +115,7 @@ class EpisodesFragment : Fragment(), NavigationModeHandler by DefaultNavigationM
     }
 
     private fun openEpisodeDetailsScreen(episodeId: Long) {
-        navigateToFragment(
-            hostRes = R.id.app_nav_host_fragment,
-            destination = EpisodeDetailsFragment.newInstance(episodeId),
-            fragmentAnimation = SlideFromRightAnimation
-        )
+        episodeNavigator.openEpisodeDetails(this, episodeId)
     }
 
     private fun handleCurrentScreenState(state: EpisodesListViewState) = with(binding) {
