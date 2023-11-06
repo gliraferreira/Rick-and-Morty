@@ -14,6 +14,7 @@ import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentLocationsBinding
 import br.com.lira.rickandmorty.features.episodes.presentation.ui.EpisodeDetailsFragment
 import br.com.lira.rickandmorty.features.locations.presentation.model.LocationUIModel
+import br.com.lira.rickandmorty.features.locations.presentation.navigation.LocationNavigator
 import br.com.lira.rickandmorty.features.locations.presentation.ui.adapter.LocationsAdapter
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewAction
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewModel
@@ -22,6 +23,7 @@ import br.com.lira.rickandmorty.features.shared.presentation.adapter.PagingLoadS
 import br.com.lira.rickandmorty.main.navigation.DefaultNavigationMode
 import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -31,6 +33,9 @@ class LocationsFragment : Fragment(), NavigationModeHandler by DefaultNavigation
     private val viewModel: LocationsListViewModel by viewModels()
 
     private lateinit var locationsAdapter: LocationsAdapter
+
+    @Inject
+    lateinit var locationNavigator: LocationNavigator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -114,10 +119,6 @@ class LocationsFragment : Fragment(), NavigationModeHandler by DefaultNavigation
     }
 
     private fun openLocationDetailsScreen(locationId: Long) {
-        navigateToFragment(
-            hostRes = R.id.app_nav_host_fragment,
-            destination = LocationDetailsFragment.newInstance(locationId),
-            fragmentAnimation = SlideFromRightAnimation
-        )
+        locationNavigator.openLocationDetails(this, locationId)
     }
 }

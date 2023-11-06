@@ -65,33 +65,14 @@
             tools:text="Human" />
 
         <TextView
-            android:id="@+id/tvLocationLabel"
-            style="@style/TextAppearance.Material3.LabelMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_5"
-            android:text="@string/character_details_location_label"
-            app:layout_constraintStart_toStartOf="@id/tvSpecies"
-            app:layout_constraintTop_toBottomOf="@id/tvSpecies" />
-
-        <TextView
-            android:id="@+id/tvLocation"
-            style="@style/TextAppearance.Material3.BodyLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/tvSpecies"
-            app:layout_constraintTop_toBottomOf="@id/tvLocationLabel"
-            tools:text="Earth" />
-
-        <TextView
             android:id="@+id/tvGenderLabel"
             style="@style/TextAppearance.Material3.LabelMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_5"
             android:text="@string/character_details_gender_label"
-            app:layout_constraintStart_toStartOf="@id/tvLocation"
-            app:layout_constraintTop_toBottomOf="@id/tvLocation"
+            app:layout_constraintStart_toStartOf="@id/tvSpecies"
+            app:layout_constraintTop_toBottomOf="@id/tvSpecies"
             tools:text="Male" />
 
         <TextView
@@ -100,9 +81,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/spacing_7"
-            app:layout_constraintStart_toStartOf="@id/tvLocation"
+            app:layout_constraintStart_toStartOf="@id/tvSpecies"
             app:layout_constraintTop_toBottomOf="@id/tvGenderLabel"
             tools:text="Male" />
+
+        <TextView
+            android:id="@+id/tvLocationLabel"
+            style="@style/TextAppearance.Material3.LabelMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_5"
+            android:text="@string/character_details_location_label"
+            app:layout_constraintStart_toStartOf="@id/tvGender"
+            app:layout_constraintTop_toBottomOf="@id/tvGender"
+            />
+
+        <Button
+            android:id="@+id/btnLocation"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="@id/tvSpecies"
+            app:layout_constraintTop_toBottomOf="@id/tvLocationLabel"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            tools:text="Earth (Replacement Dimension)" />
 
         <View
             android:id="@+id/divider"
@@ -113,7 +116,7 @@
             android:background="@color/colorPrimaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvGender" />
+            app:layout_constraintTop_toBottomOf="@id/btnLocation" />
 
         <TextView
             android:id="@+id/tvEpisodesHeader"

@@ -15,6 +15,7 @@ import br.com.lira.rickandmorty.features.characters.presentation.viewaction.Char
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharacterDetailsViewModel
 import br.com.lira.rickandmorty.features.characters.presentation.viewstate.CharacterDetailsViewState
 import br.com.lira.rickandmorty.features.episodes.presentation.navigation.EpisodesNavigator
+import br.com.lira.rickandmorty.features.locations.presentation.navigation.LocationNavigator
 import br.com.lira.rickandmorty.main.navigation.ImmersiveNavigationMode
 import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,6 +34,9 @@ class CharacterDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveN
 
     @Inject
     lateinit var episodeNavigator: EpisodesNavigator
+
+    @Inject
+    lateinit var locationNavigator: LocationNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +84,10 @@ class CharacterDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveN
                 is CharacterDetailsViewAction.OpenEpisodeDetails -> {
                     openEpisodeDetailsScreen(action.episodeId)
                 }
+
+                is CharacterDetailsViewAction.OpenCurrentLocationDetails -> {
+                    openLocationDetailsScreen(action.locationId)
+                }
             }
         }
     }
@@ -114,14 +122,24 @@ class CharacterDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveN
             characterImage.borderColor = character.statusColor
 
             tvName.text = character.name
-            tvLocation.text = character.lastLocation
             tvGender.text = character.gender
             tvSpecies.text = character.species
+
+            tvLocationLabel.isVisible = state.shouldDisplayCurrentLocation
+            btnLocation.isVisible = state.shouldDisplayCurrentLocation
+            btnLocation.text = character.lastLocation
+            btnLocation.setOnClickListener {
+                viewModel.onCurrentLocationClicked()
+            }
         }
     }
 
     private fun openEpisodeDetailsScreen(episodeId: Long) {
         episodeNavigator.openEpisodeDetails(this, episodeId)
+    }
+
+    private fun openLocationDetailsScreen(locationId: Long) {
+        locationNavigator.openLocationDetails(this, locationId)
     }
 
     companion object {
