@@ -15,7 +15,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 object ApiModule {
 
     @Provides
-    fun provideBaseUrl() = BuildConfig.baseUrl
+    fun provideBaseUrl(): String = BuildConfig.BASE_URL
 
     @Singleton
     @Provides

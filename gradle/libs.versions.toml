@@ -5,10 +5,10 @@ constraintlayout = "2.1.4"
 espressoCore = "3.4.0"
 flipperVersion = "0.216.0"
 fragmentKtx = "1.5.7"
-agp = "7.4.2"
-hiltAndroid = "2.42"
+hiltAndroid = "2.51.1"
 junitVersion = "4.13.2"
-kotlin = "1.7.10"
+agp = "8.2.2"
+kotlin = "1.9.22"
 
 coreKtx = "1.7.0"
 appcompat = "1.5.0"
@@ -25,6 +25,17 @@ mockk = "1.13.7"
 retrofitVersion = "2.9.0"
 soloaderVersion = "0.10.5"
 ksp = "1.9.22-1.0.17"
+jetbrainsKotlinJvm = "1.7.10"
+androidTools = "31.2.2"
+desugar_jdk_libs = "2.0.4"
+
+# Project versions
+projectApplicationId = "br.com.lira.rickandmorty"
+projectVersionName = "1.0"
+projectMinSdkVersion = "25"
+projectTargetSdkVersion = "34"
+projectCompileSdkVersion = "33"
+projectVersionCode = "1"
 
 [libraries]
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -53,7 +64,11 @@ okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttpVersion"
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picassoVersion" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
 soloader = { module = "com.facebook.soloader:soloader", version.ref = "soloaderVersion" }
-ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+ksp-gradle-plugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+desugar-jdk-libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -62,3 +77,5 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 jetbrains-kotlin-android-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref ="hiltAndroid" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+rickandmorty-android-application = { id = "rickandmorty.android.application", version = "unspecified" }
