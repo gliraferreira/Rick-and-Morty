@@ -5,7 +5,7 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.cachedIn
 import androidx.paging.map
-import br.com.lira.rickandmorty.core.viewmodel.ViewModel
+import br.lira.core.presentation.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.episodes.domain.usecase.GetAllEpisodesUseCase
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodeModelToUIMapper
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesErrorMapper

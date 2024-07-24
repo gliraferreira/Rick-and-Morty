@@ -6,7 +6,7 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
-import br.com.lira.rickandmorty.core.viewmodel.ViewModel
+import br.lira.core.presentation.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.domain.usecase.GetAllCharactersUseCase
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterFilterToTextMapper

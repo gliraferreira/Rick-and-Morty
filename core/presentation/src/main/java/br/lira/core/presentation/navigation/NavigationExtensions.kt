@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.core.toolkit
+package br.lira.core.presentation.navigation
 
 import androidx.activity.addCallback
 import androidx.annotation.IdRes

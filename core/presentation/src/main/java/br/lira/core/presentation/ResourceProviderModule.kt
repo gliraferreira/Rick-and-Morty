@@ -1,7 +1,5 @@
-package br.com.lira.rickandmorty.core.di
+package br.lira.core.presentation
 
-import br.com.lira.rickandmorty.core.toolkit.ResourceProvider
-import br.com.lira.rickandmorty.core.toolkit.ResourceProviderImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

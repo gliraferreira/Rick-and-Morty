@@ -1,9 +1,8 @@
-package br.com.lira.rickandmorty.core.viewmodel
+package br.lira.core.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import br.com.lira.rickandmorty.core.toolkit.SingleLiveData
 
 abstract class ViewModel<State : ViewState, Action : ViewAction>(
     initialState: State

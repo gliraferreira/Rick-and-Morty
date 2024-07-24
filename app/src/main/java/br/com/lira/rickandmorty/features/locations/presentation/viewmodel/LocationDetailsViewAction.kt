@@ -1,6 +1,6 @@
 package br.com.lira.rickandmorty.features.locations.presentation.viewmodel
 
-import br.com.lira.rickandmorty.core.viewmodel.ViewAction
+import br.lira.core.presentation.viewmodel.ViewAction
 
 sealed class LocationDetailsViewAction : ViewAction {
 

@@ -2,8 +2,8 @@ package br.com.lira.rickandmorty.features.characters.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.core.toolkit.ResourceProvider
-import br.com.lira.rickandmorty.core.viewmodel.ViewModel
+import br.lira.core.presentation.ResourceProvider
+import br.lira.core.presentation.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.characters.domain.usecase.GetCharacterByIdUseCase
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterDetailsModelToUIMapper
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterEpisodeUIModelMapper

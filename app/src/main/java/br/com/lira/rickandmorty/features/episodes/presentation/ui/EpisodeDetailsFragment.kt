@@ -8,11 +8,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.core.toolkit.addPopBackStackHandler
-import br.com.lira.rickandmorty.core.toolkit.popBackStack
+import br.lira.core.presentation.navigation.addPopBackStackHandler
+import br.lira.core.presentation.navigation.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentEpisodeDetailsBinding
 import br.com.lira.rickandmorty.features.characters.presentation.CharacterNavigator
-import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharactersListViewAction
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewAction
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewModel
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewState

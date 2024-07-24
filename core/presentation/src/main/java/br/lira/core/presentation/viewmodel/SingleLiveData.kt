@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.core.toolkit
+package br.lira.core.presentation.viewmodel
 
 import androidx.annotation.MainThread
 import androidx.annotation.Nullable

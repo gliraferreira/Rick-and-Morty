@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.features.characters.presentation.mapper
 
 import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.core.toolkit.ResourceProvider
+import br.lira.core.presentation.ResourceProvider
 import br.com.lira.rickandmorty.features.shared.domain.model.CharacterStatus
 import javax.inject.Inject
 

@@ -9,10 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.core.toolkit.SlideFromRightAnimation
-import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentLocationsBinding
-import br.com.lira.rickandmorty.features.episodes.presentation.ui.EpisodeDetailsFragment
 import br.com.lira.rickandmorty.features.locations.presentation.model.LocationUIModel
 import br.com.lira.rickandmorty.features.locations.presentation.navigation.LocationNavigator
 import br.com.lira.rickandmorty.features.locations.presentation.ui.adapter.LocationsAdapter

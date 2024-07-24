@@ -2,8 +2,8 @@ package br.com.lira.rickandmorty.features.episodes.presentation.navigation
 
 import androidx.fragment.app.Fragment
 import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.core.toolkit.SlideFromRightAnimation
-import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
+import br.lira.core.presentation.navigation.SlideFromRightAnimation
+import br.lira.core.presentation.navigation.navigateToFragment
 import br.com.lira.rickandmorty.features.episodes.presentation.ui.EpisodeDetailsFragment
 import javax.inject.Inject
 

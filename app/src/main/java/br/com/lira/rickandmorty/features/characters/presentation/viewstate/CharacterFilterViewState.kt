@@ -1,6 +1,6 @@
 package br.com.lira.rickandmorty.features.characters.presentation.viewstate
 
-import br.com.lira.rickandmorty.core.viewmodel.ViewState
+import br.lira.core.presentation.viewmodel.ViewState
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.shared.domain.model.CharacterGender
 import br.com.lira.rickandmorty.features.shared.domain.model.CharacterStatus

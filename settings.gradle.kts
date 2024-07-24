@@ -25,3 +25,4 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "RickAndMortyCharactersGuide"
 
 include(":app")
+include(":core:presentation")

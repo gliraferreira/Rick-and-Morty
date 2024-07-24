@@ -8,6 +8,7 @@ dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.android.tools.common)
     compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.ksp.gradle.plugin)
 }
 
 gradlePlugin {
@@ -15,6 +16,10 @@ gradlePlugin {
         register("androidApplication") {
             id = "rickandmorty.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
+        }
+        register("androidLibrary") {
+            id = "rickandmorty.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
         }
         register("androidHilt") {
             id = "rickandmorty.android.hilt"

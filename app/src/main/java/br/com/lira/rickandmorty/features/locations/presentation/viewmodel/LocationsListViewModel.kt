@@ -5,7 +5,7 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.cachedIn
 import androidx.paging.map
-import br.com.lira.rickandmorty.core.viewmodel.ViewModel
+import br.lira.core.presentation.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.locations.domain.usecase.GetAllLocationsUseCase
 import br.com.lira.rickandmorty.features.locations.presentation.mapper.LocationShortToItemUIMapper
 import br.com.lira.rickandmorty.features.locations.presentation.mapper.LocationsErrorMapper

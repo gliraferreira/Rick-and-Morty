@@ -34,7 +34,6 @@ dependencies {
 
     implementation(libs.material)
 
-    implementation(libs.picasso)
     implementation(libs.circleimageview)
 
     testImplementation(libs.mockk)
@@ -46,4 +45,6 @@ dependencies {
     implementation(libs.flipper)
     implementation(libs.flipper.network.plugin)
     implementation(libs.soloader)
+
+    implementation(projects.core.presentation)
 }

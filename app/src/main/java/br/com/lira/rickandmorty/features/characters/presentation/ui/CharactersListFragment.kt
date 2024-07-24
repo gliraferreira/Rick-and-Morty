@@ -10,8 +10,6 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.core.toolkit.SlideFromRightAnimation
-import br.com.lira.rickandmorty.core.toolkit.navigateToFragment
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.presentation.CharacterNavigator

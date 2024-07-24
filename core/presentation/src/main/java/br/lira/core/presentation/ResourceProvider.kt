@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.core.toolkit
+package br.lira.core.presentation
 
 import android.graphics.drawable.Drawable
 import androidx.annotation.ColorRes
