@@ -1,8 +1,7 @@
 plugins {
     alias(libs.plugins.rickandmorty.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android.parcelize)
-    alias(libs.plugins.hilt.android)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.rickandmorty.android.hilt)
+    alias(libs.plugins.rickandmorty.android.retrofit)
 }
 
 android {
@@ -24,8 +23,6 @@ android {
 }
 
 dependencies {
-    compileOnly(libs.ksp.gradle.plugin)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
@@ -35,17 +32,7 @@ dependencies {
     implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.fragment.ktx)
 
-
     implementation(libs.material)
-
-    implementation(libs.retrofit)
-    implementation(libs.okhttp)
-    implementation(libs.converter.moshi)
-    implementation(libs.moshi.kotlin)
-    ksp(libs.moshi.kotlin.codegen)
-
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
 
     implementation(libs.picasso)
     implementation(libs.circleimageview)

@@ -16,5 +16,13 @@ gradlePlugin {
             id = "rickandmorty.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("androidHilt") {
+            id = "rickandmorty.android.hilt"
+            implementationClass = "AndroidHiltConventionPlugin"
+        }
+        register("androidRetrofit") {
+            id = "rickandmorty.android.retrofit"
+            implementationClass = "AndroidRetrofitConventionPlugin"
+        }
     }
 }
