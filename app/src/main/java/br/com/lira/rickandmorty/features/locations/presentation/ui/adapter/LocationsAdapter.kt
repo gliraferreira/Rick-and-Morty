@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import br.com.lira.rickandmorty.databinding.ListItemLocationBinding
-import br.com.lira.rickandmorty.features.locations.presentation.model.LocationUIModel
+import br.com.lira.rickandmorty.locations.presentation.model.LocationUIModel
 
 class LocationsAdapter(
     private val onLocationClicked: (Long) -> Unit

@@ -1,6 +1,7 @@
 package br.com.lira.rickandmorty.features.characters.presentation.mapper
 
 import br.com.lira.rickandmorty.R
+import br.com.lira.rickandmorty.core.presentation.R as coreR
 import br.lira.core.presentation.ResourceProvider
 import br.lira.core.presentation.model.GenericUIError
 import retrofit2.HttpException
@@ -29,8 +30,8 @@ class CharactersErrorMapper @Inject constructor(
     )
 
     private fun mapGenericError() = GenericUIError(
-        message = resourceProvider.getString(R.string.common_error_title),
-        image = resourceProvider.getDrawable(R.drawable.ic_error),
+        message = resourceProvider.getString(coreR.string.common_error_title),
+        image = resourceProvider.getDrawable(coreR.drawable.ic_error),
         isTryAgainVisible = true
     )
 }

@@ -14,7 +14,7 @@ import br.com.lira.rickandmorty.features.characters.presentation.viewaction.Char
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharacterDetailsViewModel
 import br.com.lira.rickandmorty.features.characters.presentation.viewstate.CharacterDetailsViewState
 import br.com.lira.rickandmorty.features.episodes.presentation.navigation.EpisodesNavigator
-import br.com.lira.rickandmorty.features.locations.presentation.navigation.LocationNavigator
+import br.com.lira.rickandmorty.features.locations.presentation.navigation.LocationNavigatorImpl
 import br.com.lira.rickandmorty.navigation.ImmersiveNavigationMode
 import br.com.lira.rickandmorty.navigation.NavigationModeHandler
 import br.lira.core.presentation.extensions.loadImage
@@ -36,7 +36,7 @@ class CharacterDetailsFragment : Fragment(), NavigationModeHandler by ImmersiveN
     lateinit var episodeNavigator: EpisodesNavigator
 
     @Inject
-    lateinit var locationNavigator: LocationNavigator
+    lateinit var locationNavigator: LocationNavigatorImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

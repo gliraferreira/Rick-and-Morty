@@ -9,6 +9,7 @@ hiltAndroid = "2.51.1"
 junitVersion = "4.13.2"
 agp = "8.2.2"
 kotlin = "1.9.22"
+viewmodel = "2.6.0"
 
 coreKtx = "1.7.0"
 appcompat = "1.5.0"
@@ -48,6 +49,8 @@ androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fr
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
 androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntimeKtx" }
 androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "viewmodel" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "viewmodel" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageviewVersion" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofitVersion" }
 flipper = { module = "com.facebook.flipper:flipper", version.ref = "flipperVersion" }

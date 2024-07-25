@@ -49,4 +49,6 @@ dependencies {
     implementation(projects.core.presentation)
     implementation(projects.core.data)
     implementation(projects.core.navigation)
+    implementation(projects.features.locations.impl)
+    implementation(projects.features.locations.publicAndroid)
 }

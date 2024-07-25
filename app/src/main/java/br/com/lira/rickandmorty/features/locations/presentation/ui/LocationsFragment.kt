@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.databinding.FragmentLocationsBinding
-import br.com.lira.rickandmorty.features.locations.presentation.model.LocationUIModel
-import br.com.lira.rickandmorty.features.locations.presentation.navigation.LocationNavigator
+import br.com.lira.rickandmorty.locations.presentation.model.LocationUIModel
+import br.com.lira.rickandmorty.features.locations.presentation.navigation.LocationNavigatorImpl
 import br.com.lira.rickandmorty.features.locations.presentation.ui.adapter.LocationsAdapter
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewAction
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewModel
@@ -32,7 +32,7 @@ class LocationsFragment : Fragment(), NavigationModeHandler by DefaultNavigation
     private lateinit var locationsAdapter: LocationsAdapter
 
     @Inject
-    lateinit var locationNavigator: LocationNavigator
+    lateinit var locationNavigator: LocationNavigatorImpl
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

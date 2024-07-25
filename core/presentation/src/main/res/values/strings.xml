@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="retry">Retry</string>
+    <string name="common_error_title">There was an error</string>
+    <string name="try_again">Try again</string>
 </resources>

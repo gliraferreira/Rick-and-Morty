@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.locations.presentation.ui.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import br.com.lira.rickandmorty.databinding.ListItemLocationBinding
-import br.com.lira.rickandmorty.features.locations.presentation.model.LocationUIModel
+import br.com.lira.rickandmorty.locations.presentation.model.LocationUIModel
 
 class LocationsViewHolder(
     private val binding: ListItemLocationBinding,

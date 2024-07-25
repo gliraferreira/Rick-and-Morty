@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.locations.presentation.viewmodel
 
 import androidx.paging.PagingData
 import br.lira.core.presentation.viewmodel.ViewState
-import br.com.lira.rickandmorty.features.locations.presentation.model.LocationUIModel
+import br.com.lira.rickandmorty.locations.presentation.model.LocationUIModel
 import br.lira.core.presentation.model.GenericUIError
 
 data class LocationsListViewState(

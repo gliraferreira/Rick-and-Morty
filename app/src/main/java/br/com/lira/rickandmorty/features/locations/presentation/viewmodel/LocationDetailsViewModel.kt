@@ -6,9 +6,9 @@ import br.lira.core.presentation.ResourceProvider
 import br.lira.core.presentation.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterShortToUIMapper
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesErrorMapper
-import br.com.lira.rickandmorty.features.locations.domain.model.Location
-import br.com.lira.rickandmorty.features.locations.domain.usecase.GetLocationByIdUseCase
-import br.com.lira.rickandmorty.features.locations.presentation.mapper.LocationUIMapper
+import br.com.lira.rickandmorty.locations.domain.model.Location
+import br.com.lira.rickandmorty.locations.domain.usecase.GetLocationByIdUseCase
+import br.com.lira.rickandmorty.locations.presentation.mapper.LocationUIMapper
 import br.com.lira.rickandmorty.features.shared.domain.model.CharacterShort
 import br.com.lira.rickandmorty.features.shared.domain.usecase.GetMultipleCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

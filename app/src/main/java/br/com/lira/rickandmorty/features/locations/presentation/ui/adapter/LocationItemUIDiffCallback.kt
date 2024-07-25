@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.features.locations.presentation.ui.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import br.com.lira.rickandmorty.features.locations.presentation.model.LocationUIModel
+import br.com.lira.rickandmorty.locations.presentation.model.LocationUIModel
 
 object LocationItemUIDiffCallback : DiffUtil.ItemCallback<LocationUIModel>() {
 
