@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.episodes.presentation.viewmodel
 
 import androidx.paging.PagingData
 import br.lira.core.presentation.viewmodel.ViewState
-import br.com.lira.rickandmorty.features.shared.presentation.model.GenericUIError
+import br.lira.core.presentation.model.GenericUIError
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
 
 data class EpisodesListViewState(

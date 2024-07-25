@@ -19,8 +19,8 @@ import br.lira.core.presentation.adapter.PagingLoadStateAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharactersListViewAction
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharactersListViewModel
 import br.com.lira.rickandmorty.features.characters.presentation.viewstate.CharactersListViewState
-import br.com.lira.rickandmorty.main.navigation.DefaultNavigationMode
-import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
+import br.com.lira.rickandmorty.navigation.DefaultNavigationMode
+import br.com.lira.rickandmorty.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

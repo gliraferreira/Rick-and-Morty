@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.core.toolkit
+package br.com.lira.rickandmorty.core.data.utils
 
 inline fun <reified T : Enum<T>> valueOf(type: String, default: T): T {
     return try {

@@ -17,8 +17,8 @@ import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.Locati
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewModel
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationsListViewState
 import br.lira.core.presentation.adapter.PagingLoadStateAdapter
-import br.com.lira.rickandmorty.main.navigation.DefaultNavigationMode
-import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
+import br.com.lira.rickandmorty.navigation.DefaultNavigationMode
+import br.com.lira.rickandmorty.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

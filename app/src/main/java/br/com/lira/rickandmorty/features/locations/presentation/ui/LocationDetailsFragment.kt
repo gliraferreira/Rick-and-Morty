@@ -8,16 +8,16 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.lira.rickandmorty.R
-import br.lira.core.presentation.navigation.addPopBackStackHandler
-import br.lira.core.presentation.navigation.popBackStack
+import br.com.lira.rickandmorty.navigation.addPopBackStackHandler
+import br.com.lira.rickandmorty.navigation.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentLocationDetailsBinding
 import br.com.lira.rickandmorty.features.characters.presentation.CharacterNavigator
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationDetailsViewAction
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationDetailsViewModel
 import br.com.lira.rickandmorty.features.locations.presentation.viewmodel.LocationDetailsViewState
 import br.com.lira.rickandmorty.features.shared.presentation.adapter.CharactersListAdapter
-import br.com.lira.rickandmorty.main.navigation.ImmersiveNavigationMode
-import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
+import br.com.lira.rickandmorty.navigation.ImmersiveNavigationMode
+import br.com.lira.rickandmorty.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

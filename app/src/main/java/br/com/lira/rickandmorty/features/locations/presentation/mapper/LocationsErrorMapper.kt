@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.locations.presentation.mapper
 
 import br.com.lira.rickandmorty.R
 import br.lira.core.presentation.ResourceProvider
-import br.com.lira.rickandmorty.features.shared.presentation.model.GenericUIError
+import br.lira.core.presentation.model.GenericUIError
 import javax.inject.Inject
 
 class LocationsErrorMapper @Inject constructor(

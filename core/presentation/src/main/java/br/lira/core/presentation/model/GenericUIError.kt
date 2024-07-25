@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.features.shared.presentation.model
+package br.lira.core.presentation.model
 
 import android.graphics.drawable.Drawable
 

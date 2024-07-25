@@ -1,4 +1,4 @@
-package br.lira.core.presentation.navigation
+package br.com.lira.rickandmorty.navigation
 
 import androidx.activity.addCallback
 import androidx.annotation.IdRes
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import br.com.lira.rickandmorty.navigation.animation.FragmentAnimation
 import kotlin.reflect.KClass
 
 

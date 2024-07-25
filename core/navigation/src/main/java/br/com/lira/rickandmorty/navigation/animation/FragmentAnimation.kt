@@ -1,4 +1,4 @@
-package br.lira.core.presentation.navigation
+package br.com.lira.rickandmorty.navigation.animation
 
 import androidx.fragment.app.FragmentTransaction
 

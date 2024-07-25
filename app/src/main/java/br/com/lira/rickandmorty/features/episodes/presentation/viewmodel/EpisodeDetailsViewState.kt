@@ -3,7 +3,7 @@ package br.com.lira.rickandmorty.features.episodes.presentation.viewmodel
 import br.lira.core.presentation.viewmodel.ViewState
 import br.com.lira.rickandmorty.features.shared.presentation.model.CharacterUIModel
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeDetailsUIModel
-import br.com.lira.rickandmorty.features.shared.presentation.model.GenericUIError
+import br.lira.core.presentation.model.GenericUIError
 
 data class EpisodeDetailsViewState(
     val episode: EpisodeDetailsUIModel? = null,

@@ -3,7 +3,7 @@ package br.com.lira.rickandmorty.features.characters.presentation.viewstate
 import androidx.paging.PagingData
 import br.lira.core.presentation.viewmodel.ViewState
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
-import br.com.lira.rickandmorty.features.shared.presentation.model.GenericUIError
+import br.lira.core.presentation.model.GenericUIError
 import br.com.lira.rickandmorty.features.shared.presentation.model.CharacterUIModel
 
 data class CharactersListViewState(
