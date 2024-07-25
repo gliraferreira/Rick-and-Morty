@@ -16,7 +16,7 @@ import br.com.lira.rickandmorty.features.episodes.presentation.ui.adapter.Episod
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewAction
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewModel
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewState
-import br.com.lira.rickandmorty.features.shared.presentation.adapter.PagingLoadStateAdapter
+import br.lira.core.presentation.adapter.PagingLoadStateAdapter
 import br.com.lira.rickandmorty.main.navigation.DefaultNavigationMode
 import br.com.lira.rickandmorty.main.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint

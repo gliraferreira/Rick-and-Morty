@@ -1,9 +1,8 @@
 package br.com.lira.rickandmorty.features.locations.data.remote.mapper
 
-import br.com.lira.rickandmorty.core.mapper.UrlMapper
+import br.com.lira.rickandmorty.core.data.mapper.UrlMapper
 import br.com.lira.rickandmorty.features.locations.data.remote.api.response.LocationResponse
 import br.com.lira.rickandmorty.features.locations.domain.model.Location
-import br.com.lira.rickandmorty.features.shared.domain.model.LocationShort
 import javax.inject.Inject
 
 class LocationResponseToModelMapper @Inject constructor(

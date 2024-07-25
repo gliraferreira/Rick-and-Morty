@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "br.lira.core.presentation"
+    namespace = "br.com.lira.rickandmorty.core.presentation"
 }
 
 dependencies {
@@ -13,4 +13,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.paging.runtime.ktx)
+    implementation(libs.androidx.paging.runtime)
 }

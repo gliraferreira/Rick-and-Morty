@@ -1,11 +1,10 @@
-package br.com.lira.rickandmorty.features.shared.presentation.adapter
+package br.lira.core.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
-import br.com.lira.rickandmorty.databinding.LoadStateFooterViewItemBinding
-import br.com.lira.rickandmorty.features.shared.presentation.adapter.PagingLoadStateViewHolder
+import br.com.lira.rickandmorty.core.presentation.databinding.LoadStateFooterViewItemBinding
 
 class PagingLoadStateAdapter(
     private val retry: () -> Unit = {}

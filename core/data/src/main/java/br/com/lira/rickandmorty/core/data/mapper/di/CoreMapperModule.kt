@@ -1,7 +1,7 @@
-package br.com.lira.rickandmorty.core.di
+package br.com.lira.rickandmorty.core.data.mapper.di
 
-import br.com.lira.rickandmorty.core.mapper.UrlDefaultMapper
-import br.com.lira.rickandmorty.core.mapper.UrlMapper
+import br.com.lira.rickandmorty.core.data.mapper.UrlDefaultMapper
+import br.com.lira.rickandmorty.core.data.mapper.UrlMapper
 import dagger.Binds
 import dagger.Module
 import dagger.Reusable

@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.locations.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import br.com.lira.rickandmorty.core.mapper.UrlMapper
+import br.com.lira.rickandmorty.core.data.mapper.UrlMapper
 import br.com.lira.rickandmorty.features.locations.data.remote.datasource.LocationsPagingDataSource
 import br.com.lira.rickandmorty.features.locations.data.remote.datasource.LocationsRemoteDataSource
 import br.com.lira.rickandmorty.features.locations.data.remote.mapper.LocationResponseToModelMapper

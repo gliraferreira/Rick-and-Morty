@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.main
 
 import android.app.Application
 import br.com.lira.rickandmorty.BuildConfig
-import br.com.lira.rickandmorty.main.di.networkFlipper
+import br.com.lira.rickandmorty.core.data.network.networkFlipper
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.android.utils.FlipperUtils
 import com.facebook.flipper.plugins.inspector.DescriptorMapping

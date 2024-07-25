@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.features.episodes.data.remote.datasource
 
 import br.com.lira.rickandmorty.features.episodes.data.remote.api.response.EpisodeResponse
-import br.com.lira.rickandmorty.features.shared.remote.response.PageResponse
+import br.com.lira.rickandmorty.core.data.response.PageResponse
 
 interface EpisodesRemoteDataSource {
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#CDCDCD</color>
+    <color name="darkGray">#414445</color>
+
+    <color name="colorPrimary">#fafaff</color>
+    <color name="colorPrimaryDark">#1c1c1c</color>
+
+    <color name="toolbar_background">@color/colorPrimaryDark</color>
+    <color name="textOnPrimaryDark">@color/gray</color>
+    <color name="icon">@color/gray</color>
+    <color name="iconDark">@color/darkGray</color>
+
+    <color name="common_background">@color/colorPrimary</color>
+
+    <color name="button_color">@color/colorPrimaryDark</color>
+    <color name="button_color_on_primary">@color/colorPrimary</color>
+
+</resources>

@@ -81,4 +81,5 @@ jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrai
 rickandmorty-android-application = { id = "rickandmorty.android.application", version = "unspecified" }
 rickandmorty-android-library = { id = "rickandmorty.android.library", version = "unspecified" }
 rickandmorty-android-hilt = { id = "rickandmorty.android.hilt", version = "unspecified" }
-rickandmorty-android-retrofit = { id = "rickandmorty.android.retrofit", version = "unspecified" }
+rickandmorty-kotlin-retrofit = { id = "rickandmorty.kotlin.retrofit", version = "unspecified" }
+rickandmorty-kotlin-library = { id = "rickandmorty.kotlin.library", version = "unspecified" }

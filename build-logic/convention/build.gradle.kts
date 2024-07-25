@@ -25,8 +25,12 @@ gradlePlugin {
             id = "rickandmorty.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
-        register("androidRetrofit") {
-            id = "rickandmorty.android.retrofit"
+        register("kotlinRetrofit") {
+            id = "rickandmorty.kotlin.retrofit"
+            implementationClass = "KotlinRetrofitConventionPlugin"
+        }
+        register("kotlinLibrary") {
+            id = "rickandmorty.kotlin.library"
             implementationClass = "AndroidRetrofitConventionPlugin"
         }
     }

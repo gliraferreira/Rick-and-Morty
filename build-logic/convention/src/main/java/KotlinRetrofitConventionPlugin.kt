@@ -5,7 +5,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
 
-class AndroidRetrofitConventionPlugin : Plugin<Project> {
+class KotlinRetrofitConventionPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
         target.run {

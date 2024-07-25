@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.features.shared.remote.response
+package br.com.lira.rickandmorty.core.data.response
 
 import com.squareup.moshi.JsonClass
 

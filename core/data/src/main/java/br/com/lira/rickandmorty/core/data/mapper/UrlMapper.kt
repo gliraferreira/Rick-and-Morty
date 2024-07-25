@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.core.mapper
+package br.com.lira.rickandmorty.core.data.mapper
 
 interface UrlMapper {
 

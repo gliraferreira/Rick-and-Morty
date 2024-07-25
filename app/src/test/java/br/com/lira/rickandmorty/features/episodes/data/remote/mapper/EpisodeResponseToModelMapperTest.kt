@@ -1,8 +1,7 @@
 package br.com.lira.rickandmorty.features.episodes.data.remote.mapper
 
-import br.com.lira.rickandmorty.core.mapper.UrlMapper
+import br.com.lira.rickandmorty.core.data.mapper.UrlMapper
 import br.com.lira.rickandmorty.stub.EpisodeStub
-import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verifyOrder
 import kotlin.test.assertEquals

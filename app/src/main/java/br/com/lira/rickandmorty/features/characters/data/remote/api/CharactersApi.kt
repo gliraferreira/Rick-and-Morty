@@ -1,6 +1,6 @@
 package br.com.lira.rickandmorty.features.characters.data.remote.api
 
-import br.com.lira.rickandmorty.features.shared.remote.response.PageResponse
+import br.com.lira.rickandmorty.core.data.response.PageResponse
 import br.com.lira.rickandmorty.features.characters.data.remote.api.response.CharacterResponse
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -2,8 +2,7 @@ package br.com.lira.rickandmorty.features.characters.data.remote.datasource
 
 import br.com.lira.rickandmorty.features.characters.data.remote.api.response.CharacterResponse
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
-import br.com.lira.rickandmorty.features.shared.remote.response.PageResponse
-import retrofit2.http.Path
+import br.com.lira.rickandmorty.core.data.response.PageResponse
 
 interface CharactersRemoteDataSource {
 

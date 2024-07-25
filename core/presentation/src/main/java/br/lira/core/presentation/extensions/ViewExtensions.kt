@@ -1,7 +1,7 @@
 package br.lira.core.presentation.extensions
 
 import android.widget.ImageView
-import br.lira.core.presentation.R
+import br.com.lira.rickandmorty.core.presentation.R
 import com.squareup.picasso.Picasso
 
 fun ImageView.loadImage(url: String?) {

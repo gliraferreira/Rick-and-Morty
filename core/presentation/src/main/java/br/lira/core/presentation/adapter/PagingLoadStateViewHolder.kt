@@ -1,9 +1,9 @@
-package br.com.lira.rickandmorty.features.shared.presentation.adapter
+package br.lira.core.presentation.adapter
 
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
-import br.com.lira.rickandmorty.databinding.LoadStateFooterViewItemBinding
+import br.com.lira.rickandmorty.core.presentation.databinding.LoadStateFooterViewItemBinding
 
 class PagingLoadStateViewHolder(
     private val binding: LoadStateFooterViewItemBinding,

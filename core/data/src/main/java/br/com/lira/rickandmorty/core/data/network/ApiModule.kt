@@ -1,6 +1,6 @@
-package br.com.lira.rickandmorty.main.di
+package br.com.lira.rickandmorty.core.data.network
 
-import br.com.lira.rickandmorty.BuildConfig
+import br.com.lira.rickandmorty.core.data.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

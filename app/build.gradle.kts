@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.rickandmorty.android.application)
     alias(libs.plugins.rickandmorty.android.hilt)
-    alias(libs.plugins.rickandmorty.android.retrofit)
+    alias(libs.plugins.rickandmorty.kotlin.retrofit)
 }
 
 android {
@@ -47,4 +47,5 @@ dependencies {
     implementation(libs.soloader)
 
     implementation(projects.core.presentation)
+    implementation(projects.core.data)
 }

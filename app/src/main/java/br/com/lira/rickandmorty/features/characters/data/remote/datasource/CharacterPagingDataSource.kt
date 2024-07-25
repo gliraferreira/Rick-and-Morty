@@ -3,7 +3,7 @@ package br.com.lira.rickandmorty.features.characters.data.remote.datasource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import br.com.lira.rickandmorty.core.mapper.UrlMapper
+import br.com.lira.rickandmorty.core.data.mapper.UrlMapper
 import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.data.remote.mapper.CharacterResponseToModelMapper
 import br.com.lira.rickandmorty.features.characters.domain.model.Character

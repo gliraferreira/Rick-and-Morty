@@ -1,7 +1,7 @@
 package br.lira.core.presentation.navigation
 
 import androidx.fragment.app.FragmentTransaction
-import br.lira.core.presentation.R
+import br.com.lira.rickandmorty.core.presentation.R
 
 object SlideFromRightAnimation : FragmentAnimation {
 
