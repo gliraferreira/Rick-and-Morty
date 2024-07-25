@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.features.characters.data.remote.mapper
 
 import br.com.lira.rickandmorty.features.characters.data.remote.api.response.CharacterLocationResponse
-import br.com.lira.rickandmorty.features.shared.domain.model.CharacterLocation
+import br.com.lira.rickandmorty.characters.domain.model.CharacterLocation
 import br.com.lira.rickandmorty.core.data.mapper.UrlMapper
 import javax.inject.Inject
 

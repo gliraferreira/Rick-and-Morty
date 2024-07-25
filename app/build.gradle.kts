@@ -51,4 +51,6 @@ dependencies {
     implementation(projects.core.navigation)
     implementation(projects.features.locations.impl)
     implementation(projects.features.locations.publicAndroid)
+    implementation(projects.features.characters.publicAndroid)
+    implementation(projects.features.episodes.publicAndroid)
 }

@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.features.characters.data.remote.datasource
 
 import br.com.lira.rickandmorty.features.characters.data.remote.api.response.CharacterResponse
-import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.core.data.response.PageResponse
 
 interface CharactersRemoteDataSource {

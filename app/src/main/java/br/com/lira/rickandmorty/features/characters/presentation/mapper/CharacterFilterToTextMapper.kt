@@ -1,6 +1,6 @@
 package br.com.lira.rickandmorty.features.characters.presentation.mapper
 
-import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.characters.domain.model.CharacterFilter
 import javax.inject.Inject
 
 private const val SEPARATOR = " | "

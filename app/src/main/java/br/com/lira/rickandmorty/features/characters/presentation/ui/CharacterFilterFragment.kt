@@ -13,7 +13,7 @@ import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.navigation.addPopBackStackHandler
 import br.com.lira.rickandmorty.navigation.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentCharacterFilterBinding
-import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterFilterUIModel
 import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharacterFilterViewAction
 import br.com.lira.rickandmorty.features.characters.presentation.viewmodel.CharacterFilterViewModel

@@ -25,7 +25,7 @@ class CharactersErrorMapper @Inject constructor(
 
     private fun mapNotFoundError() = GenericUIError(
         message = resourceProvider.getString(R.string.characters_search_empty_text),
-        image = resourceProvider.getDrawable(R.drawable.ic_empty),
+        image = resourceProvider.getDrawable(coreR.drawable.ic_empty),
         isTryAgainVisible = false
     )
 

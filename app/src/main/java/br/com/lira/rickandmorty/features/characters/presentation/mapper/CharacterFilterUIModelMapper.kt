@@ -1,10 +1,10 @@
 package br.com.lira.rickandmorty.features.characters.presentation.mapper
 
 import br.com.lira.rickandmorty.R
-import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterFilterUIModel
-import br.com.lira.rickandmorty.features.shared.domain.model.CharacterGender
-import br.com.lira.rickandmorty.features.shared.domain.model.CharacterStatus
+import br.com.lira.rickandmorty.characters.domain.model.CharacterGender
+import br.com.lira.rickandmorty.characters.domain.model.CharacterStatus
 import javax.inject.Inject
 
 class CharacterFilterUIModelMapper @Inject constructor() {

@@ -4,14 +4,14 @@ import androidx.lifecycle.viewModelScope
 import br.com.lira.rickandmorty.R
 import br.lira.core.presentation.ResourceProvider
 import br.lira.core.presentation.viewmodel.ViewModel
-import br.com.lira.rickandmorty.features.characters.domain.usecase.GetCharacterByIdUseCase
+import br.com.lira.rickandmorty.characters.domain.usecase.GetCharacterByIdUseCase
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterDetailsModelToUIMapper
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterEpisodeUIModelMapper
 import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharacterDetailsViewAction
 import br.com.lira.rickandmorty.features.characters.presentation.viewstate.CharacterDetailsViewState
 import br.com.lira.rickandmorty.features.episodes.domain.usecase.GetMultipleEpisodesUseCase
-import br.com.lira.rickandmorty.features.characters.domain.model.Character
-import br.com.lira.rickandmorty.features.shared.domain.model.CharacterLocation
+import br.com.lira.rickandmorty.characters.domain.model.Character
+import br.com.lira.rickandmorty.characters.domain.model.CharacterLocation
 import br.com.lira.rickandmorty.features.shared.domain.model.Episode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

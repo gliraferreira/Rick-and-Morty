@@ -3,10 +3,10 @@ package br.com.lira.rickandmorty.features.characters.presentation.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import br.com.lira.rickandmorty.databinding.ListItemCharacterBinding
-import br.com.lira.rickandmorty.features.shared.presentation.adapter.CharacterItemDiffCallback
-import br.com.lira.rickandmorty.features.shared.presentation.adapter.CharacterListItemViewHolder
-import br.com.lira.rickandmorty.features.shared.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.characters.databinding.ListItemCharacterBinding
+import br.com.lira.rickandmorty.characters.presentation.adapter.CharacterItemDiffCallback
+import br.com.lira.rickandmorty.characters.presentation.adapter.CharacterListItemViewHolder
+import br.com.lira.rickandmorty.characters.presentation.model.CharacterUIModel
 
 class CharactersPagingListAdapter(
     private val isNavigationEnabled: Boolean = false,

@@ -2,7 +2,7 @@ package br.com.lira.rickandmorty.features.characters.presentation.mapper
 
 import br.com.lira.rickandmorty.R
 import br.lira.core.presentation.ResourceProvider
-import br.com.lira.rickandmorty.features.shared.domain.model.CharacterGender
+import br.com.lira.rickandmorty.characters.domain.model.CharacterGender
 import javax.inject.Inject
 
 class CharacterGenderMapper @Inject constructor(

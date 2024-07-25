@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location_details_characters_list_label">Residents (%d)</string>
+    <string name="location_details_empty_characters_list_label">No residents found at this location</string>
+    <string name="location_details_title">Location details</string>
+    <string name="location_details_nav_content_description">Go to details</string>
+    <string name="title_locations">Locations</string>
+</resources>

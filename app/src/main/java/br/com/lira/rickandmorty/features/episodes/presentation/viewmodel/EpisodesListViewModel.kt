@@ -8,7 +8,7 @@ import androidx.paging.map
 import br.lira.core.presentation.viewmodel.ViewModel
 import br.com.lira.rickandmorty.features.episodes.domain.usecase.GetAllEpisodesUseCase
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodeModelToUIMapper
-import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesErrorMapper
+import br.com.lira.rickandmorty.episodes.presentation.mapper.EpisodesErrorMapper
 import br.com.lira.rickandmorty.features.episodes.presentation.mapper.EpisodesListSeparatorMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

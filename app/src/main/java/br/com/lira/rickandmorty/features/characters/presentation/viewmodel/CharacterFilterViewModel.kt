@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.features.characters.presentation.viewmodel
 
 import br.lira.core.presentation.viewmodel.ViewModel
-import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterFilterUIModelMapper
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterFilterGenderMapper
 import br.com.lira.rickandmorty.features.characters.presentation.mapper.CharacterFilterStatusMapper

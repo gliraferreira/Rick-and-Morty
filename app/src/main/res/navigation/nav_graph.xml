@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_locations"
-        android:name="br.com.lira.rickandmorty.features.locations.presentation.ui.LocationsFragment"
+        android:name="br.com.lira.rickandmorty.locations.presentation.ui.fragment.LocationsFragment"
         android:label="navigation_locations"
         tools:layout="@layout/fragment_locations" />
 

@@ -2,6 +2,7 @@
 import br.lira.convention.ExtensionType
 import br.lira.convention.configureBuildTypes
 import br.lira.convention.configureKotlinAndroid
+import br.lira.convention.libs
 import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -29,6 +30,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
+                "implementation"(libs.findLibrary("androidx.lifecycle.viewmodel").get())
+                "implementation"(libs.findLibrary("androidx.lifecycle.viewmodel.ktx").get())
                 "testImplementation"(kotlin("test"))
             }
         }

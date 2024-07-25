@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/screen_margin"
+    android:layout_marginVertical="@dimen/spacing_6"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_background">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/picture"
+            android:layout_width="@dimen/character_list_item_profile_picture"
+            android:layout_height="@dimen/character_list_item_profile_picture"
+            android:layout_marginStart="@dimen/spacing_3"
+            android:layout_marginTop="@dimen/spacing_4"
+            android:layout_marginBottom="@dimen/spacing_4"
+            app:civ_border_width="@dimen/character_list_item_profile_picture_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_round_account_circle" />
+
+        <TextView
+            android:id="@+id/username"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="@dimen/auto_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_4"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/gender"
+            app:layout_constraintEnd_toStartOf="@id/navigationIcon"
+            app:layout_constraintStart_toEndOf="@+id/picture"
+            app:layout_constraintTop_toTopOf="@+id/picture"
+            tools:text="Rick" />
+
+        <TextView
+            android:id="@+id/gender"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_4"
+            app:layout_constraintBottom_toBottomOf="@id/picture"
+            app:layout_constraintStart_toEndOf="@id/picture"
+            app:layout_constraintTop_toBottomOf="@id/username"
+            tools:text="Rick" />
+
+        <ImageButton
+            android:id="@+id/navigationIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/common_background"
+            android:clickable="false"
+            android:contentDescription="@string/characters_list_nav_details_description"
+            android:padding="@dimen/spacing_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/username"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_right"
+            app:tint="@color/iconDark" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

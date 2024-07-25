@@ -11,7 +11,7 @@ import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.databinding.FragmentEpisodesBinding
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeUIModel
-import br.com.lira.rickandmorty.features.episodes.presentation.navigation.EpisodesNavigator
+import br.com.lira.rickandmorty.episodes.navigation.EpisodesNavigator
 import br.com.lira.rickandmorty.features.episodes.presentation.ui.adapter.EpisodesListAdapter
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewAction
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodesListViewModel

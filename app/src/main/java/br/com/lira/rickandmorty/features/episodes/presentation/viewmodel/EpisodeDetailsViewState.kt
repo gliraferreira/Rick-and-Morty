@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.features.episodes.presentation.viewmodel
 
 import br.lira.core.presentation.viewmodel.ViewState
-import br.com.lira.rickandmorty.features.shared.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.characters.presentation.model.CharacterUIModel
 import br.com.lira.rickandmorty.features.episodes.presentation.model.EpisodeDetailsUIModel
 import br.lira.core.presentation.model.GenericUIError
 

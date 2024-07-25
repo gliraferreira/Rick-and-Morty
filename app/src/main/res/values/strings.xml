@@ -40,17 +40,9 @@
     <string name="episode_details_characters_list_label">Characters (%d)</string>
     <string name="episode_details_episode_number">Season %d - Episode %d</string>
 
-    <string name="location_details_characters_list_label">Residents (%d)</string>
-    <string name="location_details_empty_characters_list_label">No residents found at this location</string>
-    <string name="location_details_title">Location details</string>
-
-    <string name="toolbar_back_description">Navigate back</string>
-    <string name="toolbar_search_description">Search</string>
-
     <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
 
     <string name="title_characters">Characters</string>
     <string name="title_episodes">Episodes</string>
-    <string name="title_locations">Locations</string>
 
 </resources>

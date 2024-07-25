@@ -1,7 +1,7 @@
 package br.com.lira.rickandmorty.features.characters.presentation.mapper
 
 import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterDetailsUIModel
-import br.com.lira.rickandmorty.features.characters.domain.model.Character
+import br.com.lira.rickandmorty.characters.domain.model.Character
 import javax.inject.Inject
 
 class CharacterDetailsModelToUIMapper @Inject constructor(

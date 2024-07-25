@@ -13,4 +13,11 @@
     <dimen name="spacing_6">8dp</dimen>
     <dimen name="spacing_7">5dp</dimen>
     <dimen name="spacing_8">3dp</dimen>
+
+    <dimen name="bottom_navigation_height">56dp</dimen>
+    <dimen name="chip">48dp</dimen>
+    <dimen name="textview">48dp</dimen>
+    <dimen name="auto_content">0dp</dimen>
+    <dimen name="divider">1dp</dimen>
+
 </resources>

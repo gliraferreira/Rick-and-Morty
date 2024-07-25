@@ -11,9 +11,9 @@ import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.databinding.FragmentCharactersBinding
-import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
-import br.com.lira.rickandmorty.features.characters.presentation.CharacterNavigator
-import br.com.lira.rickandmorty.features.shared.presentation.model.CharacterUIModel
+import br.com.lira.rickandmorty.characters.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.characters.navigation.CharacterNavigator
+import br.com.lira.rickandmorty.characters.presentation.model.CharacterUIModel
 import br.com.lira.rickandmorty.features.characters.presentation.ui.adapter.CharactersPagingListAdapter
 import br.lira.core.presentation.adapter.PagingLoadStateAdapter
 import br.com.lira.rickandmorty.features.characters.presentation.viewaction.CharactersListViewAction

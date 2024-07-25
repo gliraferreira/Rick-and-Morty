@@ -5,11 +5,11 @@ import androidx.paging.PagingConfig
 import br.com.lira.rickandmorty.core.data.mapper.UrlMapper
 import br.com.lira.rickandmorty.features.characters.data.remote.datasource.CharacterPagingDataSource
 import br.com.lira.rickandmorty.features.characters.data.remote.datasource.CharactersRemoteDataSource
-import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.characters.domain.model.CharacterFilter
 import br.com.lira.rickandmorty.features.characters.domain.repository.CharactersRepository
 import br.com.lira.rickandmorty.features.characters.data.remote.mapper.CharacterResponseToModelMapper
 import br.com.lira.rickandmorty.features.characters.data.remote.mapper.CharacterResponseToShortModelMapper
-import br.com.lira.rickandmorty.features.characters.domain.model.Character
+import br.com.lira.rickandmorty.characters.domain.model.Character
 import javax.inject.Inject
 
 class CharactersDefaultRepository @Inject constructor(

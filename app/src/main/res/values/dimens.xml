@@ -1,12 +1,4 @@
 <resources>
-    <dimen name="bottom_navigation_height">56dp</dimen>
-    <dimen name="chip">48dp</dimen>
-    <dimen name="textview">48dp</dimen>
-    <dimen name="auto_content">0dp</dimen>
-    <dimen name="divider">1dp</dimen>
-
-    <dimen name="character_list_item_profile_picture_border">3dp</dimen>
-    <dimen name="character_list_item_profile_picture">55dp</dimen>
 
     <dimen name="character_details_profile_picture_border">5dp</dimen>
     <dimen name="character_details_profile_picture">200dp</dimen>

@@ -11,11 +11,11 @@ import br.com.lira.rickandmorty.R
 import br.com.lira.rickandmorty.navigation.addPopBackStackHandler
 import br.com.lira.rickandmorty.navigation.popBackStack
 import br.com.lira.rickandmorty.databinding.FragmentEpisodeDetailsBinding
-import br.com.lira.rickandmorty.features.characters.presentation.CharacterNavigator
+import br.com.lira.rickandmorty.characters.navigation.CharacterNavigator
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewAction
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewModel
 import br.com.lira.rickandmorty.features.episodes.presentation.viewmodel.EpisodeDetailsViewState
-import br.com.lira.rickandmorty.features.shared.presentation.adapter.CharactersListAdapter
+import br.com.lira.rickandmorty.characters.presentation.adapter.CharactersListAdapter
 import br.com.lira.rickandmorty.navigation.ImmersiveNavigationMode
 import br.com.lira.rickandmorty.navigation.NavigationModeHandler
 import dagger.hilt.android.AndroidEntryPoint

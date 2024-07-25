@@ -1,9 +1,9 @@
 package br.com.lira.rickandmorty.features.characters.presentation.viewstate
 
 import br.lira.core.presentation.viewmodel.ViewState
-import br.com.lira.rickandmorty.features.characters.domain.model.CharacterFilter
-import br.com.lira.rickandmorty.features.shared.domain.model.CharacterGender
-import br.com.lira.rickandmorty.features.shared.domain.model.CharacterStatus
+import br.com.lira.rickandmorty.characters.domain.model.CharacterFilter
+import br.com.lira.rickandmorty.characters.domain.model.CharacterGender
+import br.com.lira.rickandmorty.characters.domain.model.CharacterStatus
 
 data class CharacterFilterViewState(
     val filter: CharacterFilter? = CharacterFilter()
