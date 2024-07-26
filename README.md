@@ -17,6 +17,28 @@ This app harnesses the power of the Rick and Morty API, allowing you to effortle
 - **Episode Guide**: Access a comprehensive list of episodes and immerse yourself in their detailed descriptions.
 - **Locations List**: Discover all the distinct locations from the Rick and Morty series and explore the residents inhabiting them, providing an immersive insight into the show's diverse settings.
 
+### Modules 
+```
+├── app
+├── build-logic
+│   └── convention
+├── core
+│   ├── data
+│   ├── navigation
+│   └── presentation
+├── features
+│   ├── characters
+│   │   ├── impl
+│   │   └── public-android
+│   ├── episodes
+│   │   ├── impl
+│   │   └── public-android
+│   └── locations
+│       ├── impl
+│       └── public-android
+└─────────────────────────
+```
+
 ## Screenshots
 | Characters | Episodes | Locations |
 | --- | --- | --- |
