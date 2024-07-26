@@ -1,8 +1,7 @@
-package br.com.lira.rickandmorty.features.episodes.data.remote.mapper
+package br.com.lira.rickandmorty.episodes
 
 import br.com.lira.rickandmorty.core.data.mapper.UrlMapper
 import br.com.lira.rickandmorty.episodes.data.remote.mapper.EpisodeResponseToModelMapper
-import br.com.lira.rickandmorty.stub.EpisodeStub
 import io.mockk.mockk
 import io.mockk.verifyOrder
 import kotlin.test.assertEquals
@@ -42,7 +41,7 @@ class EpisodeResponseToModelMapperTest {
         val responseEpisodeNumber = "S01E03"
         val expectedSeasonNumber = 1
         val expectedEpisodeNumber = 3
-        val response = EpisodeStub.episodeResponseStub.copy(
+        val response = br.com.lira.rickandmorty.episodes.EpisodeStub.episodeResponseStub.copy(
             episodeNumber = responseEpisodeNumber
         )
 
@@ -62,7 +61,7 @@ class EpisodeResponseToModelMapperTest {
             characterUrl2,
             characterUrl3
         )
-        val response = EpisodeStub.episodeResponseStub.copy(
+        val response = br.com.lira.rickandmorty.episodes.EpisodeStub.episodeResponseStub.copy(
             characters = characters
         )
 

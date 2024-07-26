@@ -1,4 +1,4 @@
-package br.com.lira.rickandmorty.stub
+package br.com.lira.rickandmorty.episodes
 
 import br.com.lira.rickandmorty.episodes.data.remote.api.response.EpisodeResponse
 import br.com.lira.rickandmorty.episodes.domain.model.Episode

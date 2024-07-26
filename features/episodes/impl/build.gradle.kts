@@ -17,6 +17,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.fragment.ktx)
 
+    testImplementation(libs.mockk)
+
     implementation(projects.core.data)
     implementation(projects.core.presentation)
     implementation(projects.core.navigation)

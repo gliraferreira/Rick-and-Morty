@@ -1,25 +1,25 @@
 package br.com.lira.rickandmorty.episodes.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
-import br.lira.core.presentation.ResourceProvider
-import br.lira.core.presentation.viewmodel.ViewModel
+import br.com.lira.rickandmorty.characters.domain.model.CharacterShort
 import br.com.lira.rickandmorty.characters.domain.usecase.GetMultipleCharactersUseCase
 import br.com.lira.rickandmorty.characters.presentation.mapper.CharacterShortToUIMapper
-import br.com.lira.rickandmorty.episodes.domain.usecase.GetEpisodeByIdUseCase
-import br.com.lira.rickandmorty.episodes.presentation.mapper.EpisodeModelToDetailsUIMapper
-import br.com.lira.rickandmorty.episodes.presentation.mapper.EpisodesErrorMapper
-import br.com.lira.rickandmorty.characters.domain.model.CharacterShort
 import br.com.lira.rickandmorty.episodes.domain.model.Episode
+import br.com.lira.rickandmorty.episodes.domain.usecase.GetEpisodeByIdUseCase
 import br.com.lira.rickandmorty.episodes.impl.R
+import br.com.lira.rickandmorty.episodes.presentation.mapper.EpisodeModelToDetailsUIMapper
+import br.lira.core.presentation.ResourceProvider
+import br.lira.core.presentation.mapper.GenericUIErrorMapper
+import br.lira.core.presentation.viewmodel.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class EpisodeDetailsViewModel @Inject constructor(
     private val getEpisodeById: GetEpisodeByIdUseCase,
     private val getMultipleCharacters: GetMultipleCharactersUseCase,
-    private val errorMapper: EpisodesErrorMapper,
+    private val errorMapper: GenericUIErrorMapper,
     private val episodeMapper: EpisodeModelToDetailsUIMapper,
     private val characterMapper: CharacterShortToUIMapper,
     private val resourceProvider: ResourceProvider

@@ -5,16 +5,16 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.cachedIn
 import androidx.paging.map
-import br.lira.core.presentation.viewmodel.ViewModel
 import br.com.lira.rickandmorty.episodes.domain.usecase.GetAllEpisodesUseCase
 import br.com.lira.rickandmorty.episodes.presentation.mapper.EpisodeModelToUIMapper
-import br.com.lira.rickandmorty.episodes.presentation.mapper.EpisodesErrorMapper
 import br.com.lira.rickandmorty.episodes.presentation.mapper.EpisodesListSeparatorMapper
+import br.lira.core.presentation.mapper.GenericUIErrorMapper
+import br.lira.core.presentation.viewmodel.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val DELAY_INTERVAL = 500L
 
@@ -22,7 +22,7 @@ private const val DELAY_INTERVAL = 500L
 class EpisodesListViewModel @Inject constructor(
     private val getAllEpisodes: GetAllEpisodesUseCase,
     private val episodeUiMapper: EpisodeModelToUIMapper,
-    private val errorMapper: EpisodesErrorMapper,
+    private val errorMapper: GenericUIErrorMapper,
     private val separatorMapper: EpisodesListSeparatorMapper,
 ) : ViewModel<EpisodesListViewState, EpisodesListViewAction>(EpisodesListViewState()) {
 
