@@ -52,6 +52,7 @@ dependencies {
     implementation(projects.features.locations.impl)
     implementation(projects.features.locations.publicAndroid)
     implementation(projects.features.characters.publicAndroid)
+    implementation(projects.features.characters.impl)
     implementation(projects.features.episodes.impl)
     implementation(projects.features.episodes.publicAndroid)
 }

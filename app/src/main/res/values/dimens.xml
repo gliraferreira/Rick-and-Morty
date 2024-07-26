@@ -1,7 +1,0 @@
-<resources>
-
-    <dimen name="character_details_profile_picture_border">5dp</dimen>
-    <dimen name="character_details_profile_picture">200dp</dimen>
-    <dimen name="character_details_picture">40dp</dimen>
-    <dimen name="character_details_background">130dp</dimen>
-</resources>

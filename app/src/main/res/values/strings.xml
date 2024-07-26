@@ -1,38 +1,3 @@
 <resources>
     <string name="app_name">Rick and Morty Characters List</string>
-    <string name="characters_loading">Loading...</string>
-
-    <string name="character_status_alive">Alive</string>
-    <string name="character_status_dead">Dead</string>
-    <string name="character_status_unknown">Unknown</string>
-
-    <string name="character_gender_male">Male</string>
-    <string name="character_gender_female">Female</string>
-    <string name="character_gender_unknown">Unknown</string>
-    <string name="character_gender_genderless">Genderless </string>
-
-    <string name="characters_search_clear_description">Clear text</string>
-    <string name="characters_search_empty_text">We couldn\'t find any characters</string>
-    <string name="characters_search_disclaimer">Showing results for:</string>
-    <string name="characters_search_clear_filter">Clear search</string>
-    <string name="characters_list_details_description">Go to details</string>
-
-    <string name="character_details_title">Character Details</string>
-    <string name="character_details_episodes_title">Episodes (%d)</string>
-    <string name="character_details_species_label">Species</string>
-    <string name="character_details_location_label">Current location</string>
-    <string name="character_details_gender_label">Gender</string>
-    <string name="character_details_episode_number">Season %d - Episode %d</string>
-
-    <string name="character_filter_title">Search Characters</string>
-    <string name="character_filter_name">Name</string>
-    <string name="character_filter_name_hint">Type a name here</string>
-    <string name="character_filter_status">Status</string>
-    <string name="character_filter_gender">Gender</string>
-    <string name="character_filter_submit_button">Search</string>
-
-    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
-
-    <string name="title_characters">Characters</string>
-
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="character_status_alive">#7FE706</color>
+    <color name="character_status_dead">#FF2400</color>
+    <color name="character_status_unknown">#7C7676</color>
+</resources>
