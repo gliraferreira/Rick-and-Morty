@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="episode_season_title">Season %d</string>
+    <string name="episode_number_description">Episode %d</string>
+    <string name="episode_item_details">Air Date: %s</string>
+
+    <string name="episode_details_title">Episode details</string>
+    <string name="episode_details_air_date_label">Released on</string>
+    <string name="episode_details_characters_list_label">Characters (%d)</string>
+    <string name="episode_details_episode_number">Season %d - Episode %d</string>
+    <string name="episode_details_character_nav_description">Go to details</string>
+
+    <string name="title_episodes">Episodes</string>
+</resources>

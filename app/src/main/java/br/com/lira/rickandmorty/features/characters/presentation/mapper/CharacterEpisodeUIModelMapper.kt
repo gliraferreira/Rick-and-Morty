@@ -3,7 +3,7 @@ package br.com.lira.rickandmorty.features.characters.presentation.mapper
 import br.com.lira.rickandmorty.R
 import br.lira.core.presentation.ResourceProvider
 import br.com.lira.rickandmorty.features.characters.presentation.model.CharacterEpisodeUIModel
-import br.com.lira.rickandmorty.features.shared.domain.model.Episode
+import br.com.lira.rickandmorty.episodes.domain.model.Episode
 import javax.inject.Inject
 
 class CharacterEpisodeUIModelMapper @Inject constructor(

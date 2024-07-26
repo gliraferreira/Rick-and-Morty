@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_episodes"
-        android:name="br.com.lira.rickandmorty.features.episodes.presentation.ui.EpisodesFragment"
+        android:name="br.com.lira.rickandmorty.episodes.presentation.ui.fragment.EpisodesFragment"
         android:label="navigation_episodes"
         tools:layout="@layout/fragment_episodes" />
 
